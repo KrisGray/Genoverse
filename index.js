@@ -75,7 +75,7 @@ require(__dirname + '/js/Track/library/File/BIGWIG.js');
 require(__dirname + '/js/Track/library/File/GFF.js');
 require(__dirname + '/js/Track/library/File/VCF.js');
 require(__dirname + '/js/Track/library/File/WIG.js');
-require(__dirname + '/js/Track/library/Gene.js');
+require(__dirname + '/js/Track/library/Ensembl.js');
 require(__dirname + '/js/Track/library/HGNCEnsembl.js');
 require(__dirname + '/js/Track/library/HGNCNCBIGene.js');
 require(__dirname + '/js/Track/library/HGNCVega.js');

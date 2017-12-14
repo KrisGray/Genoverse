@@ -1,6 +1,6 @@
-Genoverse.Track.Gene = Genoverse.Track.extend({
-  id     : 'genes',
-  name   : 'Genes',
+Genoverse.Track.Ensembl = Genoverse.Track.extend({
+  id     : 'ensembl',
+  name   : 'Ensembl',
   height : 200,
   legend : true,
 
