@@ -43,14 +43,12 @@
         plugins   : [ 'controlPanel', 'karyotype', 'trackControls', 'resizer', 'focusRegion', 'fullscreen', 'tooltips', 'fileDrop' ],
         tracks    : [
           Genoverse.Track.Scalebar,
-          Genoverse.Track.extend({
-            name       : 'Sequence',
-            controller : Genoverse.Track.Controller.Sequence,
-            model      : Genoverse.Track.Model.Sequence.Ensembl,
-            view       : Genoverse.Track.View.Sequence,
-            100000     : false,
-            resizable  : 'auto'
-          }),
+          Genoverse.Track.HGNCEnsembl,
+          Genoverse.Track.HGNCNCBIGene,
+          Genoverse.Track.HGNCVega,
+          Genoverse.Track.HGNCPseudogeneOrg
+        ],
+        tracksLibrary: [
           Genoverse.Track.Gene,
           Genoverse.Track.extend({
             name            : 'Regulatory Features',
@@ -59,7 +57,20 @@
             model           : Genoverse.Track.Model.extend({ dataRequestLimit : 5000000 }),
             setFeatureColor : function (f) { f.color = '#AAA'; }
           }),
-          Genoverse.Track.dbSNP
+          Genoverse.Track.extend({
+            name       : 'Sequence',
+            controller : Genoverse.Track.Controller.Sequence,
+            model      : Genoverse.Track.Model.Sequence.Ensembl,
+            view       : Genoverse.Track.View.Sequence,
+            100000     : false,
+            resizable  : 'auto'
+          }),
+          Genoverse.Track.dbSNP,
+          Genoverse.Track.Scalebar,
+          Genoverse.Track.HGNCEnsembl,
+          Genoverse.Track.HGNCNCBIGene,
+          Genoverse.Track.HGNCVega,
+          Genoverse.Track.HGNCPseudogeneOrg
         ]
       });
     </script>

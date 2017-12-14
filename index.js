@@ -42,8 +42,16 @@ require(__dirname + '/js/Track/Model/SequenceVariation.js');
 
 require(__dirname + '/js/Track/Model/Gene.js');
 require(__dirname + '/js/Track/Model/Gene/Ensembl.js');
+require(__dirname + '/js/Track/Model/Gene/HGNCEnsembl.js');
+require(__dirname + '/js/Track/Model/Gene/HGNCNCBIGene.js');
+require(__dirname + '/js/Track/Model/Gene/HGNCVega.js');
+require(__dirname + '/js/Track/Model/Gene/HGNCPseudogeneOrg.js');
 require(__dirname + '/js/Track/View/Gene.js');
 require(__dirname + '/js/Track/View/Gene/Ensembl.js');
+require(__dirname + '/js/Track/View/Gene/HGNCEnsembl.js');
+require(__dirname + '/js/Track/View/Gene/HGNCNCBIGene.js');
+require(__dirname + '/js/Track/View/Gene/HGNCVega.js');
+require(__dirname + '/js/Track/View/Gene/HGNCPseudogeneOrg.js');
 
 require(__dirname + '/js/Track/Model/Transcript.js');
 require(__dirname + '/js/Track/Model/Transcript/Ensembl.js');
@@ -68,6 +76,10 @@ require(__dirname + '/js/Track/library/File/GFF.js');
 require(__dirname + '/js/Track/library/File/VCF.js');
 require(__dirname + '/js/Track/library/File/WIG.js');
 require(__dirname + '/js/Track/library/Gene.js');
+require(__dirname + '/js/Track/library/HGNCEnsembl.js');
+require(__dirname + '/js/Track/library/HGNCNCBIGene.js');
+require(__dirname + '/js/Track/library/HGNCVega.js');
+require(__dirname + '/js/Track/library/HGNCPseudogeneOrg.js');
 require(__dirname + '/js/Track/library/HighlightRegion.js');
 require(__dirname + '/js/Track/library/Legend.js');
 require(__dirname + '/js/Track/library/Scaleline.js');
