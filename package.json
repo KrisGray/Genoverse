@@ -1,8 +1,20 @@
 {
+  "_from": "git+https://github.com/KrisGray/Genoverse.git#hgnc",
+  "_location": "/Genoverse",
+  "_requested": {
+    "type": "git",
+    "raw": "Genoverse@git+https://github.com/KrisGray/Genoverse.git#hgnc",
+    "name": "Genoverse",
+    "escapedName": "Genoverse",
+    "rawSpec": "git+https://github.com/KrisGray/Genoverse.git#hgnc",
+    "saveSpec": "git+https://github.com/KrisGray/Genoverse.git#hgnc",
+    "fetchSpec": "https://github.com/KrisGray/Genoverse.git#hgnc",
+    "gitCommittish": "hgnc"
+  },
   "name": "genoverse",
   "version": "3.0.0",
   "description": "Genoverse is a portable, customizable, back-end independent JavaScript and HTML5 based genome browser which allows the user to explore data in a dynamic and interactive manner.",
-  "main": "js/Genoverse.js",
+  "main": "js/genoverse.min.js",
   "directories": {
     "lib": "js",
     "test": "test"
@@ -14,14 +26,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wtsi-web/Genoverse.git"
+    "url": "git+https://github.com/KrisGray/Genoverse.git"
   },
   "author": "Simon Brent",
+  "contributors": [
+    {
+      "name": "Kris Gray"
+    }
+  ],
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/wtsi-web/Genoverse/issues"
+    "url": "https://github.com/KrisGray/Genoverse/issues"
   },
-  "homepage": "http://wtsi-web.github.io/Genoverse/",
+  "homepage": "https://krisgray.github.io/Genoverse/",
   "devDependencies": {
     "canvas": "latest",
     "expect": "1.20.2",
