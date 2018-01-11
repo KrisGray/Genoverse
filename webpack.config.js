@@ -5,8 +5,8 @@ module.exports = {
   output  : { filename: 'js/genoverse.min.js' },
   plugins : [
     new webpack.ProvidePlugin({
-      $      : __dirname + '/js/lib/jquery.js',
-      jQuery : __dirname + '/js/lib/jquery.js'
+      $      : __dirname + '/js/lib/jquery.min.js',
+      jQuery : __dirname + '/js/lib/jquery.min.js'
     }),
     new webpack.DefinePlugin({
       define: undefined // Stop jquery-ui.js trying to do define(["jquery"]), which doesn't work if jquery isn't in node_modules
