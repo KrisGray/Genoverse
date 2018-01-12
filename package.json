@@ -14,10 +14,11 @@
   "name": "genoverse",
   "version": "3.0.0",
   "description": "Genoverse is a portable, customizable, back-end independent JavaScript and HTML5 based genome browser which allows the user to explore data in a dynamic and interactive manner.",
-  "main": "js/genoverse.min.js",
+  "main": "dist/js/genoverse.js",
   "directories": {
     "lib": "js",
-    "test": "test"
+    "test": "test",
+    "dist": "dist"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha $(find test/require/*.js -print0 | xargs -r0 -I {} echo -n '--require {} ') --no-timeouts --recursive",
@@ -26,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KrisGray/Genoverse.git"
+    "url": "git+https://github.com/KrisGray/Genoverse.git#hgnc"
   },
   "author": "Simon Brent",
   "contributors": [
