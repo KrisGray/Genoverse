@@ -45,7 +45,8 @@
     "jsdom": "latest",
     "mocha": "latest",
     "webpack": "latest",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "jquery": "^2.2.4",
