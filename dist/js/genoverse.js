@@ -102,50 +102,57 @@ module.exports = g;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(3);
+module.exports = __webpack_require__(82);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(3);
 __webpack_require__(4);
 __webpack_require__(5);
+__webpack_require__(6);
 
-global.Base         = __webpack_require__(6);
-global.RTree        = __webpack_require__(7);
-global.dallianceLib = __webpack_require__(8);
+global.Base         = __webpack_require__(7);
+global.RTree        = __webpack_require__(8);
+global.dallianceLib = __webpack_require__(9);
 global.jDataView    = __webpack_require__(1);
-global.jParser      = __webpack_require__(9);
-global.BWReader     = __webpack_require__(10);
-global.VCFReader    = __webpack_require__(11);
-
-global.Genoverse = __webpack_require__(12);
-
-__webpack_require__(13);
+global.jParser      = __webpack_require__(10);
+global.BWReader     = __webpack_require__(11);
+global.VCFReader    = __webpack_require__(12);
+global.Genoverse    = __webpack_require__(13);
 
 __webpack_require__(14);
 __webpack_require__(15);
+
 __webpack_require__(16);
 
 __webpack_require__(17);
-
 __webpack_require__(18);
 __webpack_require__(19);
 
 __webpack_require__(20);
+
 __webpack_require__(21);
-__webpack_require__(22); // Graph.Bar depends on Graph.Line
+__webpack_require__(22);
 
 __webpack_require__(23);
 __webpack_require__(24);
-__webpack_require__(25);
+__webpack_require__(25); // Graph.Bar depends on Graph.Line
+
 __webpack_require__(26);
 __webpack_require__(27);
 __webpack_require__(28);
-
 __webpack_require__(29);
-
 __webpack_require__(30);
 __webpack_require__(31);
+
 __webpack_require__(32);
+
 __webpack_require__(33);
 __webpack_require__(34);
 __webpack_require__(35);
@@ -155,22 +162,22 @@ __webpack_require__(38);
 __webpack_require__(39);
 __webpack_require__(40);
 __webpack_require__(41);
-
 __webpack_require__(42);
 __webpack_require__(43);
 __webpack_require__(44);
-__webpack_require__(45);
 
+__webpack_require__(45);
 __webpack_require__(46);
 __webpack_require__(47);
 __webpack_require__(48);
+
 __webpack_require__(49);
 __webpack_require__(50);
 __webpack_require__(51);
-
 __webpack_require__(52);
 __webpack_require__(53);
 __webpack_require__(54);
+
 __webpack_require__(55);
 __webpack_require__(56);
 __webpack_require__(57);
@@ -187,20 +194,23 @@ __webpack_require__(67);
 __webpack_require__(68);
 __webpack_require__(69);
 __webpack_require__(70);
-
 __webpack_require__(71);
 __webpack_require__(72);
 __webpack_require__(73);
+
 __webpack_require__(74);
 __webpack_require__(75);
 __webpack_require__(76);
 __webpack_require__(77);
 __webpack_require__(78);
+__webpack_require__(79);
+__webpack_require__(80);
+__webpack_require__(81);
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /*! Copyright (c) 2011 Brandon Aaron (http://brandonaaron.net)
@@ -289,7 +299,7 @@ function handler(event) {
 })(jQuery);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /**
@@ -348,7 +358,7 @@ $.fn.mousehold = function(timeout, f) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // tipsy, facebook style tooltips for jquery
@@ -611,7 +621,7 @@ $.fn.mousehold = function(timeout, f) {
 })(jQuery);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -762,13 +772,13 @@ $.fn.mousehold = function(timeout, f) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;!function(e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.RTree=e()}}(function(){var define,module,exports;return function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return require(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}({1:[function(_dereq_,module,exports){"use strict";var rectangle=_dereq_("./rectangle");var bbox=function(ar,obj){if(obj&&obj.bbox){return{leaf:obj,x:obj.bbox[0],y:obj.bbox[1],w:obj.bbox[2]-obj.bbox[0],h:obj.bbox[3]-obj.bbox[1]}}var len=ar.length;var i=0;var a=new Array(len);while(i<len){a[i]=[ar[i][0],ar[i][1]];i++}var first=a[0];len=a.length;i=1;var temp={min:[].concat(first),max:[].concat(first)};while(i<len){if(a[i][0]<temp.min[0]){temp.min[0]=a[i][0]}else if(a[i][0]>temp.max[0]){temp.max[0]=a[i][0]}if(a[i][1]<temp.min[1]){temp.min[1]=a[i][1]}else if(a[i][1]>temp.max[1]){temp.max[1]=a[i][1]}i++}var out={x:temp.min[0],y:temp.min[1],w:temp.max[0]-temp.min[0],h:temp.max[1]-temp.min[1]};if(obj){out.leaf=obj}return out};var geoJSON={};geoJSON.point=function(obj,self){return self.insertSubtree({x:obj.geometry.coordinates[0],y:obj.geometry.coordinates[1],w:0,h:0,leaf:obj},self.root)};geoJSON.multiPointLineString=function(obj,self){return self.insertSubtree(bbox(obj.geometry.coordinates,obj),self.root)};geoJSON.multiLineStringPolygon=function(obj,self){return self.insertSubtree(bbox(Array.prototype.concat.apply([],obj.geometry.coordinates),obj),self.root)};geoJSON.multiPolygon=function(obj,self){return self.insertSubtree(bbox(Array.prototype.concat.apply([],Array.prototype.concat.apply([],obj.geometry.coordinates)),obj),self.root)};geoJSON.makeRec=function(obj){return rectangle(obj.x,obj.y,obj.w,obj.h)};geoJSON.geometryCollection=function(obj,self){if(obj.bbox){return self.insertSubtree({leaf:obj,x:obj.bbox[0],y:obj.bbox[1],w:obj.bbox[2]-obj.bbox[0],h:obj.bbox[3]-obj.bbox[1]},self.root)}var geos=obj.geometry.geometries;var i=0;var len=geos.length;var temp=[];var g;while(i<len){g=geos[i];switch(g.type){case"Point":temp.push(geoJSON.makeRec({x:g.coordinates[0],y:g.coordinates[1],w:0,h:0}));break;case"MultiPoint":temp.push(geoJSON.makeRec(bbox(g.coordinates)));break;case"LineString":temp.push(geoJSON.makeRec(bbox(g.coordinates)));break;case"MultiLineString":temp.push(geoJSON.makeRec(bbox(Array.prototype.concat.apply([],g.coordinates))));break;case"Polygon":temp.push(geoJSON.makeRec(bbox(Array.prototype.concat.apply([],g.coordinates))));break;case"MultiPolygon":temp.push(geoJSON.makeRec(bbox(Array.prototype.concat.apply([],Array.prototype.concat.apply([],g.coordinates)))));break;case"GeometryCollection":geos=geos.concat(g.geometries);len=geos.length;break}i++}var first=temp[0];i=1;len=temp.length;while(i<len){first.expand(temp[i]);i++}return self.insertSubtree({leaf:obj,x:first.x(),y:first.y(),h:first.h(),w:first.w()},self.root)};exports.geoJSON=function(prelim){var that=this;var features,feature;if(Array.isArray(prelim)){features=prelim.slice()}else if(prelim.features&&Array.isArray(prelim.features)){features=prelim.features.slice()}else if(prelim instanceof Object){features=[prelim]}else{throw"this isn't what we're looking for"}var len=features.length;var i=0;while(i<len){feature=features[i];if(feature.type==="Feature"){switch(feature.geometry.type){case"Point":geoJSON.point(feature,that);break;case"MultiPoint":geoJSON.multiPointLineString(feature,that);break;case"LineString":geoJSON.multiPointLineString(feature,that);break;case"MultiLineString":geoJSON.multiLineStringPolygon(feature,that);break;case"Polygon":geoJSON.multiLineStringPolygon(feature,that);break;case"MultiPolygon":geoJSON.multiPolygon(feature,that);break;case"GeometryCollection":geoJSON.geometryCollection(feature,that);break}}i++}};exports.bbox=function(){var x1,y1,x2,y2;switch(arguments.length){case 1:x1=arguments[0][0][0];y1=arguments[0][0][1];x2=arguments[0][1][0];y2=arguments[0][1][1];break;case 2:x1=arguments[0][0];y1=arguments[0][1];x2=arguments[1][0];y2=arguments[1][1];break;case 4:x1=arguments[0];y1=arguments[1];x2=arguments[2];y2=arguments[3];break}return this.search({x:x1,y:y1,w:x2-x1,h:y2-y1})}},{"./rectangle":3}],2:[function(_dereq_,module,exports){"use strict";var RTree=_dereq_("./rtree");var geojson=_dereq_("./geojson");RTree.prototype.bbox=geojson.bbox;RTree.prototype.geoJSON=geojson.geoJSON;RTree.Rectangle=_dereq_("./rectangle");module.exports=RTree},{"./geojson":1,"./rectangle":3,"./rtree":4}],3:[function(_dereq_,module,exports){"use strict";function Rectangle(x,y,w,h){if(!(this instanceof Rectangle)){return new Rectangle(x,y,w,h)}var x2,y2,p;if(x.x){w=x.w;h=x.h;y=x.y;if(x.w!==0&&!x.w&&x.x2){w=x.x2-x.x;h=x.y2-x.y}else{w=x.w;h=x.h}x=x.x;x2=x+w;y2=y+h;p=h+w?false:true}else{x2=x+w;y2=y+h;p=h+w?false:true}this.x1=this.x=function(){return x};this.y1=this.y=function(){return y};this.x2=function(){return x2};this.y2=function(){return y2};this.w=function(){return w};this.h=function(){return h};this.p=function(){return p};this.overlap=function(a){if(p||a.p()){return x<=a.x2()&&x2>=a.x()&&y<=a.y2()&&y2>=a.y()}return x<a.x2()&&x2>a.x()&&y<a.y2()&&y2>a.y()};this.expand=function(a){var nx,ny;var ax=a.x();var ay=a.y();var ax2=a.x2();var ay2=a.y2();if(x>ax){nx=ax}else{nx=x}if(y>ay){ny=ay}else{ny=y}if(x2>ax2){w=x2-nx}else{w=ax2-nx}if(y2>ay2){h=y2-ny}else{h=ay2-ny}x=nx;y=ny;return this}}Rectangle.overlapRectangle=function(a,b){if(a.h===0&&a.w===0||b.h===0&&b.w===0){return a.x<=b.x+b.w&&a.x+a.w>=b.x&&a.y<=b.y+b.h&&a.y+a.h>=b.y}else{return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}};Rectangle.containsRectangle=function(a,b){return a.x+a.w<=b.x+b.w&&a.x>=b.x&&a.y+a.h<=b.y+b.h&&a.y>=b.y};Rectangle.expandRectangle=function(a,b){var nx,ny;var axw=a.x+a.w;var bxw=b.x+b.w;var ayh=a.y+a.h;var byh=b.y+b.h;if(a.x>b.x){nx=b.x}else{nx=a.x}if(a.y>b.y){ny=b.y}else{ny=a.y}if(axw>bxw){a.w=axw-nx}else{a.w=bxw-nx}if(ayh>byh){a.h=ayh-ny}else{a.h=byh-ny}a.x=nx;a.y=ny;return a};Rectangle.makeMBR=function(nodes,rect){if(!nodes.length){return{x:0,y:0,w:0,h:0}}rect=rect||{};rect.x=nodes[0].x;rect.y=nodes[0].y;rect.w=nodes[0].w;rect.h=nodes[0].h;for(var i=1,len=nodes.length;i<len;i++){Rectangle.expandRectangle(rect,nodes[i])}return rect};Rectangle.squarifiedRatio=function(l,w,fill){var lperi=(l+w)/2;var larea=l*w;var lgeo=larea/(lperi*lperi);return larea*fill/lgeo};module.exports=Rectangle},{}],4:[function(_dereq_,module,exports){"use strict";var rectangle=_dereq_("./rectangle");function RTree(width){if(!(this instanceof RTree)){return new RTree(width)}var minWidth=3;var maxWidth=6;if(!isNaN(width)){minWidth=Math.floor(width/2);maxWidth=width}var rootTree={x:0,y:0,w:0,h:0,id:"root",nodes:[]};this.root=rootTree;var flatten=function(tree){var todo=tree.slice();var done=[];var current;while(todo.length){current=todo.pop();if(current.nodes){todo=todo.concat(current.nodes)}else if(current.leaf){done.push(current)}}return done};var removeSubtree=function(rect,obj,root){var hitStack=[];var countStack=[];var retArray=[];var currentDepth=1;var tree,i,ltree;if(!rect||!rectangle.overlapRectangle(rect,root)){return retArray}var retObj={x:rect.x,y:rect.y,w:rect.w,h:rect.h,target:obj};countStack.push(root.nodes.length);hitStack.push(root);while(hitStack.length>0){tree=hitStack.pop();i=countStack.pop()-1;if("target"in retObj){while(i>=0){ltree=tree.nodes[i];if(rectangle.overlapRectangle(retObj,ltree)){if(retObj.target&&"leaf"in ltree&&ltree.leaf===retObj.target||!retObj.target&&("leaf"in ltree||rectangle.containsRectangle(ltree,retObj))){if("nodes"in ltree){retArray=flatten(tree.nodes.splice(i,1))}else{retArray=tree.nodes.splice(i,1)}rectangle.makeMBR(tree.nodes,tree);delete retObj.target;break}else if("nodes"in ltree){currentDepth++;countStack.push(i);hitStack.push(tree);tree=ltree;i=ltree.nodes.length}}i--}}else if("nodes"in retObj){tree.nodes.splice(i+1,1);if(tree.nodes.length>0){rectangle.makeMBR(tree.nodes,tree)}for(var t=0;t<retObj.nodes.length;t++){insertSubtree(retObj.nodes[t],tree)}retObj.nodes=[];if(hitStack.length===0&&tree.nodes.length<=1){retObj.nodes=searchSubtree(tree,true,retObj.nodes,tree);tree.nodes=[];hitStack.push(tree);countStack.push(1)}else if(hitStack.length>0&&tree.nodes.length<minWidth){retObj.nodes=searchSubtree(tree,true,retObj.nodes,tree);tree.nodes=[]}else{delete retObj.nodes}}else{rectangle.makeMBR(tree.nodes,tree)}currentDepth-=1}return retArray};var chooseLeafSubtree=function(rect,root){var bestChoiceIndex=-1;var bestChoiceStack=[];var bestChoiceArea;var first=true;bestChoiceStack.push(root);var nodes=root.nodes;while(first||bestChoiceIndex!==-1){if(first){first=false}else{bestChoiceStack.push(nodes[bestChoiceIndex]);nodes=nodes[bestChoiceIndex].nodes;bestChoiceIndex=-1}for(var i=nodes.length-1;i>=0;i--){var ltree=nodes[i];if("leaf"in ltree){bestChoiceIndex=-1;break}var oldLRatio=rectangle.squarifiedRatio(ltree.w,ltree.h,ltree.nodes.length+1);var nw=Math.max(ltree.x+ltree.w,rect.x+rect.w)-Math.min(ltree.x,rect.x);var nh=Math.max(ltree.y+ltree.h,rect.y+rect.h)-Math.min(ltree.y,rect.y);var lratio=rectangle.squarifiedRatio(nw,nh,ltree.nodes.length+2);if(bestChoiceIndex<0||Math.abs(lratio-oldLRatio)<bestChoiceArea){bestChoiceArea=Math.abs(lratio-oldLRatio);bestChoiceIndex=i}}}return bestChoiceStack};var linearSplit=function(nodes){var n=pickLinear(nodes);while(nodes.length>0){pickNext(nodes,n[0],n[1])}return n};var pickNext=function(nodes,a,b){var areaA=rectangle.squarifiedRatio(a.w,a.h,a.nodes.length+1);var areaB=rectangle.squarifiedRatio(b.w,b.h,b.nodes.length+1);var highAreaDelta;var highAreaNode;var lowestGrowthGroup;for(var i=nodes.length-1;i>=0;i--){var l=nodes[i];var newAreaA={};newAreaA.x=Math.min(a.x,l.x);newAreaA.y=Math.min(a.y,l.y);newAreaA.w=Math.max(a.x+a.w,l.x+l.w)-newAreaA.x;newAreaA.h=Math.max(a.y+a.h,l.y+l.h)-newAreaA.y;var changeNewAreaA=Math.abs(rectangle.squarifiedRatio(newAreaA.w,newAreaA.h,a.nodes.length+2)-areaA);var newAreaB={};newAreaB.x=Math.min(b.x,l.x);newAreaB.y=Math.min(b.y,l.y);newAreaB.w=Math.max(b.x+b.w,l.x+l.w)-newAreaB.x;newAreaB.h=Math.max(b.y+b.h,l.y+l.h)-newAreaB.y;var changeNewAreaB=Math.abs(rectangle.squarifiedRatio(newAreaB.w,newAreaB.h,b.nodes.length+2)-areaB);if(!highAreaNode||!highAreaDelta||Math.abs(changeNewAreaB-changeNewAreaA)<highAreaDelta){highAreaNode=i;highAreaDelta=Math.abs(changeNewAreaB-changeNewAreaA);lowestGrowthGroup=changeNewAreaB<changeNewAreaA?b:a}}var tempNode=nodes.splice(highAreaNode,1)[0];if(a.nodes.length+nodes.length+1<=minWidth){a.nodes.push(tempNode);rectangle.expandRectangle(a,tempNode)}else if(b.nodes.length+nodes.length+1<=minWidth){b.nodes.push(tempNode);rectangle.expandRectangle(b,tempNode)}else{lowestGrowthGroup.nodes.push(tempNode);rectangle.expandRectangle(lowestGrowthGroup,tempNode)}};var pickLinear=function(nodes){var lowestHighX=nodes.length-1;var highestLowX=0;var lowestHighY=nodes.length-1;var highestLowY=0;var t1,t2;for(var i=nodes.length-2;i>=0;i--){var l=nodes[i];if(l.x>nodes[highestLowX].x){highestLowX=i}else if(l.x+l.w<nodes[lowestHighX].x+nodes[lowestHighX].w){lowestHighX=i}if(l.y>nodes[highestLowY].y){highestLowY=i}else if(l.y+l.h<nodes[lowestHighY].y+nodes[lowestHighY].h){lowestHighY=i}}var dx=Math.abs(nodes[lowestHighX].x+nodes[lowestHighX].w-nodes[highestLowX].x);var dy=Math.abs(nodes[lowestHighY].y+nodes[lowestHighY].h-nodes[highestLowY].y);if(dx>dy){if(lowestHighX>highestLowX){t1=nodes.splice(lowestHighX,1)[0];t2=nodes.splice(highestLowX,1)[0]}else{t2=nodes.splice(highestLowX,1)[0];t1=nodes.splice(lowestHighX,1)[0]}}else{if(lowestHighY>highestLowY){t1=nodes.splice(lowestHighY,1)[0];t2=nodes.splice(highestLowY,1)[0]}else{t2=nodes.splice(highestLowY,1)[0];t1=nodes.splice(lowestHighY,1)[0]}}return[{x:t1.x,y:t1.y,w:t1.w,h:t1.h,nodes:[t1]},{x:t2.x,y:t2.y,w:t2.w,h:t2.h,nodes:[t2]}]};var attachData=function(node,moreTree){node.nodes=moreTree.nodes;node.x=moreTree.x;node.y=moreTree.y;node.w=moreTree.w;node.h=moreTree.h;return node};var searchSubtree=function(rect,returnNode,returnArray,root){var hitStack=[];if(!rectangle.overlapRectangle(rect,root)){return returnArray}hitStack.push(root.nodes);while(hitStack.length>0){var nodes=hitStack.pop();for(var i=nodes.length-1;i>=0;i--){var ltree=nodes[i];if(rectangle.overlapRectangle(rect,ltree)){if("nodes"in ltree){hitStack.push(ltree.nodes)}else if("leaf"in ltree){if(!returnNode){returnArray.push(ltree.leaf)}else{returnArray.push(ltree)}}}}}return returnArray};var insertSubtree=function(node,root){var bc;if(root.nodes.length===0){root.x=node.x;root.y=node.y;root.w=node.w;root.h=node.h;root.nodes.push(node);return}var treeStack=chooseLeafSubtree(node,root);var retObj=node;var pbc;while(treeStack.length>0){if(bc&&"nodes"in bc&&bc.nodes.length===0){pbc=bc;bc=treeStack.pop();for(var t=0;t<bc.nodes.length;t++){if(bc.nodes[t]===pbc||bc.nodes[t].nodes.length===0){bc.nodes.splice(t,1);break}}}else{bc=treeStack.pop()}if("leaf"in retObj||"nodes"in retObj||Array.isArray(retObj)){if(Array.isArray(retObj)){for(var ai=0;ai<retObj.length;ai++){rectangle.expandRectangle(bc,retObj[ai])}bc.nodes=bc.nodes.concat(retObj)}else{rectangle.expandRectangle(bc,retObj);bc.nodes.push(retObj)}if(bc.nodes.length<=maxWidth){retObj={x:bc.x,y:bc.y,w:bc.w,h:bc.h}}else{var a=linearSplit(bc.nodes);retObj=a;if(treeStack.length<1){bc.nodes.push(a[0]);treeStack.push(bc);retObj=a[1]}}}else{rectangle.expandRectangle(bc,retObj);retObj={x:bc.x,y:bc.y,w:bc.w,h:bc.h}}}};this.insertSubtree=insertSubtree;this.getTree=function(){return rootTree};this.setTree=function(newTree,where){if(!where){where=rootTree}return attachData(where,newTree)};this.search=function(rect,returnNode,returnArray){returnArray=returnArray||[];return searchSubtree(rect,returnNode,returnArray,rootTree)};var removeArea=function(rect){var numberDeleted=1,retArray=[],deleted;while(numberDeleted>0){deleted=removeSubtree(rect,false,rootTree);numberDeleted=deleted.length;retArray=retArray.concat(deleted)}return retArray};var removeObj=function(rect,obj){var retArray=removeSubtree(rect,obj,rootTree);return retArray};this.remove=function(rect,obj){if(!obj||typeof obj==="function"){return removeArea(rect,obj)}else{return removeObj(rect,obj)}};this.insert=function(rect,obj){var retArray=insertSubtree({x:rect.x,y:rect.y,w:rect.w,h:rect.h,leaf:obj},rootTree);return retArray}}RTree.prototype.toJSON=function(printing){return JSON.stringify(this.root,false,printing)};RTree.fromJSON=function(json){var rt=new RTree;rt.setTree(JSON.parse(json));return rt};module.exports=RTree;if(typeof Array.isArray!=="function"){Array.isArray=function(a){return typeof a==="object"&&{}.toString.call(a)==="[object Array]"}}},{"./rectangle":3}]},{},[2])(2)});
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 (function(){function C(){}function A(){this.was=[0]}function B(a,b,c){this.hufts=new Int32Array(4320);this.window=new Uint8Array(c);this.end=c;this.checkfn=b;this.mode=0;this.reset(a,null);this.index=this.table=this.left=0;this.blens=null;this.bb=new Int32Array(1);this.tb=new Int32Array(1);this.codes=new D;this.check=this.write=this.read=this.bitb=this.bitk=this.last=0;this.inftree=new E}function D(){}function E(){}function y(a,b,c,d,h){if(0!=h){if(!a)throw"Undef src";if(!c)throw"Undef dest";if(0==
@@ -842,7 +852,7 @@ n}else throw"Unknown type "+l;k[s]=l}}if(!d||k.pos<=h&&k.pos+q>=d)void 0!==f&&m!
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {(function () {
@@ -1041,7 +1051,7 @@ if (typeof module === 'object' && typeof module.exports === 'object') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -1625,7 +1635,7 @@ if (typeof module === 'object' && typeof module.exports === 'object') {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -1917,7 +1927,7 @@ if (typeof module === 'object' && typeof module.exports === 'object') {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 var Genoverse = Base.extend({
@@ -1979,6 +1989,12 @@ var Genoverse = Base.extend({
     if (typeof this.genome === 'string') {
       var genomeName = this.genome;
 
+      
+      if(this.genome === 'grch38' || this.genome === 'grch37'){
+        this.genome = Genoverse.Genomes[genomeName];
+      }
+      
+/*      
       return $.ajax({
         url      : Genoverse.origin + 'js/genomes/' + genomeName + '.js',
         dataType : 'script',
@@ -1991,6 +2007,7 @@ var Genoverse = Base.extend({
           }
         }
       });
+*/
     }
   },
 
@@ -2029,8 +2046,10 @@ var Genoverse = Base.extend({
       }
 
       if (browser.loadedPlugins[plugin] || $('script[src="' + js + '"]').length) {
+        console.log('HELLO');
         getCSS();
       } else {
+        console.log('HELLO2');
         $.getScript(js, getCSS);
       }
 
@@ -3501,7 +3520,1997 @@ if (typeof module === 'object' && typeof module.exports === 'object') {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
+/***/ (function(module, exports) {
+
+Genoverse.Genomes.grch37 = {
+  "1": {
+    "size"  : 249250621,
+    "bands" : [
+      { "id": "p11.1",  "start": 121500001, "end": 125000000, "type": "acen"    },
+      { "id": "p11.2",  "start": 120600001, "end": 121500000, "type": "gneg"    },
+      { "id": "p12",    "start": 117800001, "end": 120600000, "type": "gpos50"  },
+      { "id": "p13.1",  "start": 116100001, "end": 117800000, "type": "gneg"    },
+      { "id": "p13.2",  "start": 111800001, "end": 116100000, "type": "gpos50"  },
+      { "id": "p13.3",  "start": 107200001, "end": 111800000, "type": "gneg"    },
+      { "id": "p21.1",  "start": 102200001, "end": 107200000, "type": "gpos100" },
+      { "id": "p21.2",  "start": 99700001,  "end": 102200000, "type": "gneg"    },
+      { "id": "p21.3",  "start": 94700001,  "end": 99700000,  "type": "gpos75"  },
+      { "id": "p22.1",  "start": 92000001,  "end": 94700000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 88400001,  "end": 92000000,  "type": "gpos75"  },
+      { "id": "p22.3",  "start": 84900001,  "end": 88400000,  "type": "gneg"    },
+      { "id": "p31.1",  "start": 69700001,  "end": 84900000,  "type": "gpos100" },
+      { "id": "p31.2",  "start": 68900001,  "end": 69700000,  "type": "gneg"    },
+      { "id": "p31.3",  "start": 61300001,  "end": 68900000,  "type": "gpos50"  },
+      { "id": "p32.1",  "start": 59000001,  "end": 61300000,  "type": "gneg"    },
+      { "id": "p32.2",  "start": 56100001,  "end": 59000000,  "type": "gpos50"  },
+      { "id": "p32.3",  "start": 50700001,  "end": 56100000,  "type": "gneg"    },
+      { "id": "p33",    "start": 46800001,  "end": 50700000,  "type": "gpos75"  },
+      { "id": "p34.1",  "start": 44100001,  "end": 46800000,  "type": "gneg"    },
+      { "id": "p34.2",  "start": 40100001,  "end": 44100000,  "type": "gpos25"  },
+      { "id": "p34.3",  "start": 34600001,  "end": 40100000,  "type": "gneg"    },
+      { "id": "p35.1",  "start": 32400001,  "end": 34600000,  "type": "gpos25"  },
+      { "id": "p35.2",  "start": 30200001,  "end": 32400000,  "type": "gneg"    },
+      { "id": "p35.3",  "start": 28000001,  "end": 30200000,  "type": "gpos25"  },
+      { "id": "p36.11", "start": 23900001,  "end": 28000000,  "type": "gneg"    },
+      { "id": "p36.12", "start": 20400001,  "end": 23900000,  "type": "gpos25"  },
+      { "id": "p36.13", "start": 16200001,  "end": 20400000,  "type": "gneg"    },
+      { "id": "p36.21", "start": 12700001,  "end": 16200000,  "type": "gpos50"  },
+      { "id": "p36.22", "start": 9200001,   "end": 12700000,  "type": "gneg"    },
+      { "id": "p36.23", "start": 7200001,   "end": 9200000,   "type": "gpos25"  },
+      { "id": "p36.31", "start": 5400001,   "end": 7200000,   "type": "gneg"    },
+      { "id": "p36.32", "start": 2300001,   "end": 5400000,   "type": "gpos25"  },
+      { "id": "p36.33", "start": 1,         "end": 2300000,   "type": "gneg"    },
+      { "id": "q11",    "start": 125000001, "end": 128900000, "type": "acen"    },
+      { "id": "q12",    "start": 128900001, "end": 142600000, "type": "gvar"    },
+      { "id": "q21.1",  "start": 142600001, "end": 147000000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 147000001, "end": 150300000, "type": "gpos50"  },
+      { "id": "q21.3",  "start": 150300001, "end": 155000000, "type": "gneg"    },
+      { "id": "q22",    "start": 155000001, "end": 156500000, "type": "gpos50"  },
+      { "id": "q23.1",  "start": 156500001, "end": 159100000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 159100001, "end": 160500000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 160500001, "end": 165500000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 165500001, "end": 167200000, "type": "gpos50"  },
+      { "id": "q24.2",  "start": 167200001, "end": 170900000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 170900001, "end": 172900000, "type": "gpos75"  },
+      { "id": "q25.1",  "start": 172900001, "end": 176000000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 176000001, "end": 180300000, "type": "gpos50"  },
+      { "id": "q25.3",  "start": 180300001, "end": 185800000, "type": "gneg"    },
+      { "id": "q31.1",  "start": 185800001, "end": 190800000, "type": "gpos100" },
+      { "id": "q31.2",  "start": 190800001, "end": 193800000, "type": "gneg"    },
+      { "id": "q31.3",  "start": 193800001, "end": 198700000, "type": "gpos100" },
+      { "id": "q32.1",  "start": 198700001, "end": 207200000, "type": "gneg"    },
+      { "id": "q32.2",  "start": 207200001, "end": 211500000, "type": "gpos25"  },
+      { "id": "q32.3",  "start": 211500001, "end": 214500000, "type": "gneg"    },
+      { "id": "q41",    "start": 214500001, "end": 224100000, "type": "gpos100" },
+      { "id": "q42.11", "start": 224100001, "end": 224600000, "type": "gneg"    },
+      { "id": "q42.12", "start": 224600001, "end": 227000000, "type": "gpos25"  },
+      { "id": "q42.13", "start": 227000001, "end": 230700000, "type": "gneg"    },
+      { "id": "q42.2",  "start": 230700001, "end": 234700000, "type": "gpos50"  },
+      { "id": "q42.3",  "start": 234700001, "end": 236600000, "type": "gneg"    },
+      { "id": "q43",    "start": 236600001, "end": 243700000, "type": "gpos75"  },
+      { "id": "q44",    "start": 243700001, "end": 249250621, "type": "gneg"    }
+    ]
+  },
+  "2": {
+    "size"  : 243199373,
+    "bands" : [
+      { "id": "p11.1", "start": 90500001,  "end": 93300000,  "type": "acen"    },
+      { "id": "p11.2", "start": 83300001,  "end": 90500000,  "type": "gneg"    },
+      { "id": "p12",   "start": 75000001,  "end": 83300000,  "type": "gpos100" },
+      { "id": "p13.1", "start": 73500001,  "end": 75000000,  "type": "gneg"    },
+      { "id": "p13.2", "start": 71500001,  "end": 73500000,  "type": "gpos50"  },
+      { "id": "p13.3", "start": 68600001,  "end": 71500000,  "type": "gneg"    },
+      { "id": "p14",   "start": 64100001,  "end": 68600000,  "type": "gpos50"  },
+      { "id": "p15",   "start": 61300001,  "end": 64100000,  "type": "gneg"    },
+      { "id": "p16.1", "start": 55000001,  "end": 61300000,  "type": "gpos100" },
+      { "id": "p16.2", "start": 52900001,  "end": 55000000,  "type": "gneg"    },
+      { "id": "p16.3", "start": 47800001,  "end": 52900000,  "type": "gpos100" },
+      { "id": "p21",   "start": 41800001,  "end": 47800000,  "type": "gneg"    },
+      { "id": "p22.1", "start": 38600001,  "end": 41800000,  "type": "gpos50"  },
+      { "id": "p22.2", "start": 36600001,  "end": 38600000,  "type": "gneg"    },
+      { "id": "p22.3", "start": 32100001,  "end": 36600000,  "type": "gpos75"  },
+      { "id": "p23.1", "start": 30000001,  "end": 32100000,  "type": "gneg"    },
+      { "id": "p23.2", "start": 27900001,  "end": 30000000,  "type": "gpos25"  },
+      { "id": "p23.3", "start": 24000001,  "end": 27900000,  "type": "gneg"    },
+      { "id": "p24.1", "start": 19200001,  "end": 24000000,  "type": "gpos75"  },
+      { "id": "p24.2", "start": 16700001,  "end": 19200000,  "type": "gneg"    },
+      { "id": "p24.3", "start": 12200001,  "end": 16700000,  "type": "gpos75"  },
+      { "id": "p25.1", "start": 7100001,   "end": 12200000,  "type": "gneg"    },
+      { "id": "p25.2", "start": 4400001,   "end": 7100000,   "type": "gpos50"  },
+      { "id": "p25.3", "start": 1,         "end": 4400000,   "type": "gneg"    },
+      { "id": "q11.1", "start": 93300001,  "end": 96800000,  "type": "acen"    },
+      { "id": "q11.2", "start": 96800001,  "end": 102700000, "type": "gneg"    },
+      { "id": "q12.1", "start": 102700001, "end": 106000000, "type": "gpos50"  },
+      { "id": "q12.2", "start": 106000001, "end": 107500000, "type": "gneg"    },
+      { "id": "q12.3", "start": 107500001, "end": 110200000, "type": "gpos25"  },
+      { "id": "q13",   "start": 110200001, "end": 114400000, "type": "gneg"    },
+      { "id": "q14.1", "start": 114400001, "end": 118800000, "type": "gpos50"  },
+      { "id": "q14.2", "start": 118800001, "end": 122400000, "type": "gneg"    },
+      { "id": "q14.3", "start": 122400001, "end": 129900000, "type": "gpos50"  },
+      { "id": "q21.1", "start": 129900001, "end": 132500000, "type": "gneg"    },
+      { "id": "q21.2", "start": 132500001, "end": 135100000, "type": "gpos25"  },
+      { "id": "q21.3", "start": 135100001, "end": 136800000, "type": "gneg"    },
+      { "id": "q22.1", "start": 136800001, "end": 142200000, "type": "gpos100" },
+      { "id": "q22.2", "start": 142200001, "end": 144100000, "type": "gneg"    },
+      { "id": "q22.3", "start": 144100001, "end": 148700000, "type": "gpos100" },
+      { "id": "q23.1", "start": 148700001, "end": 149900000, "type": "gneg"    },
+      { "id": "q23.2", "start": 149900001, "end": 150500000, "type": "gpos25"  },
+      { "id": "q23.3", "start": 150500001, "end": 154900000, "type": "gneg"    },
+      { "id": "q24.1", "start": 154900001, "end": 159800000, "type": "gpos75"  },
+      { "id": "q24.2", "start": 159800001, "end": 163700000, "type": "gneg"    },
+      { "id": "q24.3", "start": 163700001, "end": 169700000, "type": "gpos75"  },
+      { "id": "q31.1", "start": 169700001, "end": 178000000, "type": "gneg"    },
+      { "id": "q31.2", "start": 178000001, "end": 180600000, "type": "gpos50"  },
+      { "id": "q31.3", "start": 180600001, "end": 183000000, "type": "gneg"    },
+      { "id": "q32.1", "start": 183000001, "end": 189400000, "type": "gpos75"  },
+      { "id": "q32.2", "start": 189400001, "end": 191900000, "type": "gneg"    },
+      { "id": "q32.3", "start": 191900001, "end": 197400000, "type": "gpos75"  },
+      { "id": "q33.1", "start": 197400001, "end": 203300000, "type": "gneg"    },
+      { "id": "q33.2", "start": 203300001, "end": 204900000, "type": "gpos50"  },
+      { "id": "q33.3", "start": 204900001, "end": 209000000, "type": "gneg"    },
+      { "id": "q34",   "start": 209000001, "end": 215300000, "type": "gpos100" },
+      { "id": "q35",   "start": 215300001, "end": 221500000, "type": "gneg"    },
+      { "id": "q36.1", "start": 221500001, "end": 225200000, "type": "gpos75"  },
+      { "id": "q36.2", "start": 225200001, "end": 226100000, "type": "gneg"    },
+      { "id": "q36.3", "start": 226100001, "end": 231000000, "type": "gpos100" },
+      { "id": "q37.1", "start": 231000001, "end": 235600000, "type": "gneg"    },
+      { "id": "q37.2", "start": 235600001, "end": 237300000, "type": "gpos50"  },
+      { "id": "q37.3", "start": 237300001, "end": 243199373, "type": "gneg"    }
+    ]
+  },
+  "3": {
+    "size"  : 198022430,
+    "bands" : [
+      { "id": "p11.1",  "start": 87900001,  "end": 91000000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 87200001,  "end": 87900000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 83500001,  "end": 87200000,  "type": "gpos75"  },
+      { "id": "p12.2",  "start": 79800001,  "end": 83500000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 74200001,  "end": 79800000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 69800001,  "end": 74200000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 63700001,  "end": 69800000,  "type": "gpos50"  },
+      { "id": "p14.2",  "start": 58600001,  "end": 63700000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 54400001,  "end": 58600000,  "type": "gpos50"  },
+      { "id": "p21.1",  "start": 52300001,  "end": 54400000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 50600001,  "end": 52300000,  "type": "gpos25"  },
+      { "id": "p21.31", "start": 44200001,  "end": 50600000,  "type": "gneg"    },
+      { "id": "p21.32", "start": 44100001,  "end": 44200000,  "type": "gpos50"  },
+      { "id": "p21.33", "start": 43700001,  "end": 44100000,  "type": "gneg"    },
+      { "id": "p22.1",  "start": 39400001,  "end": 43700000,  "type": "gpos75"  },
+      { "id": "p22.2",  "start": 36500001,  "end": 39400000,  "type": "gneg"    },
+      { "id": "p22.3",  "start": 32100001,  "end": 36500000,  "type": "gpos50"  },
+      { "id": "p23",    "start": 30900001,  "end": 32100000,  "type": "gneg"    },
+      { "id": "p24.1",  "start": 26400001,  "end": 30900000,  "type": "gpos75"  },
+      { "id": "p24.2",  "start": 23900001,  "end": 26400000,  "type": "gneg"    },
+      { "id": "p24.3",  "start": 16400001,  "end": 23900000,  "type": "gpos100" },
+      { "id": "p25.1",  "start": 13300001,  "end": 16400000,  "type": "gneg"    },
+      { "id": "p25.2",  "start": 11800001,  "end": 13300000,  "type": "gpos25"  },
+      { "id": "p25.3",  "start": 8700001,   "end": 11800000,  "type": "gneg"    },
+      { "id": "p26.1",  "start": 4000001,   "end": 8700000,   "type": "gpos50"  },
+      { "id": "p26.2",  "start": 2800001,   "end": 4000000,   "type": "gneg"    },
+      { "id": "p26.3",  "start": 1,         "end": 2800000,   "type": "gpos50"  },
+      { "id": "q11.1",  "start": 91000001,  "end": 93900000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 93900001,  "end": 98300000,  "type": "gvar"    },
+      { "id": "q12.1",  "start": 98300001,  "end": 100000000, "type": "gneg"    },
+      { "id": "q12.2",  "start": 100000001, "end": 100900000, "type": "gpos25"  },
+      { "id": "q12.3",  "start": 100900001, "end": 102800000, "type": "gneg"    },
+      { "id": "q13.11", "start": 102800001, "end": 106200000, "type": "gpos75"  },
+      { "id": "q13.12", "start": 106200001, "end": 107900000, "type": "gneg"    },
+      { "id": "q13.13", "start": 107900001, "end": 111300000, "type": "gpos50"  },
+      { "id": "q13.2",  "start": 111300001, "end": 113500000, "type": "gneg"    },
+      { "id": "q13.31", "start": 113500001, "end": 117300000, "type": "gpos75"  },
+      { "id": "q13.32", "start": 117300001, "end": 119000000, "type": "gneg"    },
+      { "id": "q13.33", "start": 119000001, "end": 121900000, "type": "gpos75"  },
+      { "id": "q21.1",  "start": 121900001, "end": 123800000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 123800001, "end": 125800000, "type": "gpos25"  },
+      { "id": "q21.3",  "start": 125800001, "end": 129200000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 129200001, "end": 133700000, "type": "gpos25"  },
+      { "id": "q22.2",  "start": 133700001, "end": 135700000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 135700001, "end": 138700000, "type": "gpos25"  },
+      { "id": "q23",    "start": 138700001, "end": 142800000, "type": "gneg"    },
+      { "id": "q24",    "start": 142800001, "end": 148900000, "type": "gpos100" },
+      { "id": "q25.1",  "start": 148900001, "end": 152100000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 152100001, "end": 155000000, "type": "gpos50"  },
+      { "id": "q25.31", "start": 155000001, "end": 157000000, "type": "gneg"    },
+      { "id": "q25.32", "start": 157000001, "end": 159000000, "type": "gpos50"  },
+      { "id": "q25.33", "start": 159000001, "end": 160700000, "type": "gneg"    },
+      { "id": "q26.1",  "start": 160700001, "end": 167600000, "type": "gpos100" },
+      { "id": "q26.2",  "start": 167600001, "end": 170900000, "type": "gneg"    },
+      { "id": "q26.31", "start": 170900001, "end": 175700000, "type": "gpos75"  },
+      { "id": "q26.32", "start": 175700001, "end": 179000000, "type": "gneg"    },
+      { "id": "q26.33", "start": 179000001, "end": 182700000, "type": "gpos75"  },
+      { "id": "q27.1",  "start": 182700001, "end": 184500000, "type": "gneg"    },
+      { "id": "q27.2",  "start": 184500001, "end": 186000000, "type": "gpos25"  },
+      { "id": "q27.3",  "start": 186000001, "end": 187900000, "type": "gneg"    },
+      { "id": "q28",    "start": 187900001, "end": 192300000, "type": "gpos75"  },
+      { "id": "q29",    "start": 192300001, "end": 198022430, "type": "gneg"    }
+    ]
+  },
+  "4": {
+    "size"  : 191154276,
+    "bands" : [
+      { "id": "p11",    "start": 48200001,  "end": 50400000,  "type": "acen"    },
+      { "id": "p12",    "start": 44600001,  "end": 48200000,  "type": "gneg"    },
+      { "id": "p13",    "start": 41200001,  "end": 44600000,  "type": "gpos50"  },
+      { "id": "p14",    "start": 35800001,  "end": 41200000,  "type": "gneg"    },
+      { "id": "p15.1",  "start": 27700001,  "end": 35800000,  "type": "gpos100" },
+      { "id": "p15.2",  "start": 21300001,  "end": 27700000,  "type": "gneg"    },
+      { "id": "p15.31", "start": 17800001,  "end": 21300000,  "type": "gpos75"  },
+      { "id": "p15.32", "start": 15200001,  "end": 17800000,  "type": "gneg"    },
+      { "id": "p15.33", "start": 11300001,  "end": 15200000,  "type": "gpos50"  },
+      { "id": "p16.1",  "start": 6000001,   "end": 11300000,  "type": "gneg"    },
+      { "id": "p16.2",  "start": 4500001,   "end": 6000000,   "type": "gpos25"  },
+      { "id": "p16.3",  "start": 1,         "end": 4500000,   "type": "gneg"    },
+      { "id": "q11",    "start": 50400001,  "end": 52700000,  "type": "acen"    },
+      { "id": "q12",    "start": 52700001,  "end": 59500000,  "type": "gneg"    },
+      { "id": "q13.1",  "start": 59500001,  "end": 66600000,  "type": "gpos100" },
+      { "id": "q13.2",  "start": 66600001,  "end": 70500000,  "type": "gneg"    },
+      { "id": "q13.3",  "start": 70500001,  "end": 76300000,  "type": "gpos75"  },
+      { "id": "q21.1",  "start": 76300001,  "end": 78900000,  "type": "gneg"    },
+      { "id": "q21.21", "start": 78900001,  "end": 82400000,  "type": "gpos50"  },
+      { "id": "q21.22", "start": 82400001,  "end": 84100000,  "type": "gneg"    },
+      { "id": "q21.23", "start": 84100001,  "end": 86900000,  "type": "gpos25"  },
+      { "id": "q21.3",  "start": 86900001,  "end": 88000000,  "type": "gneg"    },
+      { "id": "q22.1",  "start": 88000001,  "end": 93700000,  "type": "gpos75"  },
+      { "id": "q22.2",  "start": 93700001,  "end": 95100000,  "type": "gneg"    },
+      { "id": "q22.3",  "start": 95100001,  "end": 98800000,  "type": "gpos75"  },
+      { "id": "q23",    "start": 98800001,  "end": 101100000, "type": "gneg"    },
+      { "id": "q24",    "start": 101100001, "end": 107700000, "type": "gpos50"  },
+      { "id": "q25",    "start": 107700001, "end": 114100000, "type": "gneg"    },
+      { "id": "q26",    "start": 114100001, "end": 120800000, "type": "gpos75"  },
+      { "id": "q27",    "start": 120800001, "end": 123800000, "type": "gneg"    },
+      { "id": "q28.1",  "start": 123800001, "end": 128800000, "type": "gpos50"  },
+      { "id": "q28.2",  "start": 128800001, "end": 131100000, "type": "gneg"    },
+      { "id": "q28.3",  "start": 131100001, "end": 139500000, "type": "gpos100" },
+      { "id": "q31.1",  "start": 139500001, "end": 141500000, "type": "gneg"    },
+      { "id": "q31.21", "start": 141500001, "end": 146800000, "type": "gpos25"  },
+      { "id": "q31.22", "start": 146800001, "end": 148500000, "type": "gneg"    },
+      { "id": "q31.23", "start": 148500001, "end": 151100000, "type": "gpos25"  },
+      { "id": "q31.3",  "start": 151100001, "end": 155600000, "type": "gneg"    },
+      { "id": "q32.1",  "start": 155600001, "end": 161800000, "type": "gpos100" },
+      { "id": "q32.2",  "start": 161800001, "end": 164500000, "type": "gneg"    },
+      { "id": "q32.3",  "start": 164500001, "end": 170100000, "type": "gpos100" },
+      { "id": "q33",    "start": 170100001, "end": 171900000, "type": "gneg"    },
+      { "id": "q34.1",  "start": 171900001, "end": 176300000, "type": "gpos75"  },
+      { "id": "q34.2",  "start": 176300001, "end": 177500000, "type": "gneg"    },
+      { "id": "q34.3",  "start": 177500001, "end": 183200000, "type": "gpos100" },
+      { "id": "q35.1",  "start": 183200001, "end": 187100000, "type": "gneg"    },
+      { "id": "q35.2",  "start": 187100001, "end": 191154276, "type": "gpos25"  }
+    ]
+  },
+  "5": {
+    "size"  : 180915260,
+    "bands" : [
+      { "id": "p11",    "start": 46100001,  "end": 48400000,  "type": "acen"    },
+      { "id": "p12",    "start": 42500001,  "end": 46100000,  "type": "gpos50"  },
+      { "id": "p13.1",  "start": 38400001,  "end": 42500000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 33800001,  "end": 38400000,  "type": "gpos25"  },
+      { "id": "p13.3",  "start": 28900001,  "end": 33800000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 24600001,  "end": 28900000,  "type": "gpos100" },
+      { "id": "p14.2",  "start": 23300001,  "end": 24600000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 18400001,  "end": 23300000,  "type": "gpos100" },
+      { "id": "p15.1",  "start": 15000001,  "end": 18400000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 9800001,   "end": 15000000,  "type": "gpos50"  },
+      { "id": "p15.31", "start": 6300001,   "end": 9800000,   "type": "gneg"    },
+      { "id": "p15.32", "start": 4500001,   "end": 6300000,   "type": "gpos25"  },
+      { "id": "p15.33", "start": 1,         "end": 4500000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 48400001,  "end": 50700000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 50700001,  "end": 58900000,  "type": "gneg"    },
+      { "id": "q12.1",  "start": 58900001,  "end": 62900000,  "type": "gpos75"  },
+      { "id": "q12.2",  "start": 62900001,  "end": 63200000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 63200001,  "end": 66700000,  "type": "gpos75"  },
+      { "id": "q13.1",  "start": 66700001,  "end": 68400000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 68400001,  "end": 73300000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 73300001,  "end": 76900000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 76900001,  "end": 81400000,  "type": "gpos50"  },
+      { "id": "q14.2",  "start": 81400001,  "end": 82800000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 82800001,  "end": 92300000,  "type": "gpos100" },
+      { "id": "q15",    "start": 92300001,  "end": 98200000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 98200001,  "end": 102800000, "type": "gpos100" },
+      { "id": "q21.2",  "start": 102800001, "end": 104500000, "type": "gneg"    },
+      { "id": "q21.3",  "start": 104500001, "end": 109600000, "type": "gpos100" },
+      { "id": "q22.1",  "start": 109600001, "end": 111500000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 111500001, "end": 113100000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 113100001, "end": 115200000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 115200001, "end": 121400000, "type": "gpos100" },
+      { "id": "q23.2",  "start": 121400001, "end": 127300000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 127300001, "end": 130600000, "type": "gpos100" },
+      { "id": "q31.1",  "start": 130600001, "end": 136200000, "type": "gneg"    },
+      { "id": "q31.2",  "start": 136200001, "end": 139500000, "type": "gpos25"  },
+      { "id": "q31.3",  "start": 139500001, "end": 144500000, "type": "gneg"    },
+      { "id": "q32",    "start": 144500001, "end": 149800000, "type": "gpos75"  },
+      { "id": "q33.1",  "start": 149800001, "end": 152700000, "type": "gneg"    },
+      { "id": "q33.2",  "start": 152700001, "end": 155700000, "type": "gpos50"  },
+      { "id": "q33.3",  "start": 155700001, "end": 159900000, "type": "gneg"    },
+      { "id": "q34",    "start": 159900001, "end": 168500000, "type": "gpos100" },
+      { "id": "q35.1",  "start": 168500001, "end": 172800000, "type": "gneg"    },
+      { "id": "q35.2",  "start": 172800001, "end": 176600000, "type": "gpos25"  },
+      { "id": "q35.3",  "start": 176600001, "end": 180915260, "type": "gneg"    }
+    ]
+  },
+  "6": {
+    "size"  : 171115067,
+    "bands" : [
+      { "id": "p11.1",  "start": 58700001,  "end": 61000000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 57000001,  "end": 58700000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 52900001,  "end": 57000000,  "type": "gpos100" },
+      { "id": "p12.2",  "start": 51800001,  "end": 52900000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 46200001,  "end": 51800000,  "type": "gpos100" },
+      { "id": "p21.1",  "start": 40500001,  "end": 46200000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 36600001,  "end": 40500000,  "type": "gpos25"  },
+      { "id": "p21.31", "start": 33500001,  "end": 36600000,  "type": "gneg"    },
+      { "id": "p21.32", "start": 32100001,  "end": 33500000,  "type": "gpos25"  },
+      { "id": "p21.33", "start": 30400001,  "end": 32100000,  "type": "gneg"    },
+      { "id": "p22.1",  "start": 27000001,  "end": 30400000,  "type": "gpos50"  },
+      { "id": "p22.2",  "start": 25200001,  "end": 27000000,  "type": "gneg"    },
+      { "id": "p22.3",  "start": 15200001,  "end": 25200000,  "type": "gpos75"  },
+      { "id": "p23",    "start": 13400001,  "end": 15200000,  "type": "gneg"    },
+      { "id": "p24.1",  "start": 11600001,  "end": 13400000,  "type": "gpos25"  },
+      { "id": "p24.2",  "start": 10600001,  "end": 11600000,  "type": "gneg"    },
+      { "id": "p24.3",  "start": 7100001,   "end": 10600000,  "type": "gpos50"  },
+      { "id": "p25.1",  "start": 4200001,   "end": 7100000,   "type": "gneg"    },
+      { "id": "p25.2",  "start": 2300001,   "end": 4200000,   "type": "gpos25"  },
+      { "id": "p25.3",  "start": 1,         "end": 2300000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 61000001,  "end": 63300000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 63300001,  "end": 63400000,  "type": "gneg"    },
+      { "id": "q12",    "start": 63400001,  "end": 70000000,  "type": "gpos100" },
+      { "id": "q13",    "start": 70000001,  "end": 75900000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 75900001,  "end": 83900000,  "type": "gpos50"  },
+      { "id": "q14.2",  "start": 83900001,  "end": 84900000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 84900001,  "end": 88000000,  "type": "gpos50"  },
+      { "id": "q15",    "start": 88000001,  "end": 93100000,  "type": "gneg"    },
+      { "id": "q16.1",  "start": 93100001,  "end": 99500000,  "type": "gpos100" },
+      { "id": "q16.2",  "start": 99500001,  "end": 100600000, "type": "gneg"    },
+      { "id": "q16.3",  "start": 100600001, "end": 105500000, "type": "gpos100" },
+      { "id": "q21",    "start": 105500001, "end": 114600000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 114600001, "end": 118300000, "type": "gpos75"  },
+      { "id": "q22.2",  "start": 118300001, "end": 118500000, "type": "gneg"    },
+      { "id": "q22.31", "start": 118500001, "end": 126100000, "type": "gpos100" },
+      { "id": "q22.32", "start": 126100001, "end": 127100000, "type": "gneg"    },
+      { "id": "q22.33", "start": 127100001, "end": 130300000, "type": "gpos75"  },
+      { "id": "q23.1",  "start": 130300001, "end": 131200000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 131200001, "end": 135200000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 135200001, "end": 139000000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 139000001, "end": 142800000, "type": "gpos75"  },
+      { "id": "q24.2",  "start": 142800001, "end": 145600000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 145600001, "end": 149000000, "type": "gpos75"  },
+      { "id": "q25.1",  "start": 149000001, "end": 152500000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 152500001, "end": 155500000, "type": "gpos50"  },
+      { "id": "q25.3",  "start": 155500001, "end": 161000000, "type": "gneg"    },
+      { "id": "q26",    "start": 161000001, "end": 164500000, "type": "gpos50"  },
+      { "id": "q27",    "start": 164500001, "end": 171115067, "type": "gneg"    }
+    ]
+  },
+  "7": {
+    "size"  : 159138663,
+    "bands" : [
+      { "id": "p11.1",  "start": 58000001,  "end": 59900000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 54000001,  "end": 58000000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 50500001,  "end": 54000000,  "type": "gpos75"  },
+      { "id": "p12.2",  "start": 49000001,  "end": 50500000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 45400001,  "end": 49000000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 43300001,  "end": 45400000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 37200001,  "end": 43300000,  "type": "gpos75"  },
+      { "id": "p14.2",  "start": 35000001,  "end": 37200000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 28800001,  "end": 35000000,  "type": "gpos75"  },
+      { "id": "p15.1",  "start": 28000001,  "end": 28800000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 25500001,  "end": 28000000,  "type": "gpos50"  },
+      { "id": "p15.3",  "start": 20900001,  "end": 25500000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 16500001,  "end": 20900000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 13800001,  "end": 16500000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 7300001,   "end": 13800000,  "type": "gpos100" },
+      { "id": "p22.1",  "start": 4500001,   "end": 7300000,   "type": "gneg"    },
+      { "id": "p22.2",  "start": 2800001,   "end": 4500000,   "type": "gpos25"  },
+      { "id": "p22.3",  "start": 1,         "end": 2800000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 59900001,  "end": 61700000,  "type": "acen"    },
+      { "id": "q11.21", "start": 61700001,  "end": 67000000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 67000001,  "end": 72200000,  "type": "gpos50"  },
+      { "id": "q11.23", "start": 72200001,  "end": 77500000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 77500001,  "end": 86400000,  "type": "gpos100" },
+      { "id": "q21.12", "start": 86400001,  "end": 88200000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 88200001,  "end": 91100000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 91100001,  "end": 92800000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 92800001,  "end": 98000000,  "type": "gpos75"  },
+      { "id": "q22.1",  "start": 98000001,  "end": 103800000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 103800001, "end": 104500000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 104500001, "end": 107400000, "type": "gneg"    },
+      { "id": "q31.1",  "start": 107400001, "end": 114600000, "type": "gpos75"  },
+      { "id": "q31.2",  "start": 114600001, "end": 117400000, "type": "gneg"    },
+      { "id": "q31.31", "start": 117400001, "end": 121100000, "type": "gpos75"  },
+      { "id": "q31.32", "start": 121100001, "end": 123800000, "type": "gneg"    },
+      { "id": "q31.33", "start": 123800001, "end": 127100000, "type": "gpos75"  },
+      { "id": "q32.1",  "start": 127100001, "end": 129200000, "type": "gneg"    },
+      { "id": "q32.2",  "start": 129200001, "end": 130400000, "type": "gpos25"  },
+      { "id": "q32.3",  "start": 130400001, "end": 132600000, "type": "gneg"    },
+      { "id": "q33",    "start": 132600001, "end": 138200000, "type": "gpos50"  },
+      { "id": "q34",    "start": 138200001, "end": 143100000, "type": "gneg"    },
+      { "id": "q35",    "start": 143100001, "end": 147900000, "type": "gpos75"  },
+      { "id": "q36.1",  "start": 147900001, "end": 152600000, "type": "gneg"    },
+      { "id": "q36.2",  "start": 152600001, "end": 155100000, "type": "gpos25"  },
+      { "id": "q36.3",  "start": 155100001, "end": 159138663, "type": "gneg"    }
+    ]
+  },
+  "8": {
+    "size"  : 146364022,
+    "bands" : [
+      { "id": "p11.1",  "start": 43100001,  "end": 45600000,  "type": "acen"    },
+      { "id": "p11.21", "start": 39700001,  "end": 43100000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 38300001,  "end": 39700000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 36500001,  "end": 38300000,  "type": "gneg"    },
+      { "id": "p12",    "start": 28800001,  "end": 36500000,  "type": "gpos75"  },
+      { "id": "p21.1",  "start": 27400001,  "end": 28800000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 23300001,  "end": 27400000,  "type": "gpos50"  },
+      { "id": "p21.3",  "start": 19000001,  "end": 23300000,  "type": "gneg"    },
+      { "id": "p22",    "start": 12700001,  "end": 19000000,  "type": "gpos100" },
+      { "id": "p23.1",  "start": 6200001,   "end": 12700000,  "type": "gneg"    },
+      { "id": "p23.2",  "start": 2200001,   "end": 6200000,   "type": "gpos75"  },
+      { "id": "p23.3",  "start": 1,         "end": 2200000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 45600001,  "end": 48100000,  "type": "acen"    },
+      { "id": "q11.21", "start": 48100001,  "end": 52200000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 52200001,  "end": 52600000,  "type": "gpos75"  },
+      { "id": "q11.23", "start": 52600001,  "end": 55500000,  "type": "gneg"    },
+      { "id": "q12.1",  "start": 55500001,  "end": 61600000,  "type": "gpos50"  },
+      { "id": "q12.2",  "start": 61600001,  "end": 62200000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 62200001,  "end": 66000000,  "type": "gpos50"  },
+      { "id": "q13.1",  "start": 66000001,  "end": 68000000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 68000001,  "end": 70500000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 70500001,  "end": 73900000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 73900001,  "end": 78300000,  "type": "gpos100" },
+      { "id": "q21.12", "start": 78300001,  "end": 80100000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 80100001,  "end": 84600000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 84600001,  "end": 86900000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 86900001,  "end": 93300000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 93300001,  "end": 99000000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 99000001,  "end": 101600000, "type": "gpos25"  },
+      { "id": "q22.3",  "start": 101600001, "end": 106200000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 106200001, "end": 110500000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 110500001, "end": 112100000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 112100001, "end": 117700000, "type": "gpos100" },
+      { "id": "q24.11", "start": 117700001, "end": 119200000, "type": "gneg"    },
+      { "id": "q24.12", "start": 119200001, "end": 122500000, "type": "gpos50"  },
+      { "id": "q24.13", "start": 122500001, "end": 127300000, "type": "gneg"    },
+      { "id": "q24.21", "start": 127300001, "end": 131500000, "type": "gpos50"  },
+      { "id": "q24.22", "start": 131500001, "end": 136400000, "type": "gneg"    },
+      { "id": "q24.23", "start": 136400001, "end": 139900000, "type": "gpos75"  },
+      { "id": "q24.3",  "start": 139900001, "end": 146364022, "type": "gneg"    }
+    ]
+  },
+  "9": {
+    "size"  : 141213431,
+    "bands" : [
+      { "id": "p11.1",  "start": 47300001,  "end": 49000000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 43600001,  "end": 47300000,  "type": "gneg"    },
+      { "id": "p12",    "start": 41000001,  "end": 43600000,  "type": "gpos50"  },
+      { "id": "p13.1",  "start": 38400001,  "end": 41000000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 36300001,  "end": 38400000,  "type": "gpos25"  },
+      { "id": "p13.3",  "start": 33200001,  "end": 36300000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 28000001,  "end": 33200000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 25600001,  "end": 28000000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 19900001,  "end": 25600000,  "type": "gpos100" },
+      { "id": "p22.1",  "start": 18500001,  "end": 19900000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 16600001,  "end": 18500000,  "type": "gpos25"  },
+      { "id": "p22.3",  "start": 14200001,  "end": 16600000,  "type": "gneg"    },
+      { "id": "p23",    "start": 9000001,   "end": 14200000,  "type": "gpos75"  },
+      { "id": "p24.1",  "start": 4600001,   "end": 9000000,   "type": "gneg"    },
+      { "id": "p24.2",  "start": 2200001,   "end": 4600000,   "type": "gpos25"  },
+      { "id": "p24.3",  "start": 1,         "end": 2200000,   "type": "gneg"    },
+      { "id": "q11",    "start": 49000001,  "end": 50700000,  "type": "acen"    },
+      { "id": "q12",    "start": 50700001,  "end": 65900000,  "type": "gvar"    },
+      { "id": "q13",    "start": 65900001,  "end": 68700000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 68700001,  "end": 72200000,  "type": "gpos25"  },
+      { "id": "q21.12", "start": 72200001,  "end": 74000000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 74000001,  "end": 79200000,  "type": "gpos50"  },
+      { "id": "q21.2",  "start": 79200001,  "end": 81100000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 81100001,  "end": 84100000,  "type": "gpos50"  },
+      { "id": "q21.32", "start": 84100001,  "end": 86900000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 86900001,  "end": 90400000,  "type": "gpos50"  },
+      { "id": "q22.1",  "start": 90400001,  "end": 91800000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 91800001,  "end": 93900000,  "type": "gpos25"  },
+      { "id": "q22.31", "start": 93900001,  "end": 96600000,  "type": "gneg"    },
+      { "id": "q22.32", "start": 96600001,  "end": 99300000,  "type": "gpos25"  },
+      { "id": "q22.33", "start": 99300001,  "end": 102600000, "type": "gneg"    },
+      { "id": "q31.1",  "start": 102600001, "end": 108200000, "type": "gpos100" },
+      { "id": "q31.2",  "start": 108200001, "end": 111300000, "type": "gneg"    },
+      { "id": "q31.3",  "start": 111300001, "end": 114900000, "type": "gpos25"  },
+      { "id": "q32",    "start": 114900001, "end": 117700000, "type": "gneg"    },
+      { "id": "q33.1",  "start": 117700001, "end": 122500000, "type": "gpos75"  },
+      { "id": "q33.2",  "start": 122500001, "end": 125800000, "type": "gneg"    },
+      { "id": "q33.3",  "start": 125800001, "end": 130300000, "type": "gpos25"  },
+      { "id": "q34.11", "start": 130300001, "end": 133500000, "type": "gneg"    },
+      { "id": "q34.12", "start": 133500001, "end": 134000000, "type": "gpos25"  },
+      { "id": "q34.13", "start": 134000001, "end": 135900000, "type": "gneg"    },
+      { "id": "q34.2",  "start": 135900001, "end": 137400000, "type": "gpos25"  },
+      { "id": "q34.3",  "start": 137400001, "end": 141213431, "type": "gneg"    }
+    ]
+  },
+  "10": {
+    "size"  : 135534747,
+    "bands" : [
+      { "id": "p11.1",  "start": 38000001,  "end": 40200000,  "type": "acen"    },
+      { "id": "p11.21", "start": 34400001,  "end": 38000000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 31300001,  "end": 34400000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 29600001,  "end": 31300000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 24600001,  "end": 29600000,  "type": "gpos50"  },
+      { "id": "p12.2",  "start": 22600001,  "end": 24600000,  "type": "gneg"    },
+      { "id": "p12.31", "start": 18700001,  "end": 22600000,  "type": "gpos75"  },
+      { "id": "p12.32", "start": 18600001,  "end": 18700000,  "type": "gneg"    },
+      { "id": "p12.33", "start": 17300001,  "end": 18600000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 12200001,  "end": 17300000,  "type": "gneg"    },
+      { "id": "p14",    "start": 6600001,   "end": 12200000,  "type": "gpos75"  },
+      { "id": "p15.1",  "start": 3800001,   "end": 6600000,   "type": "gneg"    },
+      { "id": "p15.2",  "start": 3000001,   "end": 3800000,   "type": "gpos25"  },
+      { "id": "p15.3",  "start": 1,         "end": 3000000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 40200001,  "end": 42300000,  "type": "acen"    },
+      { "id": "q11.21", "start": 42300001,  "end": 46100000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 46100001,  "end": 49900000,  "type": "gpos25"  },
+      { "id": "q11.23", "start": 49900001,  "end": 52900000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 52900001,  "end": 61200000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 61200001,  "end": 64500000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 64500001,  "end": 70600000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 70600001,  "end": 74900000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 74900001,  "end": 77700000,  "type": "gpos50"  },
+      { "id": "q22.3",  "start": 77700001,  "end": 82000000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 82000001,  "end": 87900000,  "type": "gpos100" },
+      { "id": "q23.2",  "start": 87900001,  "end": 89500000,  "type": "gneg"    },
+      { "id": "q23.31", "start": 89500001,  "end": 92900000,  "type": "gpos75"  },
+      { "id": "q23.32", "start": 92900001,  "end": 94100000,  "type": "gneg"    },
+      { "id": "q23.33", "start": 94100001,  "end": 97000000,  "type": "gpos50"  },
+      { "id": "q24.1",  "start": 97000001,  "end": 99300000,  "type": "gneg"    },
+      { "id": "q24.2",  "start": 99300001,  "end": 101900000, "type": "gpos50"  },
+      { "id": "q24.31", "start": 101900001, "end": 103000000, "type": "gneg"    },
+      { "id": "q24.32", "start": 103000001, "end": 104900000, "type": "gpos25"  },
+      { "id": "q24.33", "start": 104900001, "end": 105800000, "type": "gneg"    },
+      { "id": "q25.1",  "start": 105800001, "end": 111900000, "type": "gpos100" },
+      { "id": "q25.2",  "start": 111900001, "end": 114900000, "type": "gneg"    },
+      { "id": "q25.3",  "start": 114900001, "end": 119100000, "type": "gpos75"  },
+      { "id": "q26.11", "start": 119100001, "end": 121700000, "type": "gneg"    },
+      { "id": "q26.12", "start": 121700001, "end": 123100000, "type": "gpos50"  },
+      { "id": "q26.13", "start": 123100001, "end": 127500000, "type": "gneg"    },
+      { "id": "q26.2",  "start": 127500001, "end": 130600000, "type": "gpos50"  },
+      { "id": "q26.3",  "start": 130600001, "end": 135534747, "type": "gneg"    }
+    ]
+  },
+  "11": {
+    "size"  : 135006516,
+    "bands" : [
+      { "id": "p11.11", "start": 51600001,  "end": 53700000,  "type": "acen"    },
+      { "id": "p11.12", "start": 48800001,  "end": 51600000,  "type": "gpos75"  },
+      { "id": "p11.2",  "start": 43500001,  "end": 48800000,  "type": "gneg"    },
+      { "id": "p12",    "start": 36400001,  "end": 43500000,  "type": "gpos100" },
+      { "id": "p13",    "start": 31000001,  "end": 36400000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 27200001,  "end": 31000000,  "type": "gpos75"  },
+      { "id": "p14.2",  "start": 26100001,  "end": 27200000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 21700001,  "end": 26100000,  "type": "gpos100" },
+      { "id": "p15.1",  "start": 16200001,  "end": 21700000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 12700001,  "end": 16200000,  "type": "gpos50"  },
+      { "id": "p15.3",  "start": 10700001,  "end": 12700000,  "type": "gneg"    },
+      { "id": "p15.4",  "start": 2800001,   "end": 10700000,  "type": "gpos50"  },
+      { "id": "p15.5",  "start": 1,         "end": 2800000,   "type": "gneg"    },
+      { "id": "q11",    "start": 53700001,  "end": 55700000,  "type": "acen"    },
+      { "id": "q12.1",  "start": 55700001,  "end": 59900000,  "type": "gpos75"  },
+      { "id": "q12.2",  "start": 59900001,  "end": 61700000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 61700001,  "end": 63400000,  "type": "gpos25"  },
+      { "id": "q13.1",  "start": 63400001,  "end": 65900000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 65900001,  "end": 68400000,  "type": "gpos25"  },
+      { "id": "q13.3",  "start": 68400001,  "end": 70400000,  "type": "gneg"    },
+      { "id": "q13.4",  "start": 70400001,  "end": 75200000,  "type": "gpos50"  },
+      { "id": "q13.5",  "start": 75200001,  "end": 77100000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 77100001,  "end": 85600000,  "type": "gpos100" },
+      { "id": "q14.2",  "start": 85600001,  "end": 88300000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 88300001,  "end": 92800000,  "type": "gpos100" },
+      { "id": "q21",    "start": 92800001,  "end": 97200000,  "type": "gneg"    },
+      { "id": "q22.1",  "start": 97200001,  "end": 102100000, "type": "gpos100" },
+      { "id": "q22.2",  "start": 102100001, "end": 102900000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 102900001, "end": 110400000, "type": "gpos100" },
+      { "id": "q23.1",  "start": 110400001, "end": 112500000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 112500001, "end": 114500000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 114500001, "end": 121200000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 121200001, "end": 123900000, "type": "gpos50"  },
+      { "id": "q24.2",  "start": 123900001, "end": 127800000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 127800001, "end": 130800000, "type": "gpos50"  },
+      { "id": "q25",    "start": 130800001, "end": 135006516, "type": "gneg"    }
+    ]
+  },
+  "12": {
+    "size"  : 133851895,
+    "bands" : [
+      { "id": "p11.1",  "start": 33300001,  "end": 35800000,  "type": "acen"    },
+      { "id": "p11.21", "start": 30700001,  "end": 33300000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 27800001,  "end": 30700000,  "type": "gpos50"  },
+      { "id": "p11.23", "start": 26500001,  "end": 27800000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 21300001,  "end": 26500000,  "type": "gpos100" },
+      { "id": "p12.2",  "start": 20000001,  "end": 21300000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 14800001,  "end": 20000000,  "type": "gpos100" },
+      { "id": "p13.1",  "start": 12800001,  "end": 14800000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 10100001,  "end": 12800000,  "type": "gpos75"  },
+      { "id": "p13.31", "start": 5400001,   "end": 10100000,  "type": "gneg"    },
+      { "id": "p13.32", "start": 3300001,   "end": 5400000,   "type": "gpos25"  },
+      { "id": "p13.33", "start": 1,         "end": 3300000,   "type": "gneg"    },
+      { "id": "q11",    "start": 35800001,  "end": 38200000,  "type": "acen"    },
+      { "id": "q12",    "start": 38200001,  "end": 46400000,  "type": "gpos100" },
+      { "id": "q13.11", "start": 46400001,  "end": 49100000,  "type": "gneg"    },
+      { "id": "q13.12", "start": 49100001,  "end": 51500000,  "type": "gpos25"  },
+      { "id": "q13.13", "start": 51500001,  "end": 54900000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 54900001,  "end": 56600000,  "type": "gpos25"  },
+      { "id": "q13.3",  "start": 56600001,  "end": 58100000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 58100001,  "end": 63100000,  "type": "gpos75"  },
+      { "id": "q14.2",  "start": 63100001,  "end": 65100000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 65100001,  "end": 67700000,  "type": "gpos50"  },
+      { "id": "q15",    "start": 67700001,  "end": 71500000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 71500001,  "end": 75700000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 75700001,  "end": 80300000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 80300001,  "end": 86700000,  "type": "gpos100" },
+      { "id": "q21.32", "start": 86700001,  "end": 89000000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 89000001,  "end": 92600000,  "type": "gpos100" },
+      { "id": "q22",    "start": 92600001,  "end": 96200000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 96200001,  "end": 101600000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 101600001, "end": 103800000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 103800001, "end": 109000000, "type": "gpos50"  },
+      { "id": "q24.11", "start": 109000001, "end": 111700000, "type": "gneg"    },
+      { "id": "q24.12", "start": 111700001, "end": 112300000, "type": "gpos25"  },
+      { "id": "q24.13", "start": 112300001, "end": 114300000, "type": "gneg"    },
+      { "id": "q24.21", "start": 114300001, "end": 116800000, "type": "gpos50"  },
+      { "id": "q24.22", "start": 116800001, "end": 118100000, "type": "gneg"    },
+      { "id": "q24.23", "start": 118100001, "end": 120700000, "type": "gpos50"  },
+      { "id": "q24.31", "start": 120700001, "end": 125900000, "type": "gneg"    },
+      { "id": "q24.32", "start": 125900001, "end": 129300000, "type": "gpos50"  },
+      { "id": "q24.33", "start": 129300001, "end": 133851895, "type": "gneg"    }
+    ]
+  },
+  "13": {
+    "size"  : 115169878,
+    "bands" : [
+      { "id": "p11.1",  "start": 16300001,  "end": 17900000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 10000001,  "end": 16300000,  "type": "gvar"    },
+      { "id": "p12",    "start": 4500001,   "end": 10000000,  "type": "stalk"   },
+      { "id": "p13",    "start": 1,         "end": 4500000,   "type": "gvar"    },
+      { "id": "q11",    "start": 17900001,  "end": 19500000,  "type": "acen"    },
+      { "id": "q12.11", "start": 19500001,  "end": 23300000,  "type": "gneg"    },
+      { "id": "q12.12", "start": 23300001,  "end": 25500000,  "type": "gpos25"  },
+      { "id": "q12.13", "start": 25500001,  "end": 27800000,  "type": "gneg"    },
+      { "id": "q12.2",  "start": 27800001,  "end": 28900000,  "type": "gpos25"  },
+      { "id": "q12.3",  "start": 28900001,  "end": 32200000,  "type": "gneg"    },
+      { "id": "q13.1",  "start": 32200001,  "end": 34000000,  "type": "gpos50"  },
+      { "id": "q13.2",  "start": 34000001,  "end": 35500000,  "type": "gneg"    },
+      { "id": "q13.3",  "start": 35500001,  "end": 40100000,  "type": "gpos75"  },
+      { "id": "q14.11", "start": 40100001,  "end": 45200000,  "type": "gneg"    },
+      { "id": "q14.12", "start": 45200001,  "end": 45800000,  "type": "gpos25"  },
+      { "id": "q14.13", "start": 45800001,  "end": 47300000,  "type": "gneg"    },
+      { "id": "q14.2",  "start": 47300001,  "end": 50900000,  "type": "gpos50"  },
+      { "id": "q14.3",  "start": 50900001,  "end": 55300000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 55300001,  "end": 59600000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 59600001,  "end": 62300000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 62300001,  "end": 65700000,  "type": "gpos75"  },
+      { "id": "q21.32", "start": 65700001,  "end": 68600000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 68600001,  "end": 73300000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 73300001,  "end": 75400000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 75400001,  "end": 77200000,  "type": "gpos50"  },
+      { "id": "q22.3",  "start": 77200001,  "end": 79000000,  "type": "gneg"    },
+      { "id": "q31.1",  "start": 79000001,  "end": 87700000,  "type": "gpos100" },
+      { "id": "q31.2",  "start": 87700001,  "end": 90000000,  "type": "gneg"    },
+      { "id": "q31.3",  "start": 90000001,  "end": 95000000,  "type": "gpos100" },
+      { "id": "q32.1",  "start": 95000001,  "end": 98200000,  "type": "gneg"    },
+      { "id": "q32.2",  "start": 98200001,  "end": 99300000,  "type": "gpos25"  },
+      { "id": "q32.3",  "start": 99300001,  "end": 101700000, "type": "gneg"    },
+      { "id": "q33.1",  "start": 101700001, "end": 104800000, "type": "gpos100" },
+      { "id": "q33.2",  "start": 104800001, "end": 107000000, "type": "gneg"    },
+      { "id": "q33.3",  "start": 107000001, "end": 110300000, "type": "gpos100" },
+      { "id": "q34",    "start": 110300001, "end": 115169878, "type": "gneg"    }
+    ]
+  },
+  "14": {
+    "size"  : 107349540,
+    "bands" : [
+      { "id": "p11.1",  "start": 16100001,  "end": 17600000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 8100001,   "end": 16100000,  "type": "gvar"    },
+      { "id": "p12",    "start": 3700001,   "end": 8100000,   "type": "stalk"   },
+      { "id": "p13",    "start": 1,         "end": 3700000,   "type": "gvar"    },
+      { "id": "q11.1",  "start": 17600001,  "end": 19100000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 19100001,  "end": 24600000,  "type": "gneg"    },
+      { "id": "q12",    "start": 24600001,  "end": 33300000,  "type": "gpos100" },
+      { "id": "q13.1",  "start": 33300001,  "end": 35300000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 35300001,  "end": 36600000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 36600001,  "end": 37800000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 37800001,  "end": 43500000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 43500001,  "end": 47200000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 47200001,  "end": 50900000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 50900001,  "end": 54100000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 54100001,  "end": 55500000,  "type": "gpos25"  },
+      { "id": "q22.3",  "start": 55500001,  "end": 58100000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 58100001,  "end": 62100000,  "type": "gpos75"  },
+      { "id": "q23.2",  "start": 62100001,  "end": 64800000,  "type": "gneg"    },
+      { "id": "q23.3",  "start": 64800001,  "end": 67900000,  "type": "gpos50"  },
+      { "id": "q24.1",  "start": 67900001,  "end": 70200000,  "type": "gneg"    },
+      { "id": "q24.2",  "start": 70200001,  "end": 73800000,  "type": "gpos50"  },
+      { "id": "q24.3",  "start": 73800001,  "end": 79300000,  "type": "gneg"    },
+      { "id": "q31.1",  "start": 79300001,  "end": 83600000,  "type": "gpos100" },
+      { "id": "q31.2",  "start": 83600001,  "end": 84900000,  "type": "gneg"    },
+      { "id": "q31.3",  "start": 84900001,  "end": 89800000,  "type": "gpos100" },
+      { "id": "q32.11", "start": 89800001,  "end": 91900000,  "type": "gneg"    },
+      { "id": "q32.12", "start": 91900001,  "end": 94700000,  "type": "gpos25"  },
+      { "id": "q32.13", "start": 94700001,  "end": 96300000,  "type": "gneg"    },
+      { "id": "q32.2",  "start": 96300001,  "end": 101400000, "type": "gpos50"  },
+      { "id": "q32.31", "start": 101400001, "end": 103200000, "type": "gneg"    },
+      { "id": "q32.32", "start": 103200001, "end": 104000000, "type": "gpos50"  },
+      { "id": "q32.33", "start": 104000001, "end": 107349540, "type": "gneg"    }
+    ]
+  },
+  "15": {
+    "size"  : 102531392,
+    "bands" : [
+      { "id": "p11.1",  "start": 15800001, "end": 19000000,  "type": "acen"   },
+      { "id": "p11.2",  "start": 8700001,  "end": 15800000,  "type": "gvar"   },
+      { "id": "p12",    "start": 3900001,  "end": 8700000,   "type": "stalk"  },
+      { "id": "p13",    "start": 1,        "end": 3900000,   "type": "gvar"   },
+      { "id": "q11.1",  "start": 19000001, "end": 20700000,  "type": "acen"   },
+      { "id": "q11.2",  "start": 20700001, "end": 25700000,  "type": "gneg"   },
+      { "id": "q12",    "start": 25700001, "end": 28100000,  "type": "gpos50" },
+      { "id": "q13.1",  "start": 28100001, "end": 30300000,  "type": "gneg"   },
+      { "id": "q13.2",  "start": 30300001, "end": 31200000,  "type": "gpos50" },
+      { "id": "q13.3",  "start": 31200001, "end": 33600000,  "type": "gneg"   },
+      { "id": "q14",    "start": 33600001, "end": 40100000,  "type": "gpos75" },
+      { "id": "q15.1",  "start": 40100001, "end": 42800000,  "type": "gneg"   },
+      { "id": "q15.2",  "start": 42800001, "end": 43600000,  "type": "gpos25" },
+      { "id": "q15.3",  "start": 43600001, "end": 44800000,  "type": "gneg"   },
+      { "id": "q21.1",  "start": 44800001, "end": 49500000,  "type": "gpos75" },
+      { "id": "q21.2",  "start": 49500001, "end": 52900000,  "type": "gneg"   },
+      { "id": "q21.3",  "start": 52900001, "end": 59100000,  "type": "gpos75" },
+      { "id": "q22.1",  "start": 59100001, "end": 59300000,  "type": "gneg"   },
+      { "id": "q22.2",  "start": 59300001, "end": 63700000,  "type": "gpos25" },
+      { "id": "q22.31", "start": 63700001, "end": 67200000,  "type": "gneg"   },
+      { "id": "q22.32", "start": 67200001, "end": 67300000,  "type": "gpos25" },
+      { "id": "q22.33", "start": 67300001, "end": 67500000,  "type": "gneg"   },
+      { "id": "q23",    "start": 67500001, "end": 72700000,  "type": "gpos25" },
+      { "id": "q24.1",  "start": 72700001, "end": 75200000,  "type": "gneg"   },
+      { "id": "q24.2",  "start": 75200001, "end": 76600000,  "type": "gpos25" },
+      { "id": "q24.3",  "start": 76600001, "end": 78300000,  "type": "gneg"   },
+      { "id": "q25.1",  "start": 78300001, "end": 81700000,  "type": "gpos50" },
+      { "id": "q25.2",  "start": 81700001, "end": 85200000,  "type": "gneg"   },
+      { "id": "q25.3",  "start": 85200001, "end": 89100000,  "type": "gpos50" },
+      { "id": "q26.1",  "start": 89100001, "end": 94300000,  "type": "gneg"   },
+      { "id": "q26.2",  "start": 94300001, "end": 98500000,  "type": "gpos50" },
+      { "id": "q26.3",  "start": 98500001, "end": 102531392, "type": "gneg"   }
+    ]
+  },
+  "16": {
+    "size"  : 90354753,
+    "bands" : [
+      { "id": "p11.1",  "start": 34600001, "end": 36600000, "type": "acen"    },
+      { "id": "p11.2",  "start": 28100001, "end": 34600000, "type": "gneg"    },
+      { "id": "p12.1",  "start": 24200001, "end": 28100000, "type": "gpos50"  },
+      { "id": "p12.2",  "start": 21200001, "end": 24200000, "type": "gneg"    },
+      { "id": "p12.3",  "start": 16800001, "end": 21200000, "type": "gpos50"  },
+      { "id": "p13.11", "start": 14800001, "end": 16800000, "type": "gneg"    },
+      { "id": "p13.12", "start": 12600001, "end": 14800000, "type": "gpos50"  },
+      { "id": "p13.13", "start": 10500001, "end": 12600000, "type": "gneg"    },
+      { "id": "p13.2",  "start": 7900001,  "end": 10500000, "type": "gpos50"  },
+      { "id": "p13.3",  "start": 1,        "end": 7900000,  "type": "gneg"    },
+      { "id": "q11.1",  "start": 36600001, "end": 38600000, "type": "acen"    },
+      { "id": "q11.2",  "start": 38600001, "end": 47000000, "type": "gvar"    },
+      { "id": "q12.1",  "start": 47000001, "end": 52600000, "type": "gneg"    },
+      { "id": "q12.2",  "start": 52600001, "end": 56700000, "type": "gpos50"  },
+      { "id": "q13",    "start": 56700001, "end": 57400000, "type": "gneg"    },
+      { "id": "q21",    "start": 57400001, "end": 66700000, "type": "gpos100" },
+      { "id": "q22.1",  "start": 66700001, "end": 70800000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 70800001, "end": 72900000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 72900001, "end": 74100000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 74100001, "end": 79200000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 79200001, "end": 81700000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 81700001, "end": 84200000, "type": "gpos50"  },
+      { "id": "q24.1",  "start": 84200001, "end": 87100000, "type": "gneg"    },
+      { "id": "q24.2",  "start": 87100001, "end": 88700000, "type": "gpos25"  },
+      { "id": "q24.3",  "start": 88700001, "end": 90354753, "type": "gneg"    }
+    ]
+  },
+  "17": {
+    "size"  : 81195210,
+    "bands" : [
+      { "id": "p11.1",  "start": 22200001, "end": 24000000, "type": "acen"   },
+      { "id": "p11.2",  "start": 16000001, "end": 22200000, "type": "gneg"   },
+      { "id": "p12",    "start": 10700001, "end": 16000000, "type": "gpos75" },
+      { "id": "p13.1",  "start": 6500001,  "end": 10700000, "type": "gneg"   },
+      { "id": "p13.2",  "start": 3300001,  "end": 6500000,  "type": "gpos50" },
+      { "id": "p13.3",  "start": 1,        "end": 3300000,  "type": "gneg"   },
+      { "id": "q11.1",  "start": 24000001, "end": 25800000, "type": "acen"   },
+      { "id": "q11.2",  "start": 25800001, "end": 31800000, "type": "gneg"   },
+      { "id": "q12",    "start": 31800001, "end": 38100000, "type": "gpos50" },
+      { "id": "q21.1",  "start": 38100001, "end": 38400000, "type": "gneg"   },
+      { "id": "q21.2",  "start": 38400001, "end": 40900000, "type": "gpos25" },
+      { "id": "q21.31", "start": 40900001, "end": 44900000, "type": "gneg"   },
+      { "id": "q21.32", "start": 44900001, "end": 47400000, "type": "gpos25" },
+      { "id": "q21.33", "start": 47400001, "end": 50200000, "type": "gneg"   },
+      { "id": "q22",    "start": 50200001, "end": 57600000, "type": "gpos75" },
+      { "id": "q23.1",  "start": 57600001, "end": 58300000, "type": "gneg"   },
+      { "id": "q23.2",  "start": 58300001, "end": 61100000, "type": "gpos75" },
+      { "id": "q23.3",  "start": 61100001, "end": 62600000, "type": "gneg"   },
+      { "id": "q24.1",  "start": 62600001, "end": 64200000, "type": "gpos50" },
+      { "id": "q24.2",  "start": 64200001, "end": 67100000, "type": "gneg"   },
+      { "id": "q24.3",  "start": 67100001, "end": 70900000, "type": "gpos75" },
+      { "id": "q25.1",  "start": 70900001, "end": 74800000, "type": "gneg"   },
+      { "id": "q25.2",  "start": 74800001, "end": 75300000, "type": "gpos25" },
+      { "id": "q25.3",  "start": 75300001, "end": 81195210, "type": "gneg"   }
+    ]
+  },
+  "18": {
+    "size"  : 78077248,
+    "bands" : [
+      { "id": "p11.1",  "start": 15400001, "end": 17200000, "type": "acen"    },
+      { "id": "p11.21", "start": 10900001, "end": 15400000, "type": "gneg"    },
+      { "id": "p11.22", "start": 8500001,  "end": 10900000, "type": "gpos25"  },
+      { "id": "p11.23", "start": 7100001,  "end": 8500000,  "type": "gneg"    },
+      { "id": "p11.31", "start": 2900001,  "end": 7100000,  "type": "gpos50"  },
+      { "id": "p11.32", "start": 1,        "end": 2900000,  "type": "gneg"    },
+      { "id": "q11.1",  "start": 17200001, "end": 19000000, "type": "acen"    },
+      { "id": "q11.2",  "start": 19000001, "end": 25000000, "type": "gneg"    },
+      { "id": "q12.1",  "start": 25000001, "end": 32700000, "type": "gpos100" },
+      { "id": "q12.2",  "start": 32700001, "end": 37200000, "type": "gneg"    },
+      { "id": "q12.3",  "start": 37200001, "end": 43500000, "type": "gpos75"  },
+      { "id": "q21.1",  "start": 43500001, "end": 48200000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 48200001, "end": 53800000, "type": "gpos75"  },
+      { "id": "q21.31", "start": 53800001, "end": 56200000, "type": "gneg"    },
+      { "id": "q21.32", "start": 56200001, "end": 59000000, "type": "gpos50"  },
+      { "id": "q21.33", "start": 59000001, "end": 61600000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 61600001, "end": 66800000, "type": "gpos100" },
+      { "id": "q22.2",  "start": 66800001, "end": 68700000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 68700001, "end": 73100000, "type": "gpos25"  },
+      { "id": "q23",    "start": 73100001, "end": 78077248, "type": "gneg"    }
+    ]
+  },
+  "19": {
+    "size"  : 59128983,
+    "bands" : [
+      { "id": "p11",    "start": 24400001, "end": 26500000, "type": "acen"   },
+      { "id": "p12",    "start": 20000001, "end": 24400000, "type": "gvar"   },
+      { "id": "p13.11", "start": 16300001, "end": 20000000, "type": "gneg"   },
+      { "id": "p13.12", "start": 14000001, "end": 16300000, "type": "gpos25" },
+      { "id": "p13.13", "start": 13900001, "end": 14000000, "type": "gneg"   },
+      { "id": "p13.2",  "start": 6900001,  "end": 13900000, "type": "gpos25" },
+      { "id": "p13.3",  "start": 1,        "end": 6900000,  "type": "gneg"   },
+      { "id": "q11",    "start": 26500001, "end": 28600000, "type": "acen"   },
+      { "id": "q12",    "start": 28600001, "end": 32400000, "type": "gvar"   },
+      { "id": "q13.11", "start": 32400001, "end": 35500000, "type": "gneg"   },
+      { "id": "q13.12", "start": 35500001, "end": 38300000, "type": "gpos25" },
+      { "id": "q13.13", "start": 38300001, "end": 38700000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 38700001, "end": 43400000, "type": "gpos25" },
+      { "id": "q13.31", "start": 43400001, "end": 45200000, "type": "gneg"   },
+      { "id": "q13.32", "start": 45200001, "end": 48000000, "type": "gpos25" },
+      { "id": "q13.33", "start": 48000001, "end": 51400000, "type": "gneg"   },
+      { "id": "q13.41", "start": 51400001, "end": 53600000, "type": "gpos25" },
+      { "id": "q13.42", "start": 53600001, "end": 56300000, "type": "gneg"   },
+      { "id": "q13.43", "start": 56300001, "end": 59128983, "type": "gpos25" }
+    ]
+  },
+  "20": {
+    "size"  : 63025520,
+    "bands" : [
+      { "id": "p11.1",  "start": 25600001, "end": 27500000, "type": "acen"   },
+      { "id": "p11.21", "start": 22300001, "end": 25600000, "type": "gneg"   },
+      { "id": "p11.22", "start": 21300001, "end": 22300000, "type": "gpos25" },
+      { "id": "p11.23", "start": 17900001, "end": 21300000, "type": "gneg"   },
+      { "id": "p12.1",  "start": 12100001, "end": 17900000, "type": "gpos75" },
+      { "id": "p12.2",  "start": 9200001,  "end": 12100000, "type": "gneg"   },
+      { "id": "p12.3",  "start": 5100001,  "end": 9200000,  "type": "gpos75" },
+      { "id": "p13",    "start": 1,        "end": 5100000,  "type": "gneg"   },
+      { "id": "q11.1",  "start": 27500001, "end": 29400000, "type": "acen"   },
+      { "id": "q11.21", "start": 29400001, "end": 32100000, "type": "gneg"   },
+      { "id": "q11.22", "start": 32100001, "end": 34400000, "type": "gpos25" },
+      { "id": "q11.23", "start": 34400001, "end": 37600000, "type": "gneg"   },
+      { "id": "q12",    "start": 37600001, "end": 41700000, "type": "gpos75" },
+      { "id": "q13.11", "start": 41700001, "end": 42100000, "type": "gneg"   },
+      { "id": "q13.12", "start": 42100001, "end": 46400000, "type": "gpos25" },
+      { "id": "q13.13", "start": 46400001, "end": 49800000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 49800001, "end": 55000000, "type": "gpos75" },
+      { "id": "q13.31", "start": 55000001, "end": 56500000, "type": "gneg"   },
+      { "id": "q13.32", "start": 56500001, "end": 58400000, "type": "gpos50" },
+      { "id": "q13.33", "start": 58400001, "end": 63025520, "type": "gneg"   }
+    ]
+  },
+  "21": {
+    "size"  : 48129895,
+    "bands" : [
+      { "id": "p11.1",  "start": 10900001, "end": 13200000, "type": "acen"    },
+      { "id": "p11.2",  "start": 6800001,  "end": 10900000, "type": "gvar"    },
+      { "id": "p12",    "start": 2800001,  "end": 6800000,  "type": "stalk"   },
+      { "id": "p13",    "start": 1,        "end": 2800000,  "type": "gvar"    },
+      { "id": "q11.1",  "start": 13200001, "end": 14300000, "type": "acen"    },
+      { "id": "q11.2",  "start": 14300001, "end": 16400000, "type": "gneg"    },
+      { "id": "q21.1",  "start": 16400001, "end": 24000000, "type": "gpos100" },
+      { "id": "q21.2",  "start": 24000001, "end": 26800000, "type": "gneg"    },
+      { "id": "q21.3",  "start": 26800001, "end": 31500000, "type": "gpos75"  },
+      { "id": "q22.11", "start": 31500001, "end": 35800000, "type": "gneg"    },
+      { "id": "q22.12", "start": 35800001, "end": 37800000, "type": "gpos50"  },
+      { "id": "q22.13", "start": 37800001, "end": 39700000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 39700001, "end": 42600000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 42600001, "end": 48129895, "type": "gneg"    }
+    ]
+  },
+  "22": {
+    "size"  : 51304566,
+    "bands" : [
+      { "id": "p11.1",  "start": 12200001, "end": 14700000, "type": "acen"   },
+      { "id": "p11.2",  "start": 8300001,  "end": 12200000, "type": "gvar"   },
+      { "id": "p12",    "start": 3800001,  "end": 8300000,  "type": "stalk"  },
+      { "id": "p13",    "start": 1,        "end": 3800000,  "type": "gvar"   },
+      { "id": "q11.1",  "start": 14700001, "end": 17900000, "type": "acen"   },
+      { "id": "q11.21", "start": 17900001, "end": 22200000, "type": "gneg"   },
+      { "id": "q11.22", "start": 22200001, "end": 23500000, "type": "gpos25" },
+      { "id": "q11.23", "start": 23500001, "end": 25900000, "type": "gneg"   },
+      { "id": "q12.1",  "start": 25900001, "end": 29600000, "type": "gpos50" },
+      { "id": "q12.2",  "start": 29600001, "end": 32200000, "type": "gneg"   },
+      { "id": "q12.3",  "start": 32200001, "end": 37600000, "type": "gpos50" },
+      { "id": "q13.1",  "start": 37600001, "end": 41000000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 41000001, "end": 44200000, "type": "gpos50" },
+      { "id": "q13.31", "start": 44200001, "end": 48400000, "type": "gneg"   },
+      { "id": "q13.32", "start": 48400001, "end": 49400000, "type": "gpos50" },
+      { "id": "q13.33", "start": 49400001, "end": 51304566, "type": "gneg"   }
+    ]
+  },
+  "X": {
+    "size"  : 155270560,
+    "bands" : [
+      { "id": "p11.1",  "start": 58100001,  "end": 60600000,  "type": "acen"    },
+      { "id": "p11.21", "start": 54800001,  "end": 58100000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 49800001,  "end": 54800000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 46400001,  "end": 49800000,  "type": "gneg"    },
+      { "id": "p11.3",  "start": 42400001,  "end": 46400000,  "type": "gpos75"  },
+      { "id": "p11.4",  "start": 37600001,  "end": 42400000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 31500001,  "end": 37600000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 29300001,  "end": 31500000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 24900001,  "end": 29300000,  "type": "gpos100" },
+      { "id": "p22.11", "start": 21900001,  "end": 24900000,  "type": "gneg"    },
+      { "id": "p22.12", "start": 19300001,  "end": 21900000,  "type": "gpos50"  },
+      { "id": "p22.13", "start": 17100001,  "end": 19300000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 9500001,   "end": 17100000,  "type": "gpos50"  },
+      { "id": "p22.31", "start": 6000001,   "end": 9500000,   "type": "gneg"    },
+      { "id": "p22.32", "start": 4300001,   "end": 6000000,   "type": "gpos50"  },
+      { "id": "p22.33", "start": 1,         "end": 4300000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 60600001,  "end": 63000000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 63000001,  "end": 64600000,  "type": "gneg"    },
+      { "id": "q12",    "start": 64600001,  "end": 67800000,  "type": "gpos50"  },
+      { "id": "q13.1",  "start": 67800001,  "end": 71800000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 71800001,  "end": 73900000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 73900001,  "end": 76000000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 76000001,  "end": 84600000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 84600001,  "end": 86200000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 86200001,  "end": 91800000,  "type": "gpos100" },
+      { "id": "q21.32", "start": 91800001,  "end": 93500000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 93500001,  "end": 98300000,  "type": "gpos75"  },
+      { "id": "q22.1",  "start": 98300001,  "end": 102600000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 102600001, "end": 103700000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 103700001, "end": 108700000, "type": "gneg"    },
+      { "id": "q23",    "start": 108700001, "end": 116500000, "type": "gpos75"  },
+      { "id": "q24",    "start": 116500001, "end": 120900000, "type": "gneg"    },
+      { "id": "q25",    "start": 120900001, "end": 128700000, "type": "gpos100" },
+      { "id": "q26.1",  "start": 128700001, "end": 130400000, "type": "gneg"    },
+      { "id": "q26.2",  "start": 130400001, "end": 133600000, "type": "gpos25"  },
+      { "id": "q26.3",  "start": 133600001, "end": 138000000, "type": "gneg"    },
+      { "id": "q27.1",  "start": 138000001, "end": 140300000, "type": "gpos75"  },
+      { "id": "q27.2",  "start": 140300001, "end": 142100000, "type": "gneg"    },
+      { "id": "q27.3",  "start": 142100001, "end": 147100000, "type": "gpos100" },
+      { "id": "q28",    "start": 147100001, "end": 155270560, "type": "gneg"    }
+    ]
+  },
+  "Y": {
+    "size"  : 59373566,
+    "bands" : [
+      { "id": "p11.1",   "start": 11600001, "end": 12500000, "type": "acen"   },
+      { "id": "p11.2",   "start": 3000001,  "end": 11600000, "type": "gneg"   },
+      { "id": "p11.31",  "start": 2500001,  "end": 3000000,  "type": "gpos50" },
+      { "id": "p11.32",  "start": 1,        "end": 2500000,  "type": "gneg"   },
+      { "id": "q11.1",   "start": 12500001, "end": 13400000, "type": "acen"   },
+      { "id": "q11.21",  "start": 13400001, "end": 15100000, "type": "gneg"   },
+      { "id": "q11.221", "start": 15100001, "end": 19800000, "type": "gpos50" },
+      { "id": "q11.222", "start": 19800001, "end": 22100000, "type": "gneg"   },
+      { "id": "q11.223", "start": 22100001, "end": 26200000, "type": "gpos50" },
+      { "id": "q11.23",  "start": 26200001, "end": 28800000, "type": "gneg"   },
+      { "id": "q12",     "start": 28800001, "end": 59373566, "type": "gvar"   }
+    ]
+  },
+  "MT": {
+    "size"  : 16569,
+    "bands" : [
+      { "start": 1, "end": 16569 }
+    ]
+  }
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+Genoverse.Genomes.grch38 = {
+  "1": {
+    "size"  : 248956422,
+    "bands" : [
+      { "id": "p11.1",  "start": 121700001, "end": 123400000, "type": "acen"    },
+      { "id": "p11.2",  "start": 120400001, "end": 121700000, "type": "gneg"    },
+      { "id": "p12",    "start": 117200001, "end": 120400000, "type": "gpos50"  },
+      { "id": "p13.1",  "start": 115500001, "end": 117200000, "type": "gneg"    },
+      { "id": "p13.2",  "start": 111200001, "end": 115500000, "type": "gpos50"  },
+      { "id": "p13.3",  "start": 106700001, "end": 111200000, "type": "gneg"    },
+      { "id": "p21.1",  "start": 101800001, "end": 106700000, "type": "gpos100" },
+      { "id": "p21.2",  "start": 99300001,  "end": 101800000, "type": "gneg"    },
+      { "id": "p21.3",  "start": 94300001,  "end": 99300000,  "type": "gpos75"  },
+      { "id": "p22.1",  "start": 91500001,  "end": 94300000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 87900001,  "end": 91500000,  "type": "gpos75"  },
+      { "id": "p22.3",  "start": 84400001,  "end": 87900000,  "type": "gneg"    },
+      { "id": "p31.1",  "start": 69300001,  "end": 84400000,  "type": "gpos100" },
+      { "id": "p31.2",  "start": 68500001,  "end": 69300000,  "type": "gneg"    },
+      { "id": "p31.3",  "start": 60800001,  "end": 68500000,  "type": "gpos50"  },
+      { "id": "p32.1",  "start": 58500001,  "end": 60800000,  "type": "gneg"    },
+      { "id": "p32.2",  "start": 55600001,  "end": 58500000,  "type": "gpos50"  },
+      { "id": "p32.3",  "start": 50200001,  "end": 55600000,  "type": "gneg"    },
+      { "id": "p33",    "start": 46300001,  "end": 50200000,  "type": "gpos75"  },
+      { "id": "p34.1",  "start": 43700001,  "end": 46300000,  "type": "gneg"    },
+      { "id": "p34.2",  "start": 39600001,  "end": 43700000,  "type": "gpos25"  },
+      { "id": "p34.3",  "start": 34300001,  "end": 39600000,  "type": "gneg"    },
+      { "id": "p35.1",  "start": 32300001,  "end": 34300000,  "type": "gpos25"  },
+      { "id": "p35.2",  "start": 29900001,  "end": 32300000,  "type": "gneg"    },
+      { "id": "p35.3",  "start": 27600001,  "end": 29900000,  "type": "gpos25"  },
+      { "id": "p36.11", "start": 23600001,  "end": 27600000,  "type": "gneg"    },
+      { "id": "p36.12", "start": 20100001,  "end": 23600000,  "type": "gpos25"  },
+      { "id": "p36.13", "start": 15900001,  "end": 20100000,  "type": "gneg"    },
+      { "id": "p36.21", "start": 12500001,  "end": 15900000,  "type": "gpos50"  },
+      { "id": "p36.22", "start": 9100001,   "end": 12500000,  "type": "gneg"    },
+      { "id": "p36.23", "start": 7100001,   "end": 9100000,   "type": "gpos25"  },
+      { "id": "p36.31", "start": 5300001,   "end": 7100000,   "type": "gneg"    },
+      { "id": "p36.32", "start": 2300001,   "end": 5300000,   "type": "gpos25"  },
+      { "id": "p36.33", "start": 1,         "end": 2300000,   "type": "gneg"    },
+      { "id": "q11",    "start": 123400001, "end": 125100000, "type": "acen"    },
+      { "id": "q12",    "start": 125100001, "end": 143200000, "type": "gvar"    },
+      { "id": "q21.1",  "start": 143200001, "end": 147500000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 147500001, "end": 150600000, "type": "gpos50"  },
+      { "id": "q21.3",  "start": 150600001, "end": 155100000, "type": "gneg"    },
+      { "id": "q22",    "start": 155100001, "end": 156600000, "type": "gpos50"  },
+      { "id": "q23.1",  "start": 156600001, "end": 159100000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 159100001, "end": 160500000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 160500001, "end": 165500000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 165500001, "end": 167200000, "type": "gpos50"  },
+      { "id": "q24.2",  "start": 167200001, "end": 170900000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 170900001, "end": 173000000, "type": "gpos75"  },
+      { "id": "q25.1",  "start": 173000001, "end": 176100000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 176100001, "end": 180300000, "type": "gpos50"  },
+      { "id": "q25.3",  "start": 180300001, "end": 185800000, "type": "gneg"    },
+      { "id": "q31.1",  "start": 185800001, "end": 190800000, "type": "gpos100" },
+      { "id": "q31.2",  "start": 190800001, "end": 193800000, "type": "gneg"    },
+      { "id": "q31.3",  "start": 193800001, "end": 198700000, "type": "gpos100" },
+      { "id": "q32.1",  "start": 198700001, "end": 207100000, "type": "gneg"    },
+      { "id": "q32.2",  "start": 207100001, "end": 211300000, "type": "gpos25"  },
+      { "id": "q32.3",  "start": 211300001, "end": 214400000, "type": "gneg"    },
+      { "id": "q41",    "start": 214400001, "end": 223900000, "type": "gpos100" },
+      { "id": "q42.11", "start": 223900001, "end": 224400000, "type": "gneg"    },
+      { "id": "q42.12", "start": 224400001, "end": 226800000, "type": "gpos25"  },
+      { "id": "q42.13", "start": 226800001, "end": 230500000, "type": "gneg"    },
+      { "id": "q42.2",  "start": 230500001, "end": 234600000, "type": "gpos50"  },
+      { "id": "q42.3",  "start": 234600001, "end": 236400000, "type": "gneg"    },
+      { "id": "q43",    "start": 236400001, "end": 243500000, "type": "gpos75"  },
+      { "id": "q44",    "start": 243500001, "end": 248956422, "type": "gneg"    }
+    ]
+  },
+  "2": {
+    "size"  : 242193529,
+    "bands" : [
+      { "id": "p11.1", "start": 91800001,  "end": 93900000,  "type": "acen"    },
+      { "id": "p11.2", "start": 83100001,  "end": 91800000,  "type": "gneg"    },
+      { "id": "p12",   "start": 74800001,  "end": 83100000,  "type": "gpos100" },
+      { "id": "p13.1", "start": 73300001,  "end": 74800000,  "type": "gneg"    },
+      { "id": "p13.2", "start": 71300001,  "end": 73300000,  "type": "gpos50"  },
+      { "id": "p13.3", "start": 68400001,  "end": 71300000,  "type": "gneg"    },
+      { "id": "p14",   "start": 63900001,  "end": 68400000,  "type": "gpos50"  },
+      { "id": "p15",   "start": 61000001,  "end": 63900000,  "type": "gneg"    },
+      { "id": "p16.1", "start": 54700001,  "end": 61000000,  "type": "gpos100" },
+      { "id": "p16.2", "start": 52600001,  "end": 54700000,  "type": "gneg"    },
+      { "id": "p16.3", "start": 47500001,  "end": 52600000,  "type": "gpos100" },
+      { "id": "p21",   "start": 41500001,  "end": 47500000,  "type": "gneg"    },
+      { "id": "p22.1", "start": 38300001,  "end": 41500000,  "type": "gpos50"  },
+      { "id": "p22.2", "start": 36300001,  "end": 38300000,  "type": "gneg"    },
+      { "id": "p22.3", "start": 31800001,  "end": 36300000,  "type": "gpos75"  },
+      { "id": "p23.1", "start": 29800001,  "end": 31800000,  "type": "gneg"    },
+      { "id": "p23.2", "start": 27700001,  "end": 29800000,  "type": "gpos25"  },
+      { "id": "p23.3", "start": 23800001,  "end": 27700000,  "type": "gneg"    },
+      { "id": "p24.1", "start": 19000001,  "end": 23800000,  "type": "gpos75"  },
+      { "id": "p24.2", "start": 16500001,  "end": 19000000,  "type": "gneg"    },
+      { "id": "p24.3", "start": 12000001,  "end": 16500000,  "type": "gpos75"  },
+      { "id": "p25.1", "start": 6900001,   "end": 12000000,  "type": "gneg"    },
+      { "id": "p25.2", "start": 4400001,   "end": 6900000,   "type": "gpos50"  },
+      { "id": "p25.3", "start": 1,         "end": 4400000,   "type": "gneg"    },
+      { "id": "q11.1", "start": 93900001,  "end": 96000000,  "type": "acen"    },
+      { "id": "q11.2", "start": 96000001,  "end": 102100000, "type": "gneg"    },
+      { "id": "q12.1", "start": 102100001, "end": 105300000, "type": "gpos50"  },
+      { "id": "q12.2", "start": 105300001, "end": 106700000, "type": "gneg"    },
+      { "id": "q12.3", "start": 106700001, "end": 108700000, "type": "gpos25"  },
+      { "id": "q13",   "start": 108700001, "end": 112200000, "type": "gneg"    },
+      { "id": "q14.1", "start": 112200001, "end": 118100000, "type": "gpos50"  },
+      { "id": "q14.2", "start": 118100001, "end": 121600000, "type": "gneg"    },
+      { "id": "q14.3", "start": 121600001, "end": 129100000, "type": "gpos50"  },
+      { "id": "q21.1", "start": 129100001, "end": 131700000, "type": "gneg"    },
+      { "id": "q21.2", "start": 131700001, "end": 134300000, "type": "gpos25"  },
+      { "id": "q21.3", "start": 134300001, "end": 136100000, "type": "gneg"    },
+      { "id": "q22.1", "start": 136100001, "end": 141500000, "type": "gpos100" },
+      { "id": "q22.2", "start": 141500001, "end": 143400000, "type": "gneg"    },
+      { "id": "q22.3", "start": 143400001, "end": 147900000, "type": "gpos100" },
+      { "id": "q23.1", "start": 147900001, "end": 149000000, "type": "gneg"    },
+      { "id": "q23.2", "start": 149000001, "end": 149600000, "type": "gpos25"  },
+      { "id": "q23.3", "start": 149600001, "end": 154000000, "type": "gneg"    },
+      { "id": "q24.1", "start": 154000001, "end": 158900000, "type": "gpos75"  },
+      { "id": "q24.2", "start": 158900001, "end": 162900000, "type": "gneg"    },
+      { "id": "q24.3", "start": 162900001, "end": 168900000, "type": "gpos75"  },
+      { "id": "q31.1", "start": 168900001, "end": 177100000, "type": "gneg"    },
+      { "id": "q31.2", "start": 177100001, "end": 179700000, "type": "gpos50"  },
+      { "id": "q31.3", "start": 179700001, "end": 182100000, "type": "gneg"    },
+      { "id": "q32.1", "start": 182100001, "end": 188500000, "type": "gpos75"  },
+      { "id": "q32.2", "start": 188500001, "end": 191100000, "type": "gneg"    },
+      { "id": "q32.3", "start": 191100001, "end": 196600000, "type": "gpos75"  },
+      { "id": "q33.1", "start": 196600001, "end": 202500000, "type": "gneg"    },
+      { "id": "q33.2", "start": 202500001, "end": 204100000, "type": "gpos50"  },
+      { "id": "q33.3", "start": 204100001, "end": 208200000, "type": "gneg"    },
+      { "id": "q34",   "start": 208200001, "end": 214500000, "type": "gpos100" },
+      { "id": "q35",   "start": 214500001, "end": 220700000, "type": "gneg"    },
+      { "id": "q36.1", "start": 220700001, "end": 224300000, "type": "gpos75"  },
+      { "id": "q36.2", "start": 224300001, "end": 225200000, "type": "gneg"    },
+      { "id": "q36.3", "start": 225200001, "end": 230100000, "type": "gpos100" },
+      { "id": "q37.1", "start": 230100001, "end": 234700000, "type": "gneg"    },
+      { "id": "q37.2", "start": 234700001, "end": 236400000, "type": "gpos50"  },
+      { "id": "q37.3", "start": 236400001, "end": 242193529, "type": "gneg"    }
+    ]
+  },
+  "3": {
+    "size"  : 198295559,
+    "bands" : [
+      { "id": "p11.1",  "start": 87800001,  "end": 90900000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 87100001,  "end": 87800000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 83500001,  "end": 87100000,  "type": "gpos75"  },
+      { "id": "p12.2",  "start": 79800001,  "end": 83500000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 74100001,  "end": 79800000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 69700001,  "end": 74100000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 63800001,  "end": 69700000,  "type": "gpos50"  },
+      { "id": "p14.2",  "start": 58600001,  "end": 63800000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 54400001,  "end": 58600000,  "type": "gpos50"  },
+      { "id": "p21.1",  "start": 52300001,  "end": 54400000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 50600001,  "end": 52300000,  "type": "gpos25"  },
+      { "id": "p21.31", "start": 44200001,  "end": 50600000,  "type": "gneg"    },
+      { "id": "p21.32", "start": 44100001,  "end": 44200000,  "type": "gpos50"  },
+      { "id": "p21.33", "start": 43600001,  "end": 44100000,  "type": "gneg"    },
+      { "id": "p22.1",  "start": 39300001,  "end": 43600000,  "type": "gpos75"  },
+      { "id": "p22.2",  "start": 36400001,  "end": 39300000,  "type": "gneg"    },
+      { "id": "p22.3",  "start": 32000001,  "end": 36400000,  "type": "gpos50"  },
+      { "id": "p23",    "start": 30800001,  "end": 32000000,  "type": "gneg"    },
+      { "id": "p24.1",  "start": 26300001,  "end": 30800000,  "type": "gpos75"  },
+      { "id": "p24.2",  "start": 23800001,  "end": 26300000,  "type": "gneg"    },
+      { "id": "p24.3",  "start": 16300001,  "end": 23800000,  "type": "gpos100" },
+      { "id": "p25.1",  "start": 13200001,  "end": 16300000,  "type": "gneg"    },
+      { "id": "p25.2",  "start": 11600001,  "end": 13200000,  "type": "gpos25"  },
+      { "id": "p25.3",  "start": 8100001,   "end": 11600000,  "type": "gneg"    },
+      { "id": "p26.1",  "start": 4000001,   "end": 8100000,   "type": "gpos50"  },
+      { "id": "p26.2",  "start": 2800001,   "end": 4000000,   "type": "gneg"    },
+      { "id": "p26.3",  "start": 1,         "end": 2800000,   "type": "gpos50"  },
+      { "id": "q11.1",  "start": 90900001,  "end": 94000000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 94000001,  "end": 98600000,  "type": "gvar"    },
+      { "id": "q12.1",  "start": 98600001,  "end": 100300000, "type": "gneg"    },
+      { "id": "q12.2",  "start": 100300001, "end": 101200000, "type": "gpos25"  },
+      { "id": "q12.3",  "start": 101200001, "end": 103100000, "type": "gneg"    },
+      { "id": "q13.11", "start": 103100001, "end": 106500000, "type": "gpos75"  },
+      { "id": "q13.12", "start": 106500001, "end": 108200000, "type": "gneg"    },
+      { "id": "q13.13", "start": 108200001, "end": 111600000, "type": "gpos50"  },
+      { "id": "q13.2",  "start": 111600001, "end": 113700000, "type": "gneg"    },
+      { "id": "q13.31", "start": 113700001, "end": 117600000, "type": "gpos75"  },
+      { "id": "q13.32", "start": 117600001, "end": 119300000, "type": "gneg"    },
+      { "id": "q13.33", "start": 119300001, "end": 122200000, "type": "gpos75"  },
+      { "id": "q21.1",  "start": 122200001, "end": 124100000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 124100001, "end": 126100000, "type": "gpos25"  },
+      { "id": "q21.3",  "start": 126100001, "end": 129500000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 129500001, "end": 134000000, "type": "gpos25"  },
+      { "id": "q22.2",  "start": 134000001, "end": 136000000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 136000001, "end": 139000000, "type": "gpos25"  },
+      { "id": "q23",    "start": 139000001, "end": 143100000, "type": "gneg"    },
+      { "id": "q24",    "start": 143100001, "end": 149200000, "type": "gpos100" },
+      { "id": "q25.1",  "start": 149200001, "end": 152300000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 152300001, "end": 155300000, "type": "gpos50"  },
+      { "id": "q25.31", "start": 155300001, "end": 157300000, "type": "gneg"    },
+      { "id": "q25.32", "start": 157300001, "end": 159300000, "type": "gpos50"  },
+      { "id": "q25.33", "start": 159300001, "end": 161000000, "type": "gneg"    },
+      { "id": "q26.1",  "start": 161000001, "end": 167900000, "type": "gpos100" },
+      { "id": "q26.2",  "start": 167900001, "end": 171200000, "type": "gneg"    },
+      { "id": "q26.31", "start": 171200001, "end": 176000000, "type": "gpos75"  },
+      { "id": "q26.32", "start": 176000001, "end": 179300000, "type": "gneg"    },
+      { "id": "q26.33", "start": 179300001, "end": 183000000, "type": "gpos75"  },
+      { "id": "q27.1",  "start": 183000001, "end": 184800000, "type": "gneg"    },
+      { "id": "q27.2",  "start": 184800001, "end": 186300000, "type": "gpos25"  },
+      { "id": "q27.3",  "start": 186300001, "end": 188200000, "type": "gneg"    },
+      { "id": "q28",    "start": 188200001, "end": 192600000, "type": "gpos75"  },
+      { "id": "q29",    "start": 192600001, "end": 198295559, "type": "gneg"    }
+    ]
+  },
+  "4": {
+    "size"  : 190214555,
+    "bands" : [
+      { "id": "p11",    "start": 48200001,  "end": 50000000,  "type": "acen"    },
+      { "id": "p12",    "start": 44600001,  "end": 48200000,  "type": "gneg"    },
+      { "id": "p13",    "start": 41200001,  "end": 44600000,  "type": "gpos50"  },
+      { "id": "p14",    "start": 35800001,  "end": 41200000,  "type": "gneg"    },
+      { "id": "p15.1",  "start": 27700001,  "end": 35800000,  "type": "gpos100" },
+      { "id": "p15.2",  "start": 21300001,  "end": 27700000,  "type": "gneg"    },
+      { "id": "p15.31", "start": 17700001,  "end": 21300000,  "type": "gpos75"  },
+      { "id": "p15.32", "start": 15000001,  "end": 17700000,  "type": "gneg"    },
+      { "id": "p15.33", "start": 11300001,  "end": 15000000,  "type": "gpos50"  },
+      { "id": "p16.1",  "start": 6000001,   "end": 11300000,  "type": "gneg"    },
+      { "id": "p16.2",  "start": 4500001,   "end": 6000000,   "type": "gpos25"  },
+      { "id": "p16.3",  "start": 1,         "end": 4500000,   "type": "gneg"    },
+      { "id": "q11",    "start": 50000001,  "end": 51800000,  "type": "acen"    },
+      { "id": "q12",    "start": 51800001,  "end": 58500000,  "type": "gneg"    },
+      { "id": "q13.1",  "start": 58500001,  "end": 65500000,  "type": "gpos100" },
+      { "id": "q13.2",  "start": 65500001,  "end": 69400000,  "type": "gneg"    },
+      { "id": "q13.3",  "start": 69400001,  "end": 75300000,  "type": "gpos75"  },
+      { "id": "q21.1",  "start": 75300001,  "end": 78000000,  "type": "gneg"    },
+      { "id": "q21.21", "start": 78000001,  "end": 81500000,  "type": "gpos50"  },
+      { "id": "q21.22", "start": 81500001,  "end": 83200000,  "type": "gneg"    },
+      { "id": "q21.23", "start": 83200001,  "end": 86000000,  "type": "gpos25"  },
+      { "id": "q21.3",  "start": 86000001,  "end": 87100000,  "type": "gneg"    },
+      { "id": "q22.1",  "start": 87100001,  "end": 92800000,  "type": "gpos75"  },
+      { "id": "q22.2",  "start": 92800001,  "end": 94200000,  "type": "gneg"    },
+      { "id": "q22.3",  "start": 94200001,  "end": 97900000,  "type": "gpos75"  },
+      { "id": "q23",    "start": 97900001,  "end": 100100000, "type": "gneg"    },
+      { "id": "q24",    "start": 100100001, "end": 106700000, "type": "gpos50"  },
+      { "id": "q25",    "start": 106700001, "end": 113200000, "type": "gneg"    },
+      { "id": "q26",    "start": 113200001, "end": 119900000, "type": "gpos75"  },
+      { "id": "q27",    "start": 119900001, "end": 122800000, "type": "gneg"    },
+      { "id": "q28.1",  "start": 122800001, "end": 127900000, "type": "gpos50"  },
+      { "id": "q28.2",  "start": 127900001, "end": 130100000, "type": "gneg"    },
+      { "id": "q28.3",  "start": 130100001, "end": 138500000, "type": "gpos100" },
+      { "id": "q31.1",  "start": 138500001, "end": 140600000, "type": "gneg"    },
+      { "id": "q31.21", "start": 140600001, "end": 145900000, "type": "gpos25"  },
+      { "id": "q31.22", "start": 145900001, "end": 147500000, "type": "gneg"    },
+      { "id": "q31.23", "start": 147500001, "end": 150200000, "type": "gpos25"  },
+      { "id": "q31.3",  "start": 150200001, "end": 154600000, "type": "gneg"    },
+      { "id": "q32.1",  "start": 154600001, "end": 160800000, "type": "gpos100" },
+      { "id": "q32.2",  "start": 160800001, "end": 163600000, "type": "gneg"    },
+      { "id": "q32.3",  "start": 163600001, "end": 169200000, "type": "gpos100" },
+      { "id": "q33",    "start": 169200001, "end": 171000000, "type": "gneg"    },
+      { "id": "q34.1",  "start": 171000001, "end": 175400000, "type": "gpos75"  },
+      { "id": "q34.2",  "start": 175400001, "end": 176600000, "type": "gneg"    },
+      { "id": "q34.3",  "start": 176600001, "end": 182300000, "type": "gpos100" },
+      { "id": "q35.1",  "start": 182300001, "end": 186200000, "type": "gneg"    },
+      { "id": "q35.2",  "start": 186200001, "end": 190214555, "type": "gpos25"  }
+    ]
+  },
+  "5": {
+    "size"  : 181538259,
+    "bands" : [
+      { "id": "p11",    "start": 46100001,  "end": 48800000,  "type": "acen"    },
+      { "id": "p12",    "start": 42500001,  "end": 46100000,  "type": "gpos50"  },
+      { "id": "p13.1",  "start": 38400001,  "end": 42500000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 33800001,  "end": 38400000,  "type": "gpos25"  },
+      { "id": "p13.3",  "start": 28900001,  "end": 33800000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 24600001,  "end": 28900000,  "type": "gpos100" },
+      { "id": "p14.2",  "start": 23300001,  "end": 24600000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 18400001,  "end": 23300000,  "type": "gpos100" },
+      { "id": "p15.1",  "start": 15000001,  "end": 18400000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 9900001,   "end": 15000000,  "type": "gpos50"  },
+      { "id": "p15.31", "start": 6300001,   "end": 9900000,   "type": "gneg"    },
+      { "id": "p15.32", "start": 4400001,   "end": 6300000,   "type": "gpos25"  },
+      { "id": "p15.33", "start": 1,         "end": 4400000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 48800001,  "end": 51400000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 51400001,  "end": 59600000,  "type": "gneg"    },
+      { "id": "q12.1",  "start": 59600001,  "end": 63600000,  "type": "gpos75"  },
+      { "id": "q12.2",  "start": 63600001,  "end": 63900000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 63900001,  "end": 67400000,  "type": "gpos75"  },
+      { "id": "q13.1",  "start": 67400001,  "end": 69100000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 69100001,  "end": 74000000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 74000001,  "end": 77600000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 77600001,  "end": 82100000,  "type": "gpos50"  },
+      { "id": "q14.2",  "start": 82100001,  "end": 83500000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 83500001,  "end": 93000000,  "type": "gpos100" },
+      { "id": "q15",    "start": 93000001,  "end": 98900000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 98900001,  "end": 103400000, "type": "gpos100" },
+      { "id": "q21.2",  "start": 103400001, "end": 105100000, "type": "gneg"    },
+      { "id": "q21.3",  "start": 105100001, "end": 110200000, "type": "gpos100" },
+      { "id": "q22.1",  "start": 110200001, "end": 112200000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 112200001, "end": 113800000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 113800001, "end": 115900000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 115900001, "end": 122100000, "type": "gpos100" },
+      { "id": "q23.2",  "start": 122100001, "end": 127900000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 127900001, "end": 131200000, "type": "gpos100" },
+      { "id": "q31.1",  "start": 131200001, "end": 136900000, "type": "gneg"    },
+      { "id": "q31.2",  "start": 136900001, "end": 140100000, "type": "gpos25"  },
+      { "id": "q31.3",  "start": 140100001, "end": 145100000, "type": "gneg"    },
+      { "id": "q32",    "start": 145100001, "end": 150400000, "type": "gpos75"  },
+      { "id": "q33.1",  "start": 150400001, "end": 153300000, "type": "gneg"    },
+      { "id": "q33.2",  "start": 153300001, "end": 156300000, "type": "gpos50"  },
+      { "id": "q33.3",  "start": 156300001, "end": 160500000, "type": "gneg"    },
+      { "id": "q34",    "start": 160500001, "end": 169000000, "type": "gpos100" },
+      { "id": "q35.1",  "start": 169000001, "end": 173300000, "type": "gneg"    },
+      { "id": "q35.2",  "start": 173300001, "end": 177100000, "type": "gpos25"  },
+      { "id": "q35.3",  "start": 177100001, "end": 181538259, "type": "gneg"    }
+    ]
+  },
+  "6": {
+    "size"  : 170805979,
+    "bands" : [
+      { "id": "p11.1",  "start": 58500001,  "end": 59800000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 57200001,  "end": 58500000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 53000001,  "end": 57200000,  "type": "gpos100" },
+      { "id": "p12.2",  "start": 51800001,  "end": 53000000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 46200001,  "end": 51800000,  "type": "gpos100" },
+      { "id": "p21.1",  "start": 40500001,  "end": 46200000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 36600001,  "end": 40500000,  "type": "gpos25"  },
+      { "id": "p21.31", "start": 33500001,  "end": 36600000,  "type": "gneg"    },
+      { "id": "p21.32", "start": 32100001,  "end": 33500000,  "type": "gpos25"  },
+      { "id": "p21.33", "start": 30500001,  "end": 32100000,  "type": "gneg"    },
+      { "id": "p22.1",  "start": 27100001,  "end": 30500000,  "type": "gpos50"  },
+      { "id": "p22.2",  "start": 25200001,  "end": 27100000,  "type": "gneg"    },
+      { "id": "p22.3",  "start": 15200001,  "end": 25200000,  "type": "gpos75"  },
+      { "id": "p23",    "start": 13400001,  "end": 15200000,  "type": "gneg"    },
+      { "id": "p24.1",  "start": 11600001,  "end": 13400000,  "type": "gpos25"  },
+      { "id": "p24.2",  "start": 10600001,  "end": 11600000,  "type": "gneg"    },
+      { "id": "p24.3",  "start": 7100001,   "end": 10600000,  "type": "gpos50"  },
+      { "id": "p25.1",  "start": 4200001,   "end": 7100000,   "type": "gneg"    },
+      { "id": "p25.2",  "start": 2300001,   "end": 4200000,   "type": "gpos25"  },
+      { "id": "p25.3",  "start": 1,         "end": 2300000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 59800001,  "end": 62600000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 62600001,  "end": 62700000,  "type": "gneg"    },
+      { "id": "q12",    "start": 62700001,  "end": 69200000,  "type": "gpos100" },
+      { "id": "q13",    "start": 69200001,  "end": 75200000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 75200001,  "end": 83200000,  "type": "gpos50"  },
+      { "id": "q14.2",  "start": 83200001,  "end": 84200000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 84200001,  "end": 87300000,  "type": "gpos50"  },
+      { "id": "q15",    "start": 87300001,  "end": 92500000,  "type": "gneg"    },
+      { "id": "q16.1",  "start": 92500001,  "end": 98900000,  "type": "gpos100" },
+      { "id": "q16.2",  "start": 98900001,  "end": 100000000, "type": "gneg"    },
+      { "id": "q16.3",  "start": 100000001, "end": 105000000, "type": "gpos100" },
+      { "id": "q21",    "start": 105000001, "end": 114200000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 114200001, "end": 117900000, "type": "gpos75"  },
+      { "id": "q22.2",  "start": 117900001, "end": 118100000, "type": "gneg"    },
+      { "id": "q22.31", "start": 118100001, "end": 125800000, "type": "gpos100" },
+      { "id": "q22.32", "start": 125800001, "end": 126800000, "type": "gneg"    },
+      { "id": "q22.33", "start": 126800001, "end": 130000000, "type": "gpos75"  },
+      { "id": "q23.1",  "start": 130000001, "end": 130900000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 130900001, "end": 134700000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 134700001, "end": 138300000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 138300001, "end": 142200000, "type": "gpos75"  },
+      { "id": "q24.2",  "start": 142200001, "end": 145100000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 145100001, "end": 148500000, "type": "gpos75"  },
+      { "id": "q25.1",  "start": 148500001, "end": 152100000, "type": "gneg"    },
+      { "id": "q25.2",  "start": 152100001, "end": 155200000, "type": "gpos50"  },
+      { "id": "q25.3",  "start": 155200001, "end": 160600000, "type": "gneg"    },
+      { "id": "q26",    "start": 160600001, "end": 164100000, "type": "gpos50"  },
+      { "id": "q27",    "start": 164100001, "end": 170805979, "type": "gneg"    }
+    ]
+  },
+  "7": {
+    "size"  : 159345973,
+    "bands" : [
+      { "id": "p11.1",  "start": 58100001,  "end": 60100000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 53900001,  "end": 58100000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 50500001,  "end": 53900000,  "type": "gpos75"  },
+      { "id": "p12.2",  "start": 49000001,  "end": 50500000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 45400001,  "end": 49000000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 43300001,  "end": 45400000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 37100001,  "end": 43300000,  "type": "gpos75"  },
+      { "id": "p14.2",  "start": 34900001,  "end": 37100000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 28800001,  "end": 34900000,  "type": "gpos75"  },
+      { "id": "p15.1",  "start": 27900001,  "end": 28800000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 25500001,  "end": 27900000,  "type": "gpos50"  },
+      { "id": "p15.3",  "start": 20900001,  "end": 25500000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 16500001,  "end": 20900000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 13700001,  "end": 16500000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 7200001,   "end": 13700000,  "type": "gpos100" },
+      { "id": "p22.1",  "start": 4500001,   "end": 7200000,   "type": "gneg"    },
+      { "id": "p22.2",  "start": 2800001,   "end": 4500000,   "type": "gpos25"  },
+      { "id": "p22.3",  "start": 1,         "end": 2800000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 60100001,  "end": 62100000,  "type": "acen"    },
+      { "id": "q11.21", "start": 62100001,  "end": 67500000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 67500001,  "end": 72700000,  "type": "gpos50"  },
+      { "id": "q11.23", "start": 72700001,  "end": 77900000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 77900001,  "end": 86700000,  "type": "gpos100" },
+      { "id": "q21.12", "start": 86700001,  "end": 88500000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 88500001,  "end": 91500000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 91500001,  "end": 93300000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 93300001,  "end": 98400000,  "type": "gpos75"  },
+      { "id": "q22.1",  "start": 98400001,  "end": 104200000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 104200001, "end": 104900000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 104900001, "end": 107800000, "type": "gneg"    },
+      { "id": "q31.1",  "start": 107800001, "end": 115000000, "type": "gpos75"  },
+      { "id": "q31.2",  "start": 115000001, "end": 117700000, "type": "gneg"    },
+      { "id": "q31.31", "start": 117700001, "end": 121400000, "type": "gpos75"  },
+      { "id": "q31.32", "start": 121400001, "end": 124100000, "type": "gneg"    },
+      { "id": "q31.33", "start": 124100001, "end": 127500000, "type": "gpos75"  },
+      { "id": "q32.1",  "start": 127500001, "end": 129600000, "type": "gneg"    },
+      { "id": "q32.2",  "start": 129600001, "end": 130800000, "type": "gpos25"  },
+      { "id": "q32.3",  "start": 130800001, "end": 132900000, "type": "gneg"    },
+      { "id": "q33",    "start": 132900001, "end": 138500000, "type": "gpos50"  },
+      { "id": "q34",    "start": 138500001, "end": 143400000, "type": "gneg"    },
+      { "id": "q35",    "start": 143400001, "end": 148200000, "type": "gpos75"  },
+      { "id": "q36.1",  "start": 148200001, "end": 152800000, "type": "gneg"    },
+      { "id": "q36.2",  "start": 152800001, "end": 155200000, "type": "gpos25"  },
+      { "id": "q36.3",  "start": 155200001, "end": 159345973, "type": "gneg"    }
+    ]
+  },
+  "8": {
+    "size"  : 145138636,
+    "bands" : [
+      { "id": "p11.1",  "start": 43200001,  "end": 45200000,  "type": "acen"    },
+      { "id": "p11.21", "start": 39900001,  "end": 43200000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 38500001,  "end": 39900000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 36700001,  "end": 38500000,  "type": "gneg"    },
+      { "id": "p12",    "start": 29000001,  "end": 36700000,  "type": "gpos75"  },
+      { "id": "p21.1",  "start": 27500001,  "end": 29000000,  "type": "gneg"    },
+      { "id": "p21.2",  "start": 23500001,  "end": 27500000,  "type": "gpos50"  },
+      { "id": "p21.3",  "start": 19200001,  "end": 23500000,  "type": "gneg"    },
+      { "id": "p22",    "start": 12800001,  "end": 19200000,  "type": "gpos100" },
+      { "id": "p23.1",  "start": 6300001,   "end": 12800000,  "type": "gneg"    },
+      { "id": "p23.2",  "start": 2300001,   "end": 6300000,   "type": "gpos75"  },
+      { "id": "p23.3",  "start": 1,         "end": 2300000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 45200001,  "end": 47200000,  "type": "acen"    },
+      { "id": "q11.21", "start": 47200001,  "end": 51300000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 51300001,  "end": 51700000,  "type": "gpos75"  },
+      { "id": "q11.23", "start": 51700001,  "end": 54600000,  "type": "gneg"    },
+      { "id": "q12.1",  "start": 54600001,  "end": 60600000,  "type": "gpos50"  },
+      { "id": "q12.2",  "start": 60600001,  "end": 61300000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 61300001,  "end": 65100000,  "type": "gpos50"  },
+      { "id": "q13.1",  "start": 65100001,  "end": 67100000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 67100001,  "end": 69600000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 69600001,  "end": 72000000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 72000001,  "end": 74600000,  "type": "gpos100" },
+      { "id": "q21.12", "start": 74600001,  "end": 74700000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 74700001,  "end": 83500000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 83500001,  "end": 85900000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 85900001,  "end": 92300000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 92300001,  "end": 97900000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 97900001,  "end": 100500000, "type": "gpos25"  },
+      { "id": "q22.3",  "start": 100500001, "end": 105100000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 105100001, "end": 109500000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 109500001, "end": 111100000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 111100001, "end": 116700000, "type": "gpos100" },
+      { "id": "q24.11", "start": 116700001, "end": 118300000, "type": "gneg"    },
+      { "id": "q24.12", "start": 118300001, "end": 121500000, "type": "gpos50"  },
+      { "id": "q24.13", "start": 121500001, "end": 126300000, "type": "gneg"    },
+      { "id": "q24.21", "start": 126300001, "end": 130400000, "type": "gpos50"  },
+      { "id": "q24.22", "start": 130400001, "end": 135400000, "type": "gneg"    },
+      { "id": "q24.23", "start": 135400001, "end": 138900000, "type": "gpos75"  },
+      { "id": "q24.3",  "start": 138900001, "end": 145138636, "type": "gneg"    }
+    ]
+  },
+  "9": {
+    "size"  : 138394717,
+    "bands" : [
+      { "id": "p11.1",  "start": 42200001,  "end": 43000000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 40000001,  "end": 42200000,  "type": "gneg"    },
+      { "id": "p12",    "start": 39000001,  "end": 40000000,  "type": "gpos50"  },
+      { "id": "p13.1",  "start": 37900001,  "end": 39000000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 36300001,  "end": 37900000,  "type": "gpos25"  },
+      { "id": "p13.3",  "start": 33200001,  "end": 36300000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 28000001,  "end": 33200000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 25600001,  "end": 28000000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 19900001,  "end": 25600000,  "type": "gpos100" },
+      { "id": "p22.1",  "start": 18500001,  "end": 19900000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 16600001,  "end": 18500000,  "type": "gpos25"  },
+      { "id": "p22.3",  "start": 14200001,  "end": 16600000,  "type": "gneg"    },
+      { "id": "p23",    "start": 9000001,   "end": 14200000,  "type": "gpos75"  },
+      { "id": "p24.1",  "start": 4600001,   "end": 9000000,   "type": "gneg"    },
+      { "id": "p24.2",  "start": 2200001,   "end": 4600000,   "type": "gpos25"  },
+      { "id": "p24.3",  "start": 1,         "end": 2200000,   "type": "gneg"    },
+      { "id": "q11",    "start": 43000001,  "end": 45500000,  "type": "acen"    },
+      { "id": "q12",    "start": 45500001,  "end": 61500000,  "type": "gvar"    },
+      { "id": "q13",    "start": 61500001,  "end": 65000000,  "type": "gneg"    },
+      { "id": "q21.11", "start": 65000001,  "end": 69300000,  "type": "gpos25"  },
+      { "id": "q21.12", "start": 69300001,  "end": 71300000,  "type": "gneg"    },
+      { "id": "q21.13", "start": 71300001,  "end": 76600000,  "type": "gpos50"  },
+      { "id": "q21.2",  "start": 76600001,  "end": 78500000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 78500001,  "end": 81500000,  "type": "gpos50"  },
+      { "id": "q21.32", "start": 81500001,  "end": 84300000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 84300001,  "end": 87800000,  "type": "gpos50"  },
+      { "id": "q22.1",  "start": 87800001,  "end": 89200000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 89200001,  "end": 91200000,  "type": "gpos25"  },
+      { "id": "q22.31", "start": 91200001,  "end": 93900000,  "type": "gneg"    },
+      { "id": "q22.32", "start": 93900001,  "end": 96500000,  "type": "gpos25"  },
+      { "id": "q22.33", "start": 96500001,  "end": 99800000,  "type": "gneg"    },
+      { "id": "q31.1",  "start": 99800001,  "end": 105400000, "type": "gpos100" },
+      { "id": "q31.2",  "start": 105400001, "end": 108500000, "type": "gneg"    },
+      { "id": "q31.3",  "start": 108500001, "end": 112100000, "type": "gpos25"  },
+      { "id": "q32",    "start": 112100001, "end": 114900000, "type": "gneg"    },
+      { "id": "q33.1",  "start": 114900001, "end": 119800000, "type": "gpos75"  },
+      { "id": "q33.2",  "start": 119800001, "end": 123100000, "type": "gneg"    },
+      { "id": "q33.3",  "start": 123100001, "end": 127500000, "type": "gpos25"  },
+      { "id": "q34.11", "start": 127500001, "end": 130600000, "type": "gneg"    },
+      { "id": "q34.12", "start": 130600001, "end": 131100000, "type": "gpos25"  },
+      { "id": "q34.13", "start": 131100001, "end": 133100000, "type": "gneg"    },
+      { "id": "q34.2",  "start": 133100001, "end": 134500000, "type": "gpos25"  },
+      { "id": "q34.3",  "start": 134500001, "end": 138394717, "type": "gneg"    }
+    ]
+  },
+  "10": {
+    "size"  : 133797422,
+    "bands" : [
+      { "id": "p11.1",  "start": 38000001,  "end": 39800000,  "type": "acen"    },
+      { "id": "p11.21", "start": 34200001,  "end": 38000000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 31100001,  "end": 34200000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 29300001,  "end": 31100000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 24300001,  "end": 29300000,  "type": "gpos50"  },
+      { "id": "p12.2",  "start": 22300001,  "end": 24300000,  "type": "gneg"    },
+      { "id": "p12.31", "start": 18400001,  "end": 22300000,  "type": "gpos75"  },
+      { "id": "p12.32", "start": 18300001,  "end": 18400000,  "type": "gneg"    },
+      { "id": "p12.33", "start": 17300001,  "end": 18300000,  "type": "gpos75"  },
+      { "id": "p13",    "start": 12200001,  "end": 17300000,  "type": "gneg"    },
+      { "id": "p14",    "start": 6600001,   "end": 12200000,  "type": "gpos75"  },
+      { "id": "p15.1",  "start": 3800001,   "end": 6600000,   "type": "gneg"    },
+      { "id": "p15.2",  "start": 3000001,   "end": 3800000,   "type": "gpos25"  },
+      { "id": "p15.3",  "start": 1,         "end": 3000000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 39800001,  "end": 41600000,  "type": "acen"    },
+      { "id": "q11.21", "start": 41600001,  "end": 45500000,  "type": "gneg"    },
+      { "id": "q11.22", "start": 45500001,  "end": 48600000,  "type": "gpos25"  },
+      { "id": "q11.23", "start": 48600001,  "end": 51100000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 51100001,  "end": 59400000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 59400001,  "end": 62800000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 62800001,  "end": 68800000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 68800001,  "end": 73100000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 73100001,  "end": 75900000,  "type": "gpos50"  },
+      { "id": "q22.3",  "start": 75900001,  "end": 80300000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 80300001,  "end": 86100000,  "type": "gpos100" },
+      { "id": "q23.2",  "start": 86100001,  "end": 87700000,  "type": "gneg"    },
+      { "id": "q23.31", "start": 87700001,  "end": 91100000,  "type": "gpos75"  },
+      { "id": "q23.32", "start": 91100001,  "end": 92300000,  "type": "gneg"    },
+      { "id": "q23.33", "start": 92300001,  "end": 95300000,  "type": "gpos50"  },
+      { "id": "q24.1",  "start": 95300001,  "end": 97500000,  "type": "gneg"    },
+      { "id": "q24.2",  "start": 97500001,  "end": 100100000, "type": "gpos50"  },
+      { "id": "q24.31", "start": 100100001, "end": 101200000, "type": "gneg"    },
+      { "id": "q24.32", "start": 101200001, "end": 103100000, "type": "gpos25"  },
+      { "id": "q24.33", "start": 103100001, "end": 104000000, "type": "gneg"    },
+      { "id": "q25.1",  "start": 104000001, "end": 110100000, "type": "gpos100" },
+      { "id": "q25.2",  "start": 110100001, "end": 113100000, "type": "gneg"    },
+      { "id": "q25.3",  "start": 113100001, "end": 117300000, "type": "gpos75"  },
+      { "id": "q26.11", "start": 117300001, "end": 119900000, "type": "gneg"    },
+      { "id": "q26.12", "start": 119900001, "end": 121400000, "type": "gpos50"  },
+      { "id": "q26.13", "start": 121400001, "end": 125700000, "type": "gneg"    },
+      { "id": "q26.2",  "start": 125700001, "end": 128800000, "type": "gpos50"  },
+      { "id": "q26.3",  "start": 128800001, "end": 133797422, "type": "gneg"    }
+    ]
+  },
+  "11": {
+    "size"  : 135086622,
+    "bands" : [
+      { "id": "p11.11", "start": 51000001,  "end": 53400000,  "type": "acen"    },
+      { "id": "p11.12", "start": 48800001,  "end": 51000000,  "type": "gpos75"  },
+      { "id": "p11.2",  "start": 43400001,  "end": 48800000,  "type": "gneg"    },
+      { "id": "p12",    "start": 36400001,  "end": 43400000,  "type": "gpos100" },
+      { "id": "p13",    "start": 31000001,  "end": 36400000,  "type": "gneg"    },
+      { "id": "p14.1",  "start": 27200001,  "end": 31000000,  "type": "gpos75"  },
+      { "id": "p14.2",  "start": 26200001,  "end": 27200000,  "type": "gneg"    },
+      { "id": "p14.3",  "start": 22000001,  "end": 26200000,  "type": "gpos100" },
+      { "id": "p15.1",  "start": 16900001,  "end": 22000000,  "type": "gneg"    },
+      { "id": "p15.2",  "start": 13800001,  "end": 16900000,  "type": "gpos50"  },
+      { "id": "p15.3",  "start": 11700001,  "end": 13800000,  "type": "gneg"    },
+      { "id": "p15.4",  "start": 2800001,   "end": 11700000,  "type": "gpos50"  },
+      { "id": "p15.5",  "start": 1,         "end": 2800000,   "type": "gneg"    },
+      { "id": "q11",    "start": 53400001,  "end": 55800000,  "type": "acen"    },
+      { "id": "q12.1",  "start": 55800001,  "end": 60100000,  "type": "gpos75"  },
+      { "id": "q12.2",  "start": 60100001,  "end": 61900000,  "type": "gneg"    },
+      { "id": "q12.3",  "start": 61900001,  "end": 63600000,  "type": "gpos25"  },
+      { "id": "q13.1",  "start": 63600001,  "end": 66100000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 66100001,  "end": 68700000,  "type": "gpos25"  },
+      { "id": "q13.3",  "start": 68700001,  "end": 70500000,  "type": "gneg"    },
+      { "id": "q13.4",  "start": 70500001,  "end": 75500000,  "type": "gpos50"  },
+      { "id": "q13.5",  "start": 75500001,  "end": 77400000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 77400001,  "end": 85900000,  "type": "gpos100" },
+      { "id": "q14.2",  "start": 85900001,  "end": 88600000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 88600001,  "end": 93000000,  "type": "gpos100" },
+      { "id": "q21",    "start": 93000001,  "end": 97400000,  "type": "gneg"    },
+      { "id": "q22.1",  "start": 97400001,  "end": 102300000, "type": "gpos100" },
+      { "id": "q22.2",  "start": 102300001, "end": 103000000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 103000001, "end": 110600000, "type": "gpos100" },
+      { "id": "q23.1",  "start": 110600001, "end": 112700000, "type": "gneg"    },
+      { "id": "q23.2",  "start": 112700001, "end": 114600000, "type": "gpos50"  },
+      { "id": "q23.3",  "start": 114600001, "end": 121300000, "type": "gneg"    },
+      { "id": "q24.1",  "start": 121300001, "end": 124000000, "type": "gpos50"  },
+      { "id": "q24.2",  "start": 124000001, "end": 127900000, "type": "gneg"    },
+      { "id": "q24.3",  "start": 127900001, "end": 130900000, "type": "gpos50"  },
+      { "id": "q25",    "start": 130900001, "end": 135086622, "type": "gneg"    }
+    ]
+  },
+  "12": {
+    "size"  : 133275309,
+    "bands" : [
+      { "id": "p11.1",  "start": 33200001,  "end": 35500000,  "type": "acen"    },
+      { "id": "p11.21", "start": 30500001,  "end": 33200000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 27600001,  "end": 30500000,  "type": "gpos50"  },
+      { "id": "p11.23", "start": 26300001,  "end": 27600000,  "type": "gneg"    },
+      { "id": "p12.1",  "start": 21100001,  "end": 26300000,  "type": "gpos100" },
+      { "id": "p12.2",  "start": 19800001,  "end": 21100000,  "type": "gneg"    },
+      { "id": "p12.3",  "start": 14600001,  "end": 19800000,  "type": "gpos100" },
+      { "id": "p13.1",  "start": 12600001,  "end": 14600000,  "type": "gneg"    },
+      { "id": "p13.2",  "start": 10000001,  "end": 12600000,  "type": "gpos75"  },
+      { "id": "p13.31", "start": 5300001,   "end": 10000000,  "type": "gneg"    },
+      { "id": "p13.32", "start": 3200001,   "end": 5300000,   "type": "gpos25"  },
+      { "id": "p13.33", "start": 1,         "end": 3200000,   "type": "gneg"    },
+      { "id": "q11",    "start": 35500001,  "end": 37800000,  "type": "acen"    },
+      { "id": "q12",    "start": 37800001,  "end": 46000000,  "type": "gpos100" },
+      { "id": "q13.11", "start": 46000001,  "end": 48700000,  "type": "gneg"    },
+      { "id": "q13.12", "start": 48700001,  "end": 51100000,  "type": "gpos25"  },
+      { "id": "q13.13", "start": 51100001,  "end": 54500000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 54500001,  "end": 56200000,  "type": "gpos25"  },
+      { "id": "q13.3",  "start": 56200001,  "end": 57700000,  "type": "gneg"    },
+      { "id": "q14.1",  "start": 57700001,  "end": 62700000,  "type": "gpos75"  },
+      { "id": "q14.2",  "start": 62700001,  "end": 64700000,  "type": "gneg"    },
+      { "id": "q14.3",  "start": 64700001,  "end": 67300000,  "type": "gpos50"  },
+      { "id": "q15",    "start": 67300001,  "end": 71100000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 71100001,  "end": 75300000,  "type": "gpos75"  },
+      { "id": "q21.2",  "start": 75300001,  "end": 79900000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 79900001,  "end": 86300000,  "type": "gpos100" },
+      { "id": "q21.32", "start": 86300001,  "end": 88600000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 88600001,  "end": 92200000,  "type": "gpos100" },
+      { "id": "q22",    "start": 92200001,  "end": 95800000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 95800001,  "end": 101200000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 101200001, "end": 103500000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 103500001, "end": 108600000, "type": "gpos50"  },
+      { "id": "q24.11", "start": 108600001, "end": 111300000, "type": "gneg"    },
+      { "id": "q24.12", "start": 111300001, "end": 111900000, "type": "gpos25"  },
+      { "id": "q24.13", "start": 111900001, "end": 113900000, "type": "gneg"    },
+      { "id": "q24.21", "start": 113900001, "end": 116400000, "type": "gpos50"  },
+      { "id": "q24.22", "start": 116400001, "end": 117700000, "type": "gneg"    },
+      { "id": "q24.23", "start": 117700001, "end": 120300000, "type": "gpos50"  },
+      { "id": "q24.31", "start": 120300001, "end": 125400000, "type": "gneg"    },
+      { "id": "q24.32", "start": 125400001, "end": 128700000, "type": "gpos50"  },
+      { "id": "q24.33", "start": 128700001, "end": 133275309, "type": "gneg"    }
+    ]
+  },
+  "13": {
+    "size"  : 114364328,
+    "bands" : [
+      { "id": "p11.1",  "start": 16500001,  "end": 17700000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 10100001,  "end": 16500000,  "type": "gvar"    },
+      { "id": "p12",    "start": 4600001,   "end": 10100000,  "type": "stalk"   },
+      { "id": "p13",    "start": 1,         "end": 4600000,   "type": "gvar"    },
+      { "id": "q11",    "start": 17700001,  "end": 18900000,  "type": "acen"    },
+      { "id": "q12.11", "start": 18900001,  "end": 22600000,  "type": "gneg"    },
+      { "id": "q12.12", "start": 22600001,  "end": 24900000,  "type": "gpos25"  },
+      { "id": "q12.13", "start": 24900001,  "end": 27200000,  "type": "gneg"    },
+      { "id": "q12.2",  "start": 27200001,  "end": 28300000,  "type": "gpos25"  },
+      { "id": "q12.3",  "start": 28300001,  "end": 31600000,  "type": "gneg"    },
+      { "id": "q13.1",  "start": 31600001,  "end": 33400000,  "type": "gpos50"  },
+      { "id": "q13.2",  "start": 33400001,  "end": 34900000,  "type": "gneg"    },
+      { "id": "q13.3",  "start": 34900001,  "end": 39500000,  "type": "gpos75"  },
+      { "id": "q14.11", "start": 39500001,  "end": 44600000,  "type": "gneg"    },
+      { "id": "q14.12", "start": 44600001,  "end": 45200000,  "type": "gpos25"  },
+      { "id": "q14.13", "start": 45200001,  "end": 46700000,  "type": "gneg"    },
+      { "id": "q14.2",  "start": 46700001,  "end": 50300000,  "type": "gpos50"  },
+      { "id": "q14.3",  "start": 50300001,  "end": 54700000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 54700001,  "end": 59000000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 59000001,  "end": 61800000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 61800001,  "end": 65200000,  "type": "gpos75"  },
+      { "id": "q21.32", "start": 65200001,  "end": 68100000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 68100001,  "end": 72800000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 72800001,  "end": 74900000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 74900001,  "end": 76700000,  "type": "gpos50"  },
+      { "id": "q22.3",  "start": 76700001,  "end": 78500000,  "type": "gneg"    },
+      { "id": "q31.1",  "start": 78500001,  "end": 87100000,  "type": "gpos100" },
+      { "id": "q31.2",  "start": 87100001,  "end": 89400000,  "type": "gneg"    },
+      { "id": "q31.3",  "start": 89400001,  "end": 94400000,  "type": "gpos100" },
+      { "id": "q32.1",  "start": 94400001,  "end": 97500000,  "type": "gneg"    },
+      { "id": "q32.2",  "start": 97500001,  "end": 98700000,  "type": "gpos25"  },
+      { "id": "q32.3",  "start": 98700001,  "end": 101100000, "type": "gneg"    },
+      { "id": "q33.1",  "start": 101100001, "end": 104200000, "type": "gpos100" },
+      { "id": "q33.2",  "start": 104200001, "end": 106400000, "type": "gneg"    },
+      { "id": "q33.3",  "start": 106400001, "end": 109600000, "type": "gpos100" },
+      { "id": "q34",    "start": 109600001, "end": 114364328, "type": "gneg"    }
+    ]
+  },
+  "14": {
+    "size"  : 107043718,
+    "bands" : [
+      { "id": "p11.1",  "start": 16100001,  "end": 17200000,  "type": "acen"    },
+      { "id": "p11.2",  "start": 8000001,   "end": 16100000,  "type": "gvar"    },
+      { "id": "p12",    "start": 3600001,   "end": 8000000,   "type": "stalk"   },
+      { "id": "p13",    "start": 1,         "end": 3600000,   "type": "gvar"    },
+      { "id": "q11.1",  "start": 17200001,  "end": 18200000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 18200001,  "end": 24100000,  "type": "gneg"    },
+      { "id": "q12",    "start": 24100001,  "end": 32900000,  "type": "gpos100" },
+      { "id": "q13.1",  "start": 32900001,  "end": 34800000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 34800001,  "end": 36100000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 36100001,  "end": 37400000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 37400001,  "end": 43000000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 43000001,  "end": 46700000,  "type": "gneg"    },
+      { "id": "q21.3",  "start": 46700001,  "end": 50400000,  "type": "gpos100" },
+      { "id": "q22.1",  "start": 50400001,  "end": 53600000,  "type": "gneg"    },
+      { "id": "q22.2",  "start": 53600001,  "end": 55000000,  "type": "gpos25"  },
+      { "id": "q22.3",  "start": 55000001,  "end": 57600000,  "type": "gneg"    },
+      { "id": "q23.1",  "start": 57600001,  "end": 61600000,  "type": "gpos75"  },
+      { "id": "q23.2",  "start": 61600001,  "end": 64300000,  "type": "gneg"    },
+      { "id": "q23.3",  "start": 64300001,  "end": 67400000,  "type": "gpos50"  },
+      { "id": "q24.1",  "start": 67400001,  "end": 69800000,  "type": "gneg"    },
+      { "id": "q24.2",  "start": 69800001,  "end": 73300000,  "type": "gpos50"  },
+      { "id": "q24.3",  "start": 73300001,  "end": 78800000,  "type": "gneg"    },
+      { "id": "q31.1",  "start": 78800001,  "end": 83100000,  "type": "gpos100" },
+      { "id": "q31.2",  "start": 83100001,  "end": 84400000,  "type": "gneg"    },
+      { "id": "q31.3",  "start": 84400001,  "end": 89300000,  "type": "gpos100" },
+      { "id": "q32.11", "start": 89300001,  "end": 91400000,  "type": "gneg"    },
+      { "id": "q32.12", "start": 91400001,  "end": 94200000,  "type": "gpos25"  },
+      { "id": "q32.13", "start": 94200001,  "end": 95800000,  "type": "gneg"    },
+      { "id": "q32.2",  "start": 95800001,  "end": 100900000, "type": "gpos50"  },
+      { "id": "q32.31", "start": 100900001, "end": 102700000, "type": "gneg"    },
+      { "id": "q32.32", "start": 102700001, "end": 103500000, "type": "gpos50"  },
+      { "id": "q32.33", "start": 103500001, "end": 107043718, "type": "gneg"    }
+    ]
+  },
+  "15": {
+    "size"  : 101991189,
+    "bands" : [
+      { "id": "p11.1",  "start": 17500001, "end": 19000000,  "type": "acen"   },
+      { "id": "p11.2",  "start": 9700001,  "end": 17500000,  "type": "gvar"   },
+      { "id": "p12",    "start": 4200001,  "end": 9700000,   "type": "stalk"  },
+      { "id": "p13",    "start": 1,        "end": 4200000,   "type": "gvar"   },
+      { "id": "q11.1",  "start": 19000001, "end": 20500000,  "type": "acen"   },
+      { "id": "q11.2",  "start": 20500001, "end": 25500000,  "type": "gneg"   },
+      { "id": "q12",    "start": 25500001, "end": 27800000,  "type": "gpos50" },
+      { "id": "q13.1",  "start": 27800001, "end": 30000000,  "type": "gneg"   },
+      { "id": "q13.2",  "start": 30000001, "end": 30900000,  "type": "gpos50" },
+      { "id": "q13.3",  "start": 30900001, "end": 33400000,  "type": "gneg"   },
+      { "id": "q14",    "start": 33400001, "end": 39800000,  "type": "gpos75" },
+      { "id": "q15.1",  "start": 39800001, "end": 42500000,  "type": "gneg"   },
+      { "id": "q15.2",  "start": 42500001, "end": 43300000,  "type": "gpos25" },
+      { "id": "q15.3",  "start": 43300001, "end": 44500000,  "type": "gneg"   },
+      { "id": "q21.1",  "start": 44500001, "end": 49200000,  "type": "gpos75" },
+      { "id": "q21.2",  "start": 49200001, "end": 52600000,  "type": "gneg"   },
+      { "id": "q21.3",  "start": 52600001, "end": 58800000,  "type": "gpos75" },
+      { "id": "q22.1",  "start": 58800001, "end": 59000000,  "type": "gneg"   },
+      { "id": "q22.2",  "start": 59000001, "end": 63400000,  "type": "gpos25" },
+      { "id": "q22.31", "start": 63400001, "end": 66900000,  "type": "gneg"   },
+      { "id": "q22.32", "start": 66900001, "end": 67000000,  "type": "gpos25" },
+      { "id": "q22.33", "start": 67000001, "end": 67200000,  "type": "gneg"   },
+      { "id": "q23",    "start": 67200001, "end": 72400000,  "type": "gpos25" },
+      { "id": "q24.1",  "start": 72400001, "end": 74900000,  "type": "gneg"   },
+      { "id": "q24.2",  "start": 74900001, "end": 76300000,  "type": "gpos25" },
+      { "id": "q24.3",  "start": 76300001, "end": 78000000,  "type": "gneg"   },
+      { "id": "q25.1",  "start": 78000001, "end": 81400000,  "type": "gpos50" },
+      { "id": "q25.2",  "start": 81400001, "end": 84700000,  "type": "gneg"   },
+      { "id": "q25.3",  "start": 84700001, "end": 88500000,  "type": "gpos50" },
+      { "id": "q26.1",  "start": 88500001, "end": 93800000,  "type": "gneg"   },
+      { "id": "q26.2",  "start": 93800001, "end": 98000000,  "type": "gpos50" },
+      { "id": "q26.3",  "start": 98000001, "end": 101991189, "type": "gneg"   }
+    ]
+  },
+  "16": {
+    "size"  : 90338345,
+    "bands" : [
+      { "id": "p11.1",  "start": 35300001, "end": 36800000, "type": "acen"    },
+      { "id": "p11.2",  "start": 28500001, "end": 35300000, "type": "gneg"    },
+      { "id": "p12.1",  "start": 24200001, "end": 28500000, "type": "gpos50"  },
+      { "id": "p12.2",  "start": 21200001, "end": 24200000, "type": "gneg"    },
+      { "id": "p12.3",  "start": 16700001, "end": 21200000, "type": "gpos50"  },
+      { "id": "p13.11", "start": 14700001, "end": 16700000, "type": "gneg"    },
+      { "id": "p13.12", "start": 12500001, "end": 14700000, "type": "gpos50"  },
+      { "id": "p13.13", "start": 10400001, "end": 12500000, "type": "gneg"    },
+      { "id": "p13.2",  "start": 7800001,  "end": 10400000, "type": "gpos50"  },
+      { "id": "p13.3",  "start": 1,        "end": 7800000,  "type": "gneg"    },
+      { "id": "q11.1",  "start": 36800001, "end": 38400000, "type": "acen"    },
+      { "id": "q11.2",  "start": 38400001, "end": 47000000, "type": "gvar"    },
+      { "id": "q12.1",  "start": 47000001, "end": 52600000, "type": "gneg"    },
+      { "id": "q12.2",  "start": 52600001, "end": 56000000, "type": "gpos50"  },
+      { "id": "q13",    "start": 56000001, "end": 57300000, "type": "gneg"    },
+      { "id": "q21",    "start": 57300001, "end": 66600000, "type": "gpos100" },
+      { "id": "q22.1",  "start": 66600001, "end": 70800000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 70800001, "end": 72800000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 72800001, "end": 74100000, "type": "gneg"    },
+      { "id": "q23.1",  "start": 74100001, "end": 79200000, "type": "gpos75"  },
+      { "id": "q23.2",  "start": 79200001, "end": 81600000, "type": "gneg"    },
+      { "id": "q23.3",  "start": 81600001, "end": 84100000, "type": "gpos50"  },
+      { "id": "q24.1",  "start": 84100001, "end": 87000000, "type": "gneg"    },
+      { "id": "q24.2",  "start": 87000001, "end": 88700000, "type": "gpos25"  },
+      { "id": "q24.3",  "start": 88700001, "end": 90338345, "type": "gneg"    }
+    ]
+  },
+  "17": {
+    "size"  : 83257441,
+    "bands" : [
+      { "id": "p11.1",  "start": 22700001, "end": 25100000, "type": "acen"   },
+      { "id": "p11.2",  "start": 16100001, "end": 22700000, "type": "gneg"   },
+      { "id": "p12",    "start": 10800001, "end": 16100000, "type": "gpos75" },
+      { "id": "p13.1",  "start": 6500001,  "end": 10800000, "type": "gneg"   },
+      { "id": "p13.2",  "start": 3400001,  "end": 6500000,  "type": "gpos50" },
+      { "id": "p13.3",  "start": 1,        "end": 3400000,  "type": "gneg"   },
+      { "id": "q11.1",  "start": 25100001, "end": 27400000, "type": "acen"   },
+      { "id": "q11.2",  "start": 27400001, "end": 33500000, "type": "gneg"   },
+      { "id": "q12",    "start": 33500001, "end": 39800000, "type": "gpos50" },
+      { "id": "q21.1",  "start": 39800001, "end": 40200000, "type": "gneg"   },
+      { "id": "q21.2",  "start": 40200001, "end": 42800000, "type": "gpos25" },
+      { "id": "q21.31", "start": 42800001, "end": 46800000, "type": "gneg"   },
+      { "id": "q21.32", "start": 46800001, "end": 49300000, "type": "gpos25" },
+      { "id": "q21.33", "start": 49300001, "end": 52100000, "type": "gneg"   },
+      { "id": "q22",    "start": 52100001, "end": 59500000, "type": "gpos75" },
+      { "id": "q23.1",  "start": 59500001, "end": 60200000, "type": "gneg"   },
+      { "id": "q23.2",  "start": 60200001, "end": 63100000, "type": "gpos75" },
+      { "id": "q23.3",  "start": 63100001, "end": 64600000, "type": "gneg"   },
+      { "id": "q24.1",  "start": 64600001, "end": 66200000, "type": "gpos50" },
+      { "id": "q24.2",  "start": 66200001, "end": 69100000, "type": "gneg"   },
+      { "id": "q24.3",  "start": 69100001, "end": 72900000, "type": "gpos75" },
+      { "id": "q25.1",  "start": 72900001, "end": 76800000, "type": "gneg"   },
+      { "id": "q25.2",  "start": 76800001, "end": 77200000, "type": "gpos25" },
+      { "id": "q25.3",  "start": 77200001, "end": 83257441, "type": "gneg"   }
+    ]
+  },
+  "18": {
+    "size"  : 80373285,
+    "bands" : [
+      { "id": "p11.1",  "start": 15400001, "end": 18500000, "type": "acen"    },
+      { "id": "p11.21", "start": 10900001, "end": 15400000, "type": "gneg"    },
+      { "id": "p11.22", "start": 8500001,  "end": 10900000, "type": "gpos25"  },
+      { "id": "p11.23", "start": 7200001,  "end": 8500000,  "type": "gneg"    },
+      { "id": "p11.31", "start": 2900001,  "end": 7200000,  "type": "gpos50"  },
+      { "id": "p11.32", "start": 1,        "end": 2900000,  "type": "gneg"    },
+      { "id": "q11.1",  "start": 18500001, "end": 21500000, "type": "acen"    },
+      { "id": "q11.2",  "start": 21500001, "end": 27500000, "type": "gneg"    },
+      { "id": "q12.1",  "start": 27500001, "end": 35100000, "type": "gpos100" },
+      { "id": "q12.2",  "start": 35100001, "end": 39500000, "type": "gneg"    },
+      { "id": "q12.3",  "start": 39500001, "end": 45900000, "type": "gpos75"  },
+      { "id": "q21.1",  "start": 45900001, "end": 50700000, "type": "gneg"    },
+      { "id": "q21.2",  "start": 50700001, "end": 56200000, "type": "gpos75"  },
+      { "id": "q21.31", "start": 56200001, "end": 58600000, "type": "gneg"    },
+      { "id": "q21.32", "start": 58600001, "end": 61300000, "type": "gpos50"  },
+      { "id": "q21.33", "start": 61300001, "end": 63900000, "type": "gneg"    },
+      { "id": "q22.1",  "start": 63900001, "end": 69100000, "type": "gpos100" },
+      { "id": "q22.2",  "start": 69100001, "end": 71000000, "type": "gneg"    },
+      { "id": "q22.3",  "start": 71000001, "end": 75400000, "type": "gpos25"  },
+      { "id": "q23",    "start": 75400001, "end": 80373285, "type": "gneg"    }
+    ]
+  },
+  "19": {
+    "size"  : 58617616,
+    "bands" : [
+      { "id": "p11",    "start": 24200001, "end": 26200000, "type": "acen"   },
+      { "id": "p12",    "start": 19900001, "end": 24200000, "type": "gvar"   },
+      { "id": "p13.11", "start": 16100001, "end": 19900000, "type": "gneg"   },
+      { "id": "p13.12", "start": 13800001, "end": 16100000, "type": "gpos25" },
+      { "id": "p13.13", "start": 12600001, "end": 13800000, "type": "gneg"   },
+      { "id": "p13.2",  "start": 6900001,  "end": 12600000, "type": "gpos25" },
+      { "id": "p13.3",  "start": 1,        "end": 6900000,  "type": "gneg"   },
+      { "id": "q11",    "start": 26200001, "end": 28100000, "type": "acen"   },
+      { "id": "q12",    "start": 28100001, "end": 31900000, "type": "gvar"   },
+      { "id": "q13.11", "start": 31900001, "end": 35100000, "type": "gneg"   },
+      { "id": "q13.12", "start": 35100001, "end": 37800000, "type": "gpos25" },
+      { "id": "q13.13", "start": 37800001, "end": 38200000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 38200001, "end": 42900000, "type": "gpos25" },
+      { "id": "q13.31", "start": 42900001, "end": 44700000, "type": "gneg"   },
+      { "id": "q13.32", "start": 44700001, "end": 47500000, "type": "gpos25" },
+      { "id": "q13.33", "start": 47500001, "end": 50900000, "type": "gneg"   },
+      { "id": "q13.41", "start": 50900001, "end": 53100000, "type": "gpos25" },
+      { "id": "q13.42", "start": 53100001, "end": 55800000, "type": "gneg"   },
+      { "id": "q13.43", "start": 55800001, "end": 58617616, "type": "gpos25" }
+    ]
+  },
+  "20": {
+    "size"  : 64444167,
+    "bands" : [
+      { "id": "p11.1",  "start": 25700001, "end": 28100000, "type": "acen"   },
+      { "id": "p11.21", "start": 22300001, "end": 25700000, "type": "gneg"   },
+      { "id": "p11.22", "start": 21300001, "end": 22300000, "type": "gpos25" },
+      { "id": "p11.23", "start": 17900001, "end": 21300000, "type": "gneg"   },
+      { "id": "p12.1",  "start": 12000001, "end": 17900000, "type": "gpos75" },
+      { "id": "p12.2",  "start": 9200001,  "end": 12000000, "type": "gneg"   },
+      { "id": "p12.3",  "start": 5100001,  "end": 9200000,  "type": "gpos75" },
+      { "id": "p13",    "start": 1,        "end": 5100000,  "type": "gneg"   },
+      { "id": "q11.1",  "start": 28100001, "end": 30400000, "type": "acen"   },
+      { "id": "q11.21", "start": 30400001, "end": 33500000, "type": "gneg"   },
+      { "id": "q11.22", "start": 33500001, "end": 35800000, "type": "gpos25" },
+      { "id": "q11.23", "start": 35800001, "end": 39000000, "type": "gneg"   },
+      { "id": "q12",    "start": 39000001, "end": 43100000, "type": "gpos75" },
+      { "id": "q13.11", "start": 43100001, "end": 43500000, "type": "gneg"   },
+      { "id": "q13.12", "start": 43500001, "end": 47800000, "type": "gpos25" },
+      { "id": "q13.13", "start": 47800001, "end": 51200000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 51200001, "end": 56400000, "type": "gpos75" },
+      { "id": "q13.31", "start": 56400001, "end": 57800000, "type": "gneg"   },
+      { "id": "q13.32", "start": 57800001, "end": 59700000, "type": "gpos50" },
+      { "id": "q13.33", "start": 59700001, "end": 64444167, "type": "gneg"   }
+    ]
+  },
+  "21": {
+    "size"  : 46709983,
+    "bands" : [
+      { "id": "p11.1",  "start": 10900001, "end": 12000000, "type": "acen"    },
+      { "id": "p11.2",  "start": 7000001,  "end": 10900000, "type": "gvar"    },
+      { "id": "p12",    "start": 3100001,  "end": 7000000,  "type": "stalk"   },
+      { "id": "p13",    "start": 1,        "end": 3100000,  "type": "gvar"    },
+      { "id": "q11.1",  "start": 12000001, "end": 13000000, "type": "acen"    },
+      { "id": "q11.2",  "start": 13000001, "end": 15000000, "type": "gneg"    },
+      { "id": "q21.1",  "start": 15000001, "end": 22600000, "type": "gpos100" },
+      { "id": "q21.2",  "start": 22600001, "end": 25500000, "type": "gneg"    },
+      { "id": "q21.3",  "start": 25500001, "end": 30200000, "type": "gpos75"  },
+      { "id": "q22.11", "start": 30200001, "end": 34400000, "type": "gneg"    },
+      { "id": "q22.12", "start": 34400001, "end": 36400000, "type": "gpos50"  },
+      { "id": "q22.13", "start": 36400001, "end": 38300000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 38300001, "end": 41200000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 41200001, "end": 46709983, "type": "gneg"    }
+    ]
+  },
+  "22": {
+    "size"  : 50818468,
+    "bands" : [
+      { "id": "p11.1",  "start": 13700001, "end": 15000000, "type": "acen"   },
+      { "id": "p11.2",  "start": 9400001,  "end": 13700000, "type": "gvar"   },
+      { "id": "p12",    "start": 4300001,  "end": 9400000,  "type": "stalk"  },
+      { "id": "p13",    "start": 1,        "end": 4300000,  "type": "gvar"   },
+      { "id": "q11.1",  "start": 15000001, "end": 17400000, "type": "acen"   },
+      { "id": "q11.21", "start": 17400001, "end": 21700000, "type": "gneg"   },
+      { "id": "q11.22", "start": 21700001, "end": 23100000, "type": "gpos25" },
+      { "id": "q11.23", "start": 23100001, "end": 25500000, "type": "gneg"   },
+      { "id": "q12.1",  "start": 25500001, "end": 29200000, "type": "gpos50" },
+      { "id": "q12.2",  "start": 29200001, "end": 31800000, "type": "gneg"   },
+      { "id": "q12.3",  "start": 31800001, "end": 37200000, "type": "gpos50" },
+      { "id": "q13.1",  "start": 37200001, "end": 40600000, "type": "gneg"   },
+      { "id": "q13.2",  "start": 40600001, "end": 43800000, "type": "gpos50" },
+      { "id": "q13.31", "start": 43800001, "end": 48100000, "type": "gneg"   },
+      { "id": "q13.32", "start": 48100001, "end": 49100000, "type": "gpos50" },
+      { "id": "q13.33", "start": 49100001, "end": 50818468, "type": "gneg"   }
+    ]
+  },
+  "X": {
+    "size"  : 156040895,
+    "bands" : [
+      { "id": "p11.1",  "start": 58100001,  "end": 61000000,  "type": "acen"    },
+      { "id": "p11.21", "start": 54800001,  "end": 58100000,  "type": "gneg"    },
+      { "id": "p11.22", "start": 50100001,  "end": 54800000,  "type": "gpos25"  },
+      { "id": "p11.23", "start": 47600001,  "end": 50100000,  "type": "gneg"    },
+      { "id": "p11.3",  "start": 42500001,  "end": 47600000,  "type": "gpos75"  },
+      { "id": "p11.4",  "start": 37800001,  "end": 42500000,  "type": "gneg"    },
+      { "id": "p21.1",  "start": 31500001,  "end": 37800000,  "type": "gpos100" },
+      { "id": "p21.2",  "start": 29300001,  "end": 31500000,  "type": "gneg"    },
+      { "id": "p21.3",  "start": 24900001,  "end": 29300000,  "type": "gpos100" },
+      { "id": "p22.11", "start": 21900001,  "end": 24900000,  "type": "gneg"    },
+      { "id": "p22.12", "start": 19200001,  "end": 21900000,  "type": "gpos50"  },
+      { "id": "p22.13", "start": 17400001,  "end": 19200000,  "type": "gneg"    },
+      { "id": "p22.2",  "start": 9600001,   "end": 17400000,  "type": "gpos50"  },
+      { "id": "p22.31", "start": 6100001,   "end": 9600000,   "type": "gneg"    },
+      { "id": "p22.32", "start": 4400001,   "end": 6100000,   "type": "gpos50"  },
+      { "id": "p22.33", "start": 1,         "end": 4400000,   "type": "gneg"    },
+      { "id": "q11.1",  "start": 61000001,  "end": 63800000,  "type": "acen"    },
+      { "id": "q11.2",  "start": 63800001,  "end": 65400000,  "type": "gneg"    },
+      { "id": "q12",    "start": 65400001,  "end": 68500000,  "type": "gpos50"  },
+      { "id": "q13.1",  "start": 68500001,  "end": 73000000,  "type": "gneg"    },
+      { "id": "q13.2",  "start": 73000001,  "end": 74700000,  "type": "gpos50"  },
+      { "id": "q13.3",  "start": 74700001,  "end": 76800000,  "type": "gneg"    },
+      { "id": "q21.1",  "start": 76800001,  "end": 85400000,  "type": "gpos100" },
+      { "id": "q21.2",  "start": 85400001,  "end": 87000000,  "type": "gneg"    },
+      { "id": "q21.31", "start": 87000001,  "end": 92700000,  "type": "gpos100" },
+      { "id": "q21.32", "start": 92700001,  "end": 94300000,  "type": "gneg"    },
+      { "id": "q21.33", "start": 94300001,  "end": 99100000,  "type": "gpos75"  },
+      { "id": "q22.1",  "start": 99100001,  "end": 103300000, "type": "gneg"    },
+      { "id": "q22.2",  "start": 103300001, "end": 104500000, "type": "gpos50"  },
+      { "id": "q22.3",  "start": 104500001, "end": 109400000, "type": "gneg"    },
+      { "id": "q23",    "start": 109400001, "end": 117400000, "type": "gpos75"  },
+      { "id": "q24",    "start": 117400001, "end": 121800000, "type": "gneg"    },
+      { "id": "q25",    "start": 121800001, "end": 129500000, "type": "gpos100" },
+      { "id": "q26.1",  "start": 129500001, "end": 131300000, "type": "gneg"    },
+      { "id": "q26.2",  "start": 131300001, "end": 134500000, "type": "gpos25"  },
+      { "id": "q26.3",  "start": 134500001, "end": 138900000, "type": "gneg"    },
+      { "id": "q27.1",  "start": 138900001, "end": 141200000, "type": "gpos75"  },
+      { "id": "q27.2",  "start": 141200001, "end": 143000000, "type": "gneg"    },
+      { "id": "q27.3",  "start": 143000001, "end": 148000000, "type": "gpos100" },
+      { "id": "q28",    "start": 148000001, "end": 156040895, "type": "gneg"    }
+    ]
+  },
+  "Y": {
+    "size"  : 57227415,
+    "bands" : [
+      { "id": "p11.1",   "start": 10300001, "end": 10400000, "type": "acen"   },
+      { "id": "p11.2",   "start": 600001,   "end": 10300000, "type": "gneg"   },
+      { "id": "p11.31",  "start": 300001,   "end": 600000,   "type": "gpos50" },
+      { "id": "p11.32",  "start": 1,        "end": 300000,   "type": "gneg"   },
+      { "id": "q11.1",   "start": 10400001, "end": 10600000, "type": "acen"   },
+      { "id": "q11.21",  "start": 10600001, "end": 12400000, "type": "gneg"   },
+      { "id": "q11.221", "start": 12400001, "end": 17100000, "type": "gpos50" },
+      { "id": "q11.222", "start": 17100001, "end": 19600000, "type": "gneg"   },
+      { "id": "q11.223", "start": 19600001, "end": 23800000, "type": "gpos50" },
+      { "id": "q11.23",  "start": 23800001, "end": 26600000, "type": "gneg"   },
+      { "id": "q12",     "start": 26600001, "end": 57227415, "type": "gvar"   }
+    ]
+  },
+  "MT": {
+    "size"  : 16569,
+    "bands" : [
+      { "start": 1, "end": 16569 }
+    ]
+  }
+};
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports) {
 
 Genoverse.Track = Base.extend({
@@ -4104,7 +6113,7 @@ Genoverse.Track = Base.extend({
 
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller = Base.extend({
@@ -4708,7 +6717,7 @@ Genoverse.Track.Controller = Base.extend({
 
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model = Base.extend({
@@ -5007,7 +7016,7 @@ Genoverse.Track.Model = Base.extend({
 
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View = Base.extend({
@@ -5558,7 +7567,7 @@ Genoverse.Track.View = Base.extend({
 
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Static = Genoverse.Track.Controller.extend({
@@ -5643,7 +7652,7 @@ Genoverse.Track.Static = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Stranded = Genoverse.Track.Controller.extend({
@@ -5721,7 +7730,7 @@ Genoverse.Track.Controller.Stranded = Genoverse.Track.Controller.extend({
 });
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Stranded = Genoverse.Track.Model.extend({
@@ -5755,7 +7764,7 @@ Genoverse.Track.Model.Stranded = Genoverse.Track.Model.extend({
 
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports) {
 
 // These are abstract classes, implemented by Graph.Bar and Graph.Line. They will not work properly on their own.
@@ -6115,7 +8124,7 @@ Genoverse.Track.Graph = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Graph.Line = {
@@ -6394,7 +8403,7 @@ Genoverse.Track.Graph.Line = Genoverse.Track.Graph.extend({
 });
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Graph.Bar = {
@@ -6635,7 +8644,7 @@ Genoverse.Track.Graph.Bar = Genoverse.Track.Graph.extend({
 });
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Sequence = Genoverse.Track.Controller.extend({
@@ -6658,7 +8667,7 @@ Genoverse.Track.Controller.Sequence = Genoverse.Track.Controller.extend({
 
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports) {
 
 // Abstract Sequence model
@@ -6714,7 +8723,7 @@ Genoverse.Track.Model.Sequence = Genoverse.Track.Model.extend({
 
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Sequence.Fasta = Genoverse.Track.Model.Sequence.extend({
@@ -6780,7 +8789,7 @@ Genoverse.Track.Model.Sequence.Fasta = Genoverse.Track.Model.Sequence.extend({
 
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Sequence.Ensembl = Genoverse.Track.Model.Sequence.extend({
@@ -6790,7 +8799,7 @@ Genoverse.Track.Model.Sequence.Ensembl = Genoverse.Track.Model.Sequence.extend({
 
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Sequence = Genoverse.Track.View.extend({
@@ -6862,7 +8871,7 @@ Genoverse.Track.View.Sequence = Genoverse.Track.View.extend({
 
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.SequenceVariation = Genoverse.Track.View.Sequence.extend({
@@ -6983,7 +8992,7 @@ Genoverse.Track.View.SequenceVariation = Genoverse.Track.View.Sequence.extend({
 
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.SequenceVariation = Genoverse.Track.Model.extend({
@@ -7028,7 +9037,7 @@ Genoverse.Track.Model.SequenceVariation = Genoverse.Track.Model.extend({
 
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // Abstract Gene model
@@ -7038,7 +9047,7 @@ Genoverse.Track.Model.Gene = Genoverse.Track.Model.extend({
 });
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 // Ensembl REST API Gene model
@@ -7066,7 +9075,7 @@ Genoverse.Track.Model.Gene.Ensembl = Genoverse.Track.Model.Gene.extend({
 
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Gene.HGNCEnsembl = Genoverse.Track.Model.Gene.extend({
@@ -7094,7 +9103,7 @@ Genoverse.Track.Model.Gene.HGNCEnsembl = Genoverse.Track.Model.Gene.extend({
 });
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Gene.HGNCNCBIGene = Genoverse.Track.Model.Gene.extend({
@@ -7121,7 +9130,7 @@ Genoverse.Track.Model.Gene.HGNCNCBIGene = Genoverse.Track.Model.Gene.extend({
 });
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Gene.HGNCVega = Genoverse.Track.Model.Gene.extend({
@@ -7149,7 +9158,7 @@ Genoverse.Track.Model.Gene.HGNCVega = Genoverse.Track.Model.Gene.extend({
 });
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.Gene.HGNCPseudogeneOrg = Genoverse.Track.Model.Gene.extend({
@@ -7172,7 +9181,7 @@ Genoverse.Track.Model.Gene.HGNCPseudogeneOrg = Genoverse.Track.Model.Gene.extend
 });
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene = Genoverse.Track.View.extend({
@@ -7184,7 +9193,7 @@ Genoverse.Track.View.Gene = Genoverse.Track.View.extend({
 
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene.Ensembl = Genoverse.Track.View.Gene.extend({
@@ -7234,7 +9243,7 @@ Genoverse.Track.View.Gene.Ensembl = Genoverse.Track.View.Gene.extend({
 });
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene.HGNCEnsembl = Genoverse.Track.View.Gene.extend({
@@ -7246,7 +9255,7 @@ Genoverse.Track.View.Gene.HGNCEnsembl = Genoverse.Track.View.Gene.extend({
 });
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene.HGNCNCBIGene = Genoverse.Track.View.Gene.extend({
@@ -7258,7 +9267,7 @@ Genoverse.Track.View.Gene.HGNCNCBIGene = Genoverse.Track.View.Gene.extend({
 });
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene.HGNCVega = Genoverse.Track.View.Gene.extend({
@@ -7270,7 +9279,7 @@ Genoverse.Track.View.Gene.HGNCVega = Genoverse.Track.View.Gene.extend({
 });
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Gene.HGNCPseudogeneOrg = Genoverse.Track.View.Gene.extend({
@@ -7282,7 +9291,7 @@ Genoverse.Track.View.Gene.HGNCPseudogeneOrg = Genoverse.Track.View.Gene.extend({
 });
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports) {
 
 // Abstract Transcript model
@@ -7292,7 +9301,7 @@ Genoverse.Track.Model.Transcript = Genoverse.Track.Model.extend({
 });
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports) {
 
 // Ensembl REST API Transcript model
@@ -7362,7 +9371,7 @@ Genoverse.Track.Model.Transcript.Ensembl = Genoverse.Track.Model.Transcript.exte
 
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Transcript = Genoverse.Track.View.extend({
@@ -7395,7 +9404,7 @@ Genoverse.Track.View.Transcript = Genoverse.Track.View.extend({
 });
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.View.Transcript.Ensembl = Genoverse.Track.View.Transcript.extend({
@@ -7412,7 +9421,7 @@ Genoverse.Track.View.Transcript.Ensembl = Genoverse.Track.View.Transcript.extend
 });
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File = Genoverse.Track.Model.extend({
@@ -7454,7 +9463,7 @@ Genoverse.Track.Model.File = Genoverse.Track.Model.extend({
 
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File.BAM = Genoverse.Track.Model.File.extend({
@@ -7504,7 +9513,7 @@ Genoverse.Track.Model.File.BAM = Genoverse.Track.Model.File.extend({
 
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File.BED = Genoverse.Track.Model.File.extend({
@@ -7626,7 +9635,7 @@ Genoverse.Track.Model.File.BED = Genoverse.Track.Model.File.extend({
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File.GFF = Genoverse.Track.Model.File.extend({
@@ -7672,7 +9681,7 @@ Genoverse.Track.Model.File.GTF = Genoverse.Track.Model.File.GFF;
 
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File.VCF = Genoverse.Track.Model.File.extend({
@@ -7779,7 +9788,7 @@ Genoverse.Track.Model.File.VCF = Genoverse.Track.Model.File.extend({
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Model.File.WIG = Genoverse.Track.Model.Graph.Bar.extend({
@@ -7852,7 +9861,7 @@ Genoverse.Track.Model.File.WIG = Genoverse.Track.Model.Graph.Bar.extend({
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Chromosome = Genoverse.Track.extend({
@@ -8003,7 +10012,7 @@ Genoverse.Track.Chromosome = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.dbSNP = Genoverse.Track.extend({
@@ -8151,7 +10160,7 @@ Genoverse.Track.dbSNP = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File = Genoverse.Track.extend({
@@ -8167,7 +10176,7 @@ Genoverse.Track.File = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.BAM = Genoverse.Track.File.extend({
@@ -8203,7 +10212,7 @@ Genoverse.Track.File.BAM = Genoverse.Track.File.extend({
 
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.BED = Genoverse.Track.File.extend({
@@ -8233,7 +10242,7 @@ Genoverse.Track.File.BED = Genoverse.Track.File.extend({
 
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.BIGBED = Genoverse.Track.File.BED.extend({
@@ -8286,7 +10295,7 @@ Genoverse.Track.File.BB = Genoverse.Track.File.BIGBED;
 
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.BIGWIG = Genoverse.Track.Graph.Bar.extend({
@@ -8344,7 +10353,7 @@ Genoverse.Track.File.BW = Genoverse.Track.File.BIGWIG;
 
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.GFF = Genoverse.Track.File.extend({
@@ -8358,7 +10367,7 @@ Genoverse.Track.File.GFF = Genoverse.Track.File.extend({
 Genoverse.Track.File.GTF = Genoverse.Track.File.GFF;
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.VCF = Genoverse.Track.File.extend({
@@ -8435,7 +10444,7 @@ Genoverse.Track.File.VCF = Genoverse.Track.File.extend({
 
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.File.WIG = Genoverse.Track.Graph.Bar.extend({
@@ -8446,7 +10455,7 @@ Genoverse.Track.File.WIG = Genoverse.Track.Graph.Bar.extend({
 
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Ensembl = Genoverse.Track.extend({
@@ -8489,7 +10498,7 @@ Genoverse.Track.Ensembl = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.HGNCEnsembl = Genoverse.Track.extend({
@@ -8534,7 +10543,7 @@ Genoverse.Track.HGNCEnsembl = Genoverse.Track.extend({
 });
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.HGNCNCBIGene = Genoverse.Track.extend({
@@ -8579,7 +10588,7 @@ Genoverse.Track.HGNCNCBIGene = Genoverse.Track.extend({
 });
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.HGNCVega = Genoverse.Track.extend({
@@ -8623,7 +10632,7 @@ Genoverse.Track.HGNCVega = Genoverse.Track.extend({
 });
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.HGNCPseudogeneOrg = Genoverse.Track.extend({
@@ -8666,7 +10675,7 @@ Genoverse.Track.HGNCPseudogeneOrg = Genoverse.Track.extend({
 });
 
 /***/ }),
-/* 67 */
+/* 70 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.HighlightRegion = Genoverse.Track.extend({
@@ -8962,7 +10971,7 @@ Genoverse.Track.HighlightRegion = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 68 */
+/* 71 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Controller.Legend = Genoverse.Track.Controller.Static.extend({
@@ -9190,7 +11199,7 @@ Genoverse.Track.Legend = Genoverse.Track.Static.extend({
 
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Scaleline = Genoverse.Track.Static.extend({
@@ -9265,7 +11274,7 @@ Genoverse.Track.Scaleline = Genoverse.Track.Static.extend({
 });
 
 /***/ }),
-/* 70 */
+/* 73 */
 /***/ (function(module, exports) {
 
 Genoverse.Track.Scalebar = Genoverse.Track.extend({
@@ -9502,7 +11511,7 @@ Genoverse.Track.Scalebar = Genoverse.Track.extend({
 
 
 /***/ }),
-/* 71 */
+/* 74 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.controlPanel = function () {
@@ -9816,7 +11825,7 @@ Genoverse.Plugins.controlPanel.requires = 'karyotype';
 
 
 /***/ }),
-/* 72 */
+/* 75 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.fileDrop = function () {
@@ -9884,7 +11893,7 @@ Genoverse.Plugins.fileDrop = function () {
 
 
 /***/ }),
-/* 73 */
+/* 76 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.focusRegion = function () {
@@ -9902,7 +11911,7 @@ Genoverse.Plugins.focusRegion.noCSS    = true;
 
 
 /***/ }),
-/* 74 */
+/* 77 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.fullscreen = function () {
@@ -9985,7 +11994,7 @@ Genoverse.Plugins.fullscreen.requires = 'controlPanel';
 
 
 /***/ }),
-/* 75 */
+/* 78 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.karyotype = function () {
@@ -10190,7 +12199,7 @@ Genoverse.Plugins.karyotype = function () {
 
 
 /***/ }),
-/* 76 */
+/* 79 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.resizer = function () {
@@ -10240,7 +12249,7 @@ Genoverse.Plugins.resizer = function () {
 };
 
 /***/ }),
-/* 77 */
+/* 80 */
 /***/ (function(module, exports) {
 
 // tipsy, facebook style tooltips for jquery
@@ -10325,7 +12334,7 @@ Genoverse.Plugins.tooltips.requires = 'controlPanel';
 
 
 /***/ }),
-/* 78 */
+/* 81 */
 /***/ (function(module, exports) {
 
 Genoverse.Plugins.trackControls = function () {
@@ -10470,6 +12479,12 @@ Genoverse.Plugins.trackControls = function () {
     }
   }, 'tracks');
 };
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

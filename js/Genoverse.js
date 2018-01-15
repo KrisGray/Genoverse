@@ -57,6 +57,12 @@ var Genoverse = Base.extend({
     if (typeof this.genome === 'string') {
       var genomeName = this.genome;
 
+      
+      if(this.genome === 'grch38' || this.genome === 'grch37'){
+        this.genome = Genoverse.Genomes[genomeName];
+      }
+      
+/*      
       return $.ajax({
         url      : Genoverse.origin + 'js/genomes/' + genomeName + '.js',
         dataType : 'script',
@@ -69,6 +75,7 @@ var Genoverse = Base.extend({
           }
         }
       });
+*/
     }
   },
 
@@ -107,8 +114,10 @@ var Genoverse = Base.extend({
       }
 
       if (browser.loadedPlugins[plugin] || $('script[src="' + js + '"]').length) {
+        console.log('HELLO');
         getCSS();
       } else {
+        console.log('HELLO2');
         $.getScript(js, getCSS);
       }
 

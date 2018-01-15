@@ -11,8 +11,10 @@ global.jDataView    = require(__dirname + '/js/lib/jDataView.js');
 global.jParser      = require(__dirname + '/js/lib/jParser.js');
 global.BWReader     = require(__dirname + '/js/lib/BWReader.js');
 global.VCFReader    = require(__dirname + '/js/lib/VCFReader.js');
+global.Genoverse    = require(__dirname + '/js/Genoverse.js');
 
-global.Genoverse = require(__dirname + '/js/Genoverse.js');
+require(__dirname + '/js/genomes/grch37.js');
+require(__dirname + '/js/genomes/grch38.js');
 
 require(__dirname + '/js/Track.js');
 
