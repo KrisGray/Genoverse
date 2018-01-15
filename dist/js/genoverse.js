@@ -2038,18 +2038,16 @@ var Genoverse = Base.extend({
           deferred.resolve(plugin);
         }
 
-        if (Genoverse.Plugins[plugin].noCSS || $('link[href="' + css + '"]').length) {
+        //if (Genoverse.Plugins[plugin].noCSS || $('link[href="' + css + '"]').length) {
           return done();
-        }
+        //}
 
-        $('<link href="' + css + '" rel="stylesheet">').on('load', done).appendTo('body');
+        //$('<link href="' + css + '" rel="stylesheet">').on('load', done).appendTo('body');
       }
 
       if (browser.loadedPlugins[plugin] || $('script[src="' + js + '"]').length) {
-        console.log('HELLO');
         getCSS();
       } else {
-        console.log('HELLO2');
         $.getScript(js, getCSS);
       }
 
@@ -3505,11 +3503,14 @@ var Genoverse = Base.extend({
 });
 
 $(function () {
+  Genoverse.ready.resolve();
+/*  
   if ($('link[href^="' + Genoverse.origin + 'css/genoverse.css"]').length) {
     Genoverse.ready.resolve();
   } else {
     $('<link href="' + Genoverse.origin + 'css/genoverse.css" rel="stylesheet">').appendTo('body').on('load', Genoverse.ready.resolve);
   }
+*/
 });
 
 window.Genoverse = Genoverse;
