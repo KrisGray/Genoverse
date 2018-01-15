@@ -22,6 +22,11 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: __dirname + '/fonts',
       to:   __dirname + '/dist/fonts'
+    },
+    {
+      from: __dirname + '/i',
+      to:   __dirname + '/dist/i'
     }])
+
   ],
 };
