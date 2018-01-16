@@ -2408,8 +2408,6 @@
       overflow-y: hidden;
       position: absolute;
       margin: 0; }
-      .genoverse .gv-canvas-container .gv-image-container .gv-full-height {
-        overflow-y: visible; }
       .genoverse .gv-canvas-container .gv-image-container .gv-loading {
         background: rgba(204, 204, 204, 0.4); }
       .genoverse .gv-canvas-container .gv-image-container .gv-invert {
@@ -2434,6 +2432,8 @@
         .genoverse .gv-canvas-container .gv-image-container img .gv-static {
           display: block;
           top: 50%; }
+    .genoverse .gv-canvas-container .gv-image-container.gv-full-height {
+      overflow-y: visible; }
     .genoverse .gv-canvas-container .gv-track-container-legend .gv-track-border {
       border-color: #000; }
     .genoverse .gv-canvas-container .gv-wrapper > :last-child.gv-track-container-legend .gv-track-border,
@@ -2728,7 +2728,8 @@
   background-image: -webkit-linear-gradient(left, #5F8CB0, #4A7496);
   background-image: -moz-linear-gradient(left center, #5F8CB0, #4A7496);
   border-radius: 0 5px 5px 0;
-  border-left: 0; }
+  border-left: 0;
+  width: 60px; }
   .gv-control-panel-plugin .gv-panel-right button.gv-wheel-zoom {
     font-weight: bold; }
   .gv-control-panel-plugin .gv-panel-right button.gv-drag-select i {
@@ -2740,7 +2741,8 @@
   background-image: -webkit-linear-gradient(right, #5F8CB0, #4A7496);
   background-image: -moz-linear-gradient(right center, #5F8CB0, #4A7496);
   border-radius: 5px 0 0 5px;
-  border-right: 0; }
+  border-right: 0;
+  width: 100px; }
   .gv-control-panel-plugin .gv-panel-left .gv-label-container {
     border: 0;
     box-shadow: none;

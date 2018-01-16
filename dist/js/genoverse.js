@@ -1959,7 +1959,6 @@ var Genoverse = Base.extend({
 
   constructor: function (config) {
     var browser = this;
-
     if (!this.supported()) {
       return this.die('Your browser does not support this functionality');
     }
@@ -1979,7 +1978,9 @@ var Genoverse = Base.extend({
     this.eventNamespace = '.genoverse.' + (++Genoverse.id);
     this.events         = { browser: {}, tracks: {} };
 
-    $.when(Genoverse.ready, this.loadGenome(), this.loadPlugins()).always(function () {
+    $.when(Genoverse.ready).always(function () {
+      browser.loadGenome();
+      browser.loadPlugins();
       Genoverse.wrapFunctions(browser);
       browser.init();
     });
@@ -1988,37 +1989,16 @@ var Genoverse = Base.extend({
   loadGenome: function () {
     if (typeof this.genome === 'string') {
       var genomeName = this.genome;
-
-      
       if(this.genome === 'grch38' || this.genome === 'grch37'){
         this.genome = Genoverse.Genomes[genomeName];
       }
-      
-/*      
-      return $.ajax({
-        url      : Genoverse.origin + 'js/genomes/' + genomeName + '.js',
-        dataType : 'script',
-        context  : this,
-        success  : function () {
-          this.genome = Genoverse.Genomes[genomeName];
-
-          if (!this.genome) {
-            this.die('Unable to load genome ' + genomeName);
-          }
-        }
-      });
-*/
     }
   },
 
   loadPlugins: function (plugins) {
-    var browser         = this;
-    var loadPluginsTask = $.Deferred();
-
     plugins = plugins || this.plugins;
-
     this.loadedPlugins = this.loadedPlugins || {};
-
+    
     for (var i in Genoverse.Plugins) {
       this.loadedPlugins[i] = this.loadedPlugins[i] || 'script';
     }
@@ -2027,77 +2007,29 @@ var Genoverse = Base.extend({
       plugins = [ plugins ];
     }
 
-    function loadPlugin(plugin) {
-      var css      = Genoverse.origin + 'css/'        + plugin + '.css';
-      var js       = Genoverse.origin + 'js/plugins/' + plugin + '.js';
-      var deferred = $.Deferred();
-
-      function getCSS() {
-        function done() {
-          browser.loadedPlugins[plugin] = browser.loadedPlugins[plugin] || 'script';
-          deferred.resolve(plugin);
-        }
-
-        //if (Genoverse.Plugins[plugin].noCSS || $('link[href="' + css + '"]').length) {
-          return done();
-        //}
-
-        //$('<link href="' + css + '" rel="stylesheet">').on('load', done).appendTo('body');
-      }
-
-      if (browser.loadedPlugins[plugin] || $('script[src="' + js + '"]').length) {
-        getCSS();
-      } else {
-        $.getScript(js, getCSS);
-      }
-
-      return deferred;
-    }
-
-    function initializePlugin(plugin) {
-      if (typeof Genoverse.Plugins[plugin] !== 'function' || browser.loadedPlugins[plugin] === true) {
-        return [];
-      }
-
-      var requires = Genoverse.Plugins[plugin].requires;
-      var deferred = $.Deferred();
-
-      function init() {
-        if (browser.loadedPlugins[plugin] !== true) {
-          Genoverse.Plugins[plugin].call(browser);
-          browser.container.addClass('gv-' + plugin.replace(/([A-Z])/g, '-$1').toLowerCase() + '-plugin');
-          browser.loadedPlugins[plugin] = true;
-        }
-
-        deferred.resolve();
-      }
-
-      if (requires) {
-        $.when(browser.loadPlugins(requires)).done(init);
-      } else {
-        init();
-      }
-
-      return deferred;
-    }
-
     // Load plugins css file
-    $.when.apply($, $.map(plugins, loadPlugin)).done(function () {
-      var pluginsLoaded = [];
-      var plugin;
+    for (var index = 0; index < plugins.length; index++) {
+      this.loadedPlugins[plugin] = this.loadedPlugins[plugin] || 'script';
+    }
+    
+    var plugin;
+    for (var i = 0; i < plugins.length; i++) {
+      plugin = plugins[i];
 
-      for (var i = 0; i < arguments.length; i++) {
-        plugin = arguments[i];
-
-        if (browser.loadedPlugins[plugin] !== true) {
-          pluginsLoaded.push(initializePlugin(plugin));
+      if (this.loadedPlugins[plugin] !== true) {
+        if (typeof Genoverse.Plugins[plugin] === 'function' || this.loadedPlugins[plugin] !== true) {
+          var requires = Genoverse.Plugins[plugin].requires;
+          if (requires) {
+            this.loadPlugins(requires);
+          }
+          if (this.loadedPlugins[plugin] !== true) {
+            Genoverse.Plugins[plugin].call(this);
+            this.container.addClass('gv-' + plugin.replace(/([A-Z])/g, '-$1').toLowerCase() + '-plugin');
+            this.loadedPlugins[plugin] = true;
+          }
         }
       }
-
-      $.when.apply($, pluginsLoaded).always(loadPluginsTask.resolve);
-    });
-
-    return loadPluginsTask;
+    }
   },
 
   init: function () {
@@ -11627,7 +11559,7 @@ Genoverse.Plugins.controlPanel = function () {
   this.on({
     beforeInit: function () {
       var browser = this;
-
+      console.log("beforeInit", browser.width);
       if (!this.tracksLibrary) {
         this.tracksLibrary = $.grep(this.tracks, function (track) { return track.prototype.name; });
       }
@@ -11675,7 +11607,8 @@ Genoverse.Plugins.controlPanel = function () {
       this.superContainer.width(this.width);
 
       this.width -= panel.width();
-
+      console.log("beforeInit 2", browser.width);
+      console.log("beforeInit 3", this.width, panel.width());
       // ESC key to toggle crosshair select to drag mode and close menus
       $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {

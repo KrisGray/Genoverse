@@ -120,10 +120,6 @@ $sort-handle-img: image-url('../i/sort_handle.png', false, false);
       position: absolute;
       margin: 0;
 
-      .gv-full-height {
-        overflow-y: visible;
-      }
-
       .gv-loading {
         background: rgba(204,204,204,0.4);
       }
@@ -163,6 +159,9 @@ $sort-handle-img: image-url('../i/sort_handle.png', false, false);
           top: 50%;
         }
       }
+    }
+    .gv-image-container.gv-full-height {
+      overflow-y: visible;
     }
 
     .gv-track-container-legend {
