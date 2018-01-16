@@ -11559,7 +11559,6 @@ Genoverse.Plugins.controlPanel = function () {
   this.on({
     beforeInit: function () {
       var browser = this;
-      console.log("beforeInit", browser.width);
       if (!this.tracksLibrary) {
         this.tracksLibrary = $.grep(this.tracks, function (track) { return track.prototype.name; });
       }
@@ -11607,8 +11606,6 @@ Genoverse.Plugins.controlPanel = function () {
       this.superContainer.width(this.width);
 
       this.width -= panel.width();
-      console.log("beforeInit 2", browser.width);
-      console.log("beforeInit 3", this.width, panel.width());
       // ESC key to toggle crosshair select to drag mode and close menus
       $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
