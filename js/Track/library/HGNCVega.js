@@ -21,7 +21,7 @@ Genoverse.Track.HGNCVega = Genoverse.Track.extend({
     if(feature.biotype){
       menu['Biotype'] = feature.biotype;
     }
-    menu['Rerun as'] = '<a href="/update/mapping.html#/GRCh38/'+ feature.id +'">' + feature.id + '</a>';
+    menu['Rerun as'] = '<a href="/xref/mapping/GRCh38/'+ feature.id +'">' + feature.id + '</a>';
     return menu;
   },
   // Different settings for different zoom level
