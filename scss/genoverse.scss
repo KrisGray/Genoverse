@@ -2,6 +2,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
 $sort-handle-img: image-url('../i/sort_handle.png', false, false);
+//url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90DFg4BKpiYAl8AAAAuSURBVBjTY2BAgLVQjBUwIXPs7Ows/v//j1MxHPz//38tUQrRAIpTmPCppK1TALYVGpmpKyMZAAAAAElFTkSuQmCC')
 
 
 // image-url arguments:
@@ -233,7 +234,7 @@ $sort-handle-img: image-url('../i/sort_handle.png', false, false);
       .gv-handle {
         float: left;
         position: relative;
-        background-image: $sort-handle-img;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90DFg4BKpiYAl8AAAAuSURBVBjTY2BAgLVQjBUwIXPs7Ows/v//j1MxHPz//38tUQrRAIpTmPCppK1TALYVGpmpKyMZAAAAAElFTkSuQmCC');
         cursor: move;
         display: inline-block;
         height: calc(100% - 20px);
